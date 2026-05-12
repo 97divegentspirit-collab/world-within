@@ -1,1 +1,14 @@
 @media
+body {
+  margin: 0;
+  padding: 0;
+  background: #0d1020;
+  color: white;
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 40vh;
+  font-size: 3rem;
+}
