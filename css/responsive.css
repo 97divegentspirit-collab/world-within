@@ -1,0 +1,115 @@
+/* =========================================
+   responsive.css
+   MOBILE + TABLET + ACCESSIBILITY
+========================================= */
+
+/* Tablets */
+
+@media (max-width: 992px) {
+
+  section {
+    padding: 80px 0;
+  }
+
+  .hero {
+    padding: 120px 0;
+  }
+
+  .emotion-grid {
+    grid-template-columns:
+      repeat(2, 1fr);
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 768px) {
+
+  body {
+    overflow-x: hidden;
+  }
+
+  .container {
+    width: 92%;
+  }
+
+  section {
+    padding: 70px 0;
+  }
+
+  .hero {
+    min-height: auto;
+    padding: 120px 0 80px;
+  }
+
+  .hero-title {
+    font-size: clamp(2rem, 10vw, 3.5rem);
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+    line-height: 1.8;
+  }
+
+  .emotion-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .emotion-card {
+    min-height: auto;
+  }
+
+  .glass-card {
+    padding: 22px;
+  }
+
+  textarea,
+  input {
+    padding: 16px;
+    font-size: 16px;
+  }
+
+  .symbol-upload {
+    padding: 30px 20px;
+  }
+
+  button,
+  .cta-button {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Small phones */
+
+@media (max-width: 480px) {
+
+  h1 {
+    line-height: 1.2;
+  }
+
+  p {
+    font-size: 0.95rem;
+  }
+
+  .prompt-text {
+    font-size: 1.2rem;
+  }
+
+  .glass-card {
+    border-radius: 20px;
+  }
+}
+
+/* Reduced motion accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
