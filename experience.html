@@ -1,1 +1,407 @@
+<!-- =========================================
+     experience.html
+     GUIDED EMOTIONAL JOURNEY ENGINE
+========================================= -->
 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8" />
+
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0" />
+
+  <title>The Journey Experience</title>
+
+  <!-- CSS -->
+
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/themes.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+
+</head>
+
+<body class="theme-calm">
+
+  <!-- =========================================
+       PARTICLES
+  ========================================== -->
+
+  <div id="particles-container"></div>
+
+  <!-- =========================================
+       HERO
+  ========================================== -->
+
+  <section class="hero">
+
+    <div class="container">
+
+      <div class="hero-content fade-up">
+
+        <p class="supportive-message float-soft">
+          There is nothing to prove here.
+        </p>
+
+        <h1 class="hero-title breathe">
+          Let us walk through your world together.
+        </h1>
+
+        <p class="hero-subtitle">
+          Move slowly.
+          Choose what resonates.
+          Express what feels true.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =========================================
+       SCENE 1
+       ATMOSPHERE SELECTION
+  ========================================== -->
+
+  <section>
+
+    <div class="container">
+
+      <div class="glass-card fade-up">
+
+        <p class="prompt-text">
+          If someone entered your world for the first time...
+          what would they feel first?
+        </p>
+
+        <div class="emotion-grid">
+
+          <!-- Calm -->
+
+          <div class="emotion-card"
+            onclick="selectEmotion('calm')">
+
+            <h3>Calm</h3>
+
+            <p>
+              Spacious stillness,
+              emotional softness,
+              gentle clarity.
+            </p>
+
+          </div>
+
+          <!-- Electric -->
+
+          <div class="emotion-card"
+            onclick="selectEmotion('electric')">
+
+            <h3>Electric</h3>
+
+            <p>
+              Intensity,
+              movement,
+              curiosity and energy.
+            </p>
+
+          </div>
+
+          <!-- Dreamy -->
+
+          <div class="emotion-card"
+            onclick="selectEmotion('dreamy')">
+
+            <h3>Dreamy</h3>
+
+            <p>
+              Floating imagination,
+              wonder,
+              emotional depth.
+            </p>
+
+          </div>
+
+          <!-- Grounded -->
+
+          <div class="emotion-card"
+            onclick="selectEmotion('grounded')">
+
+            <h3>Grounded</h3>
+
+            <p>
+              Stability,
+              warmth,
+              presence and earthiness.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =========================================
+       SCENE 2
+       SYMBOLIC WORLD
+  ========================================== -->
+
+  <section>
+
+    <div class="container">
+
+      <div class="glass-card fade-up">
+
+        <p class="prompt-text">
+          Which symbols feel most connected to your inner world?
+        </p>
+
+        <div class="emotion-grid">
+
+          <div class="emotion-card">
+            <h3>🌙 Moon</h3>
+            <p>Reflection, mystery, emotional depth.</p>
+          </div>
+
+          <div class="emotion-card">
+            <h3>🌊 Ocean</h3>
+            <p>Fluidity, emotion, subconscious movement.</p>
+          </div>
+
+          <div class="emotion-card">
+            <h3>🌿 Forest</h3>
+            <p>Growth, grounding, quiet life.</p>
+          </div>
+
+          <div class="emotion-card">
+            <h3>✨ Neon Light</h3>
+            <p>Energy, futuristic emotion, expression.</p>
+          </div>
+
+          <div class="emotion-card">
+            <h3>🦋 Butterfly</h3>
+            <p>Transformation, unfolding identity.</p>
+          </div>
+
+          <div class="emotion-card">
+            <h3>☁️ Clouds</h3>
+            <p>Dreaming, softness, drifting thought.</p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =========================================
+       SCENE 3
+       VISUAL EXPRESSION
+  ========================================== -->
+
+  <section>
+
+    <div class="container">
+
+      <div class="glass-card fade-up">
+
+        <p class="prompt-text">
+          Share images, textures, or visual fragments
+          that feel emotionally meaningful to you.
+        </p>
+
+        <div class="symbol-upload">
+
+          <input type="file"
+            multiple
+            accept="image/*" />
+
+          <p class="supportive-message">
+            Upload symbols, sketches, colors,
+            environments or inspirations.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =========================================
+       SCENE 4
+       INNER REFLECTION
+  ========================================== -->
+
+  <section>
+
+    <div class="container">
+
+      <div class="glass-card fade-up">
+
+        <p class="prompt-text">
+          If your inner world could speak freely...
+          what would it say?
+        </p>
+
+        <textarea
+          rows="8"
+          placeholder="Write whatever feels true..."
+          oninput="saveTextInput(this.value)">
+        </textarea>
+
+        <p class="supportive-message float-soft">
+          There is no wrong answer.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =========================================
+       SCENE 5
+       ATMOSPHERE SLIDER
+  ========================================== -->
+
+  <section>
+
+    <div class="container">
+
+      <div class="glass-card fade-up">
+
+        <p class="prompt-text">
+          How emotionally intense does your world feel?
+        </p>
+
+        <input type="range"
+          min="1"
+          max="100"
+          value="50"
+          style="width: 100%; margin-top: 30px;" />
+
+        <div style="margin-top: 20px;">
+
+          <p>Soft Presence ← → Intense Energy</p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =========================================
+       SCENE 6
+       EMOTIONAL SUMMARY
+  ========================================== -->
+
+  <section>
+
+    <div class="container">
+
+      <div class="glass-card fade-up"
+        style="text-align: center;">
+
+        <p class="prompt-text">
+          Your world feels alive.
+        </p>
+
+        <p style="margin-bottom: 30px;">
+
+          Through atmosphere,
+          emotion,
+          symbols,
+          memory,
+          rhythm,
+          and expression —
+          your identity begins to unfold naturally.
+
+        </p>
+
+        <button onclick="submitProfile()"
+          class="cta-button glow-pulse">
+
+          Continue Forward
+
+        </button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =========================================
+       TRANSITION TO CONTACT
+  ========================================== -->
+
+  <section>
+
+    <div class="container">
+
+      <div class="glass-card fade-up"
+        style="text-align: center;">
+
+        <p class="prompt-text">
+          Thank you for sharing your world.
+        </p>
+
+        <p style="margin-bottom: 30px;">
+          Continue into the final connection space.
+        </p>
+
+        <a href="contact.html"
+          class="cta-button">
+
+          Final Connection
+
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =========================================
+       FOOTER
+  ========================================== -->
+
+  <footer>
+
+    <div class="container">
+
+      <p class="supportive-message float-soft">
+        Your uniqueness deserves space to exist.
+      </p>
+
+    </div>
+
+  </footer>
+
+  <!-- =========================================
+       JAVASCRIPT
+  ========================================== -->
+
+  <script src="js/main.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/interactions.js"></script>
+  <script src="js/form-handler.js"></script>
+  <script src="js/particles.js"></script>
+
+</body>
+
+          </html>
