@@ -1,1 +1,204 @@
+{
+  "calm": {
+    "name": "Calm",
+    "description": "soft blues, slow motion, gentle breathing",
+    "colors": [
+      "#A7C7E7",
+      "#CFE8FF",
+      "#EAF6FF"
+    ],
+    "background": "linear-gradient(180deg, #141E30 0%, #243B55 100%)",
+    "motion": {
+      "speed": "slow",
+      "style": "floating",
+      "intensity": 2
+    },
+    "particles": {
+      "density": 20,
+      "size": 4,
+      "opacity": 0.3
+    },
+    "audio_feel": "soft ambient pads",
+    "transition_style": "fade",
+    "supportive_phrases": [
+      "You are allowed to slow down.",
+      "Softness is not weakness.",
+      "Take your time.",
+      "Breathing space matters."
+    ]
+  },
 
+  "electric": {
+    "name": "Electric",
+    "description": "neon pulses, fast glow, energetic transitions",
+    "colors": [
+      "#00F0FF",
+      "#FF00E5",
+      "#7CFF00"
+    ],
+    "background": "linear-gradient(180deg, #200122 0%, #6F0000 100%)",
+    "motion": {
+      "speed": "fast",
+      "style": "pulse",
+      "intensity": 8
+    },
+    "particles": {
+      "density": 80,
+      "size": 5,
+      "opacity": 0.7
+    },
+    "audio_feel": "digital pulse and synth energy",
+    "transition_style": "flash",
+    "supportive_phrases": [
+      "Intensity can be beautiful.",
+      "Energy deserves expression.",
+      "Movement is part of growth.",
+      "Your fire matters."
+    ]
+  },
+
+  "dreamy": {
+    "name": "Dreamy",
+    "description": "floating light, blurred edges, emotional softness",
+    "colors": [
+      "#D8B4F8",
+      "#FFC6FF",
+      "#BDE0FE"
+    ],
+    "background": "linear-gradient(180deg, #42275A 0%, #734B6D 100%)",
+    "motion": {
+      "speed": "slow",
+      "style": "drifting",
+      "intensity": 4
+    },
+    "particles": {
+      "density": 45,
+      "size": 6,
+      "opacity": 0.5
+    },
+    "audio_feel": "airy pads and distant echoes",
+    "transition_style": "glow dissolve",
+    "supportive_phrases": [
+      "Wonder is sacred.",
+      "Your imagination matters.",
+      "Dreams carry emotional truth.",
+      "You are allowed to drift."
+    ]
+  },
+
+  "grounded": {
+    "name": "Grounded",
+    "description": "earth tones, stability, slow intentional presence",
+    "colors": [
+      "#8D6E63",
+      "#A1887F",
+      "#D7CCC8"
+    ],
+    "background": "linear-gradient(180deg, #3E2723 0%, #1C1C1C 100%)",
+    "motion": {
+      "speed": "steady",
+      "style": "stable",
+      "intensity": 3
+    },
+    "particles": {
+      "density": 25,
+      "size": 5,
+      "opacity": 0.4
+    },
+    "audio_feel": "organic textures and warm ambience",
+    "transition_style": "steady fade",
+    "supportive_phrases": [
+      "You are supported.",
+      "Stability is powerful.",
+      "Presence matters.",
+      "You do not need to rush."
+    ]
+  },
+
+  "intense": {
+    "name": "Intense",
+    "description": "deep contrast, emotional pressure, focused energy",
+    "colors": [
+      "#FF1744",
+      "#D50000",
+      "#212121"
+    ],
+    "background": "linear-gradient(180deg, #000000 0%, #3B0000 100%)",
+    "motion": {
+      "speed": "sharp",
+      "style": "focused pulse",
+      "intensity": 9
+    },
+    "particles": {
+      "density": 65,
+      "size": 4,
+      "opacity": 0.8
+    },
+    "audio_feel": "low bass tension and cinematic pressure",
+    "transition_style": "snap transition",
+    "supportive_phrases": [
+      "Strong emotions deserve space.",
+      "Intensity is not failure.",
+      "You are allowed to feel deeply.",
+      "Your energy is real."
+    ]
+  },
+
+  "sacred": {
+    "name": "Sacred",
+    "description": "gold light, silence, spiritual presence",
+    "colors": [
+      "#FFD700",
+      "#FFF3B0",
+      "#FFF8E1"
+    ],
+    "background": "linear-gradient(180deg, #4B3B00 0%, #161616 100%)",
+    "motion": {
+      "speed": "very slow",
+      "style": "breathing glow",
+      "intensity": 1
+    },
+    "particles": {
+      "density": 12,
+      "size": 7,
+      "opacity": 0.25
+    },
+    "audio_feel": "harmonic resonance and silence",
+    "transition_style": "soft bloom",
+    "supportive_phrases": [
+      "Your existence has meaning.",
+      "Stillness carries wisdom.",
+      "Presence is enough.",
+      "You are allowed to simply be."
+    ]
+  },
+
+  "playful": {
+    "name": "Playful",
+    "description": "light motion, curiosity, playful energy",
+    "colors": [
+      "#FFB703",
+      "#FB8500",
+      "#8ECAE6"
+    ],
+    "background": "linear-gradient(180deg, #FF9966 0%, #FF5E62 100%)",
+    "motion": {
+      "speed": "bouncy",
+      "style": "light movement",
+      "intensity": 6
+    },
+    "particles": {
+      "density": 55,
+      "size": 5,
+      "opacity": 0.6
+    },
+    "audio_feel": "light rhythmic tones and playful ambience",
+    "transition_style": "pop",
+    "supportive_phrases": [
+      "Curiosity is beautiful.",
+      "Playfulness matters.",
+      "Joy deserves space.",
+      "Exploration is part of being alive."
+    ]
+  }
+}
