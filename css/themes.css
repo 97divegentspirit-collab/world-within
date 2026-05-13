@@ -1,0 +1,67 @@
+/* =========================================
+   themes.css
+   EMOTIONAL ATMOSPHERES
+========================================= */
+
+/* Calm */
+
+.theme-calm {
+  background:
+    radial-gradient(circle at top,
+    #243b55,
+    #141e30);
+}
+
+/* Electric */
+
+.theme-electric {
+  background:
+    radial-gradient(circle at top,
+    #200122,
+    #6f0000);
+}
+
+/* Dreamy */
+
+.theme-dreamy {
+  background:
+    radial-gradient(circle at top,
+    #42275a,
+    #734b6d);
+}
+
+/* Sacred */
+
+.theme-sacred {
+  background:
+    radial-gradient(circle at top,
+    #4b3b00,
+    #161616);
+}
+
+/* Grounded */
+
+.theme-grounded {
+  background:
+    radial-gradient(circle at top,
+    #3e2723,
+    #1c1c1c);
+}
+
+/* Intense */
+
+.theme-intense {
+  background:
+    radial-gradient(circle at top,
+    #000000,
+    #3b0000);
+}
+
+/* Playful */
+
+.theme-playful {
+  background:
+    radial-gradient(circle at top,
+    #ff9966,
+    #ff5e62);
+}
