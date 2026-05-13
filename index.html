@@ -7,22 +7,271 @@
 
   <title>World Within</title>
 
+  <!-- CSS -->
   <link rel="stylesheet" href="css/style.css" />
-
-
-  <script src="js/main.js"></script>
-<script src="js/animations.js"></script>
-<script src="js/interactions.js"></script>
-<script src="js/form-handler.js"></script>
-<script src="js/particles.js"></script>
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/themes.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
 </head>
 
-<body>
+<body class="theme-calm">
 
-  <h1>Every person carries a world within.</h1>
+  <!-- =========================================
+       AMBIENT PARTICLES CONTAINER
+  ========================================== -->
 
-  
+  <div id="particles-container"></div>
+
+  <!-- =========================================
+       HERO / ARRIVAL PORTAL
+  ========================================== -->
+
+  <section class="hero">
+
+    <div class="container">
+
+      <div class="hero-content fade-up">
+
+        <p class="supportive-message float-soft">
+          You are safe here.
+        </p>
+
+        <h1 class="hero-title breathe">
+          Every person carries a world within.
+        </h1>
+
+        <p class="hero-subtitle">
+          This is not a questionnaire.
+          <br />
+          This is a space for reflection, atmosphere, expression, and discovery.
+        </p>
+
+        <div style="margin-top: 40px;">
+
+          <a href="experience.html" class="cta-button glow-pulse">
+            Begin The Journey
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =========================================
+       INTRODUCTION SECTION
+  ========================================== -->
+
+  <section>
+
+    <div class="container">
+
+      <div class="glass-card fade-up">
+
+        <p class="prompt-text">
+          Instead of pressure, there is exploration.
+        </p>
+
+        <p>
+          Instead of interrogation, there is emotional discovery.
+          <br /><br />
+          You are not being measured here.
+          <br />
+          You are being understood.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =========================================
+       ATMOSPHERE PREVIEW
+  ========================================== -->
+
+  <section>
+
+    <div class="container">
+
+      <h2 class="fade-up" style="margin-bottom: 30px;">
+        What kind of world lives within you?
+      </h2>
+
+      <div class="emotion-grid">
+
+        <!-- Calm -->
+
+        <div class="emotion-card glass-card float-soft"
+          onclick="selectEmotion('calm')">
+
+          <h3>Calm</h3>
+
+          <p>
+            Gentle stillness, spacious thoughts, soft emotional breathing.
+          </p>
+
+        </div>
+
+        <!-- Electric -->
+
+        <div class="emotion-card glass-card float-soft"
+          onclick="selectEmotion('electric')">
+
+          <h3>Electric</h3>
+
+          <p>
+            Neon pulses, intensity, movement, energetic curiosity.
+          </p>
+
+        </div>
+
+        <!-- Dreamy -->
+
+        <div class="emotion-card glass-card float-soft"
+          onclick="selectEmotion('dreamy')">
+
+          <h3>Dreamy</h3>
+
+          <p>
+            Floating imagination, softness, emotional depth and wonder.
+          </p>
+
+        </div>
+
+        <!-- Sacred -->
+
+        <div class="emotion-card glass-card float-soft"
+          onclick="selectEmotion('sacred')">
+
+          <h3>Sacred</h3>
+
+          <p>
+            Silence, warmth, gold light, spiritual presence and reflection.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =========================================
+       ENCOURAGEMENT SECTION
+  ========================================== -->
+
+  <section>
+
+    <div class="container">
+
+      <div class="glass-card fade-up">
+
+        <p class="prompt-text">
+          There is no wrong way to express yourself.
+        </p>
+
+        <p>
+          Your uniqueness matters.
+          <br />
+          Your inner world deserves to be seen.
+          <br /><br />
+          Take your time.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =========================================
+       NAVIGATION PORTAL
+  ========================================== -->
+
+  <section>
+
+    <div class="container">
+
+      <div class="emotion-grid">
+
+        <!-- About -->
+
+        <a href="about.html"
+          class="emotion-card glass-card"
+          style="text-decoration: none; color: white;">
+
+          <h3>Identity Reflection</h3>
+
+          <p>
+            Explore philosophy, emotional identity, and the heart behind the experience.
+          </p>
+
+        </a>
+
+        <!-- Experience -->
+
+        <a href="experience.html"
+          class="emotion-card glass-card"
+          style="text-decoration: none; color: white;">
+
+          <h3>The Journey Engine</h3>
+
+          <p>
+            Step into the guided emotional experience and begin expressing your world.
+          </p>
+
+        </a>
+
+        <!-- Contact -->
+
+        <a href="contact.html"
+          class="emotion-card glass-card"
+          style="text-decoration: none; color: white;">
+
+          <h3>Final Connection</h3>
+
+          <p>
+            Reach out, submit your reflections, and continue the conversation.
+          </p>
+
+        </a>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =========================================
+       FOOTER
+  ========================================== -->
+
+  <footer>
+
+    <div class="container">
+
+      <p class="supportive-message">
+        Your story matters.
+      </p>
+
+    </div>
+
+  </footer>
+
+  <!-- =========================================
+       JAVASCRIPT
+  ========================================== -->
+
+  <script src="js/main.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/interactions.js"></script>
+  <script src="js/form-handler.js"></script>
+  <script src="js/particles.js"></script>
 
 </body>
 
-</html>
+          </html>
