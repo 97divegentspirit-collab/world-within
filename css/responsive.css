@@ -2,7 +2,35 @@
    responsive.css
    MOBILE + TABLET + ACCESSIBILITY
 ========================================= */
+/* =========================================
+   MOBILE INTRO
+========================================= */
 
+@media (max-width: 768px) {
+
+  .book-wrapper {
+    width: 280px;
+    height: 190px;
+  }
+
+  .intro-logo {
+    width: 80px;
+  }
+
+  .intro-credit {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-align: center;
+    padding: 0 10px;
+  }
+
+  .book-glow {
+    width: 180px;
+    height: 180px;
+  }
+
+}
+ 
 /* Tablets */
 
 @media (max-width: 992px) {
