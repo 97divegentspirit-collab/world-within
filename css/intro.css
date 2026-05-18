@@ -1,6 +1,7 @@
 /* =========================================
    INTRO SCREEN
 ========================================= */
+
 body.loading #site-content {
   opacity: 0;
   transform: scale(1.03);
@@ -15,6 +16,11 @@ body.loaded #site-content {
   transition: all 1.2s ease;
 }
 
+#intro-screen.open {
+  background: radial-gradient(circle at center,
+    rgba(120, 90, 60, 0.25),
+    rgba(0, 0, 0, 0.98));
+}
 
 #intro-screen {
   position: fixed;
