@@ -1,4 +1,4 @@
-@media
+
 
 /* =========================================
    style.css
@@ -410,6 +410,7 @@ button:hover,
 
   pointer-events: none;
 }
+
 .hero-layout {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -427,38 +428,7 @@ button:hover,
 }
 
 .hero-subtitle {
-  max.hero {
-
-  position: relative;
-
-  overflow: hidden;
-
-  min-height: 100vh;
-
-  display: flex;
-  align-items: center;
-
-  background:
-
-    radial-gradient(
-      circle at top left,
-      rgba(255,182,217,0.18),
-      transparent 30%
-    ),
-
-    radial-gradient(
-      circle at bottom right,
-      rgba(123,97,255,0.16),
-      transparent 35%
-    ),
-
-    linear-gradient(
-      135deg,
-      #090014,
-      #140021,
-      #24103f
-    );
-  }-width: 700px;
+  max.-width: 700px;
   margin: auto;
   margin-bottom: 40px;
 }
