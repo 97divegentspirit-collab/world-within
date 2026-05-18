@@ -2,22 +2,28 @@ window.addEventListener("load", () => {
 
   const intro = document.getElementById("intro-screen");
 
-  // OPEN BOOK
+  // safety check
+  if (!intro) return;
+
+  // OPEN BOOK (slight delay for atmosphere)
   setTimeout(() => {
     intro.classList.add("open");
   }, 600);
 
-  // REMOVE INTRO
+  // TRANSITION INTO WEBSITE
   setTimeout(() => {
 
-    intro.style.opacity = "0";
+    document.body.classList.remove("loading");
+    document.body.classList.add("loaded");
 
     intro.style.transition = "opacity 1.5s ease";
+    intro.style.opacity = "0";
 
+    // REMOVE INTRO AFTER FADE
     setTimeout(() => {
       intro.remove();
     }, 1600);
 
-  }, 5500);
+  }, 5200);
 
 });
