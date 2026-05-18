@@ -173,13 +173,20 @@ body.loaded #site-content {
    LOGO
 ========================================= */
 
+
 .intro-logo {
-  width: 120px;
+  width: clamp(80px, 10vw, 130px);
+  height: auto;
 
   z-index: 2;
 
-  filter:
-    drop-shadow(0 0 25px rgba(255,220,150,0.5));
+  filter: drop-shadow(0 0 25px rgba(255,220,150,0.5));
+
+  transform: scale(0.9);
+  opacity: 0;
+
+  animation: logoReveal 1.2s ease forwards;
+  animation-delay: 1.3s;
 }
 
 /* =========================================
@@ -222,3 +229,10 @@ body.loaded #site-content {
   }
 
     }
+
+@keyframes logoReveal {
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
