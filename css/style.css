@@ -54,7 +54,6 @@ html {
 
 
 body {
-
   font-family:
     "Poppins",
     "Segoe UI",
@@ -63,33 +62,29 @@ body {
   color: var(--text-primary);
 
   background:
-
     radial-gradient(
       circle at top right,
       rgba(255,182,217,0.10),
       transparent 25%
     ),
-
     radial-gradient(
       circle at bottom left,
       rgba(155,123,255,0.12),
       transparent 30%
     ),
-
     linear-gradient(
       135deg,
       #090014 0%,
-      #140021 40%,
+      #140021 45%,
       #24103f 100%
     );
 
   overflow-x: hidden;
-
   min-height: 100vh;
 
   transition:
-    background var(--transition-slow),
-    color var(--transition-slow);
+    background 0.8s ease,
+    color 0.8s ease;
 
   text-shadow:
     0 1px 2px rgba(0,0,0,0.25);
@@ -453,19 +448,20 @@ button:hover,
 .hero-left h1 {
 
   font-size:
-    clamp(3.5rem, 8vw, 7rem);
+    clamp(2.8rem, 10vw, 6rem);
 
-  line-height: 0.92;
+  line-height: 1.02;
 
   font-weight: 700;
 
-  letter-spacing: -3px;
+  letter-spacing: -1px;
 
   margin-bottom: 24px;
 
   color: white;
-}
 
+  max-width: 600px;
+}
 
 
 /* ACCENT WORD */
@@ -702,56 +698,97 @@ footer {
 
 @media (max-width: 900px) {
 
+  .hero {
+
+    padding: 70px 0 40px;
+
+    min-height: auto;
+  }
+
   .hero-layout {
 
     grid-template-columns: 1fr;
 
-    gap: 80px;
+    gap: 40px;
 
     text-align: center;
   }
 
+  .hero-left {
 
-.hero-right {
-
-  position: relative;
-
-  display: flex;
-
-  justify-content: center;
-
-  align-items: center;
-}
-   
-  .hero-description {
-
-    margin: auto;
-  }
-
-  .large-frame {
-
-    width: 90vw;
-
-    max-width: 520px;
-  }
-
-  .medium-frame {
-
-    width: 90px;
-
-    top: -10px;
-
-    right: 10px;
+    width: 100%;
   }
 
   .hero-left h1 {
 
-    font-size:
-      clamp(3rem, 12vw, 5rem);
+    font-size: clamp(2.7rem, 12vw, 4.5rem);
+
+    line-height: 1.05;
+
+    letter-spacing: -1px;
+
+    text-align: center;
+  }
+
+  .hero-left p {
+
+    max-width: 100%;
+
+    margin: auto;
+
+    font-size: 1rem;
+  }
+
+  .hero-right {
+
+    position: relative;
+
+    width: 100%;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+  }
+
+  .large-frame {
+
+    width: 88vw;
+
+    max-width: 420px;
+
+    margin: auto;
+  }
+
+  .large-frame img {
+
+    width: 100%;
+
+    height: auto;
+
+    object-fit: contain;
+  }
+
+
+  .medium-frame img {
+
+    width: 100%;
+
+    height: auto;
+
+    object-fit: contain;
+  }
+
+  .small-frame {
+
+    display: none;
   }
 
   section {
 
-    padding: 80px 0;
+    padding: 70px 0;
   }
 }
+
+
