@@ -640,6 +640,8 @@ footer {
 ::-webkit-scrollbar-track {
   background: transparent;
   }
+
+
 @media (max-width: 900px) {
 
   .hero-layout {
@@ -737,11 +739,6 @@ footer {
     right: -20px;
   }
 
-  .small-frame {
-
-    width: 130px;
-    height: 160px;
-  }
    
 /* FLOAT EFFECT */
 
