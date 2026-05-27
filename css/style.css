@@ -363,32 +363,36 @@ button:hover,
 
   position: relative;
 
-  overflow: hidden;
-
   min-height: 100vh;
+
+  overflow: hidden;
 
   display: flex;
   align-items: center;
+
+  padding:
+    120px 0
+    100px;
 
   background:
 
     radial-gradient(
       circle at top left,
-      rgba(255,182,217,0.18),
+      rgba(255,182,217,0.16),
       transparent 30%
     ),
 
     radial-gradient(
       circle at bottom right,
-      rgba(123,97,255,0.16),
+      rgba(123,97,255,0.14),
       transparent 35%
     ),
 
     linear-gradient(
       135deg,
-      #090014,
-      #140021,
-      #24103f
+      #090014 0%,
+      #140021 45%,
+      #24103f 100%
     );
 }
 
