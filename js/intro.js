@@ -25,5 +25,10 @@ window.addEventListener("load", () => {
     }, 1600);
 
   }, 5200);
+  
+  intro.classList.add("fade-out");
+}, 5500);
 
 });
+
+
