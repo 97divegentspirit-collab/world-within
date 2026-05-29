@@ -37,13 +37,6 @@
 }
 
 
-#intro-screen.hide {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-  transition: opacity 1.5s ease, visibility 1.5s ease;
-}
-
 /* =========================================
    BOOK WRAPPER
 ========================================= */
@@ -88,9 +81,8 @@ height: 420px;
     0 0 40px rgba(0,0,0,0.6),
     inset 0 0 20px rgba(255,255,255,0.05);
 
-  transition: transform 2.5s ease;
+  transition: transform 2.2s cubic-bezier(0.25, 1, 0.3, 1);
 }
-
 /* LEFT */
 
 .left-cover {
@@ -250,9 +242,16 @@ height: 420px;
   }
 
 }
+
+
+
+
+#intro-screen.hide,
 #intro-screen.fade-out {
   opacity: 0;
-  transition: opacity 1.5s ease;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 1.5s ease, visibility 1.5s ease;
 }
 
 
