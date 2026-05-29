@@ -323,3 +323,35 @@
   margin-bottom: 40px;
 }
 
+
+
+#enter-experience {
+  padding: 18px 42px;
+
+  border: none;
+  border-radius: 999px;
+
+  background: linear-gradient(
+    135deg,
+    #ff4fd8,
+    #7b5cff
+  );
+
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 0 30px rgba(255, 79, 216, 0.5);
+
+  transition: all 0.4s ease;
+}
+
+#enter-experience:hover {
+  transform: translateY(-4px) scale(1.03);
+
+  box-shadow:
+    0 0 60px rgba(255, 79, 216, 0.8);
+}
