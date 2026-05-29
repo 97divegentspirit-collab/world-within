@@ -316,6 +316,9 @@ transition:
   font-size: clamp(2.5rem, 7vw, 5rem);
   line-height: 1.1;
   margin-bottom: 20px;
+   opacity: 0;
+  transform: translateY(20px);
+  transition: all 1.2s ease;
 }
 
 .intro-text2 {
@@ -323,12 +326,18 @@ transition:
   opacity: 0.8;
   line-height: 1.8;
   margin-bottom: 40px;
+   opacity: 0;
+  transform: translateY(20px);
+  transition: all 1.2s ease;
 }
-#intro-screen2.fade-out {
-  opacity: 0;
-  transition: opacity 1.5s ease;
-   }
 
+
+
+#intro-screen.fade-out {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
 
 
 
