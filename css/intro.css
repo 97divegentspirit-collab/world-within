@@ -270,7 +270,6 @@
 
 
 
-
 #intro-screen.hide,
 #intro-screen.fade-out {
   opacity: 0;
@@ -286,9 +285,6 @@
 
 /*secondly*/
 
-
-
-
 #intro-screen2 {
   position: fixed;
   inset: 0;
@@ -301,8 +297,22 @@
 
   background: transparent;
 
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
   transition: opacity 2s ease, visibility 2s ease;
 }
+
+#intro-screen2.show {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+
+
 
 
 .intro-content2 {
@@ -314,21 +324,6 @@
   transition: all 1.5s ease;
 }
 
-#intro-screen2.show .intro-content2 {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-
-#intro-screen2.show {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
-}#intro-screen2 {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-}
 
 
 .intro-title2 {
@@ -339,6 +334,7 @@
   transform: translateY(20px);
   transition: all 1.2s ease;
 }
+
 
 .intro-text2 {
   font-size: 1.1rem;
@@ -352,7 +348,7 @@
 
 
 
-#intro-screen.fade-out {
+#intro-screen2.fade-out {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
