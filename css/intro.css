@@ -67,8 +67,8 @@
   background:
     linear-gradient(
       145deg,
-      #3e7d20,
-      #5b4034,
+      #3e2d20,
+      #5b4934,
       #2b2118
     );
 
@@ -321,8 +321,14 @@
     0 0 60px rgba(255, 79, 216, 0.8);
 }
 
-#intro-screen2.hide {
+#intro-screen2 {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
+}
+
+#intro-screen2.show {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
 }
