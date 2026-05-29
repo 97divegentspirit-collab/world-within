@@ -13,6 +13,8 @@ window.addEventListener("load", () => {
   // TRANSITION INTO WEBSITE
   setTimeout(() => {
 
+    intro.classList.add("fade-out");
+
     document.body.classList.remove("loading");
     document.body.classList.add("loaded");
 
@@ -25,10 +27,5 @@ window.addEventListener("load", () => {
     }, 1600);
 
   }, 5200);
-  
-  intro.classList.add("fade-out");
-}, 5500);
 
 });
-
-
