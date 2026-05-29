@@ -61,7 +61,15 @@ body {
   overflow-x: hidden;
   min-height: 100vh;
 
-  background: #05010d;
+  background: radial-gradient(
+      circle at center,
+      #07020f 0%,
+      #05010d 60%,
+      #020007 100%
+  );
+
+   position: relative;
+  z-index: 1;
 }
 /* SOFT LIGHT ATMOSPHERE */
 body::before {
@@ -93,7 +101,7 @@ body::after {
   content: "";
   position: fixed;
   inset: 0;
-
+  opacity: 0.6;
   background:
     linear-gradient(
       180deg,
@@ -103,7 +111,7 @@ body::after {
 
   mix-blend-mode: screen;
   pointer-events: none;
-  z-index: -1;
+  z-index: 0;
 }
 
 .floating {
@@ -115,11 +123,24 @@ body::after {
       0 0 18px rgba(255,200,240,0.4)
     );
 
-  opacity: 0.92;
-}
+  
 
 /* Main layout */
+body[data-emotion="calm"] {
+  background: radial-gradient(circle at center, #070b12, #05010d);
+}
 
+body[data-emotion="electric"] {
+  background: radial-gradient(circle at center, #12001f, #1a0033);
+}
+
+body[data-emotion="dreamy"] {
+  background: radial-gradient(circle at center, #0f0818, #2a1045);
+}
+
+body[data-emotion="sacred"] {
+  background: radial-gradient(circle at center, #0a0a0a, #1d0b12);
+}
 
 /* REMOVE HARD BOXES */
 
