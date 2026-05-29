@@ -45,11 +45,13 @@
    BOOK WRAPPER
 ========================================= */
 
+
 .book-wrapper {
   position: relative;
   z-index: 2;
-  width: 490px;
-  height: 290px;
+
+  width: min(92vw, 520px);
+  aspect-ratio: 16 / 9;
 
   perspective: 2000px;
 }
