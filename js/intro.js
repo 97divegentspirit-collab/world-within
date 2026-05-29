@@ -29,3 +29,16 @@ window.addEventListener("load", () => {
   }, 5200);
 
 });
+
+const introScreen =
+  document.getElementById("intro-screen");
+
+const enterButton =
+  document.getElementById("enter-experience");
+
+enterButton.addEventListener("click", () => {
+
+  introScreen.style.opacity = "0";
+  introScreen.style.visibility = "hidden";
+
+});
