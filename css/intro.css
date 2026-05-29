@@ -266,6 +266,10 @@ transition:
 
 
 /*secondly*/
+
+
+
+
 #intro-screen2 {
   position: fixed;
   inset: 0;
@@ -281,10 +285,32 @@ transition:
   transition: opacity 2s ease, visibility 2s ease;
 }
 
+
 .intro-content2 {
   max-width: 700px;
   padding: 30px;
+
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 1.5s ease;
 }
+
+#intro-screen2.show .intro-content2 {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+#intro-screen2.show {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}#intro-screen2 {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
 
 .intro-title2 {
   font-size: clamp(2.5rem, 7vw, 5rem);
