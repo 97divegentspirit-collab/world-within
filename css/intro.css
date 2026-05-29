@@ -236,14 +236,17 @@
   }
 
 }
-#intro-screen.fade-out {
+
+
+/*secondly*/
+#intro-screen2.fade-out {
   opacity: 0;
   transition: opacity 1.5s ease;
    }
 
 
 
-.intro-screen2 {
+#intro-screen2 {
   position: fixed;
   inset: 0;
   z-index: 9999;
@@ -264,18 +267,18 @@
               visibility 1.2s ease;
 }
 
-.intro-content {
+.intro-content2 {
   max-width: 700px;
   padding: 30px;
 }
 
-.intro-title {
+.intro-title2 {
   font-size: clamp(2.5rem, 7vw, 5rem);
   line-height: 1.1;
   margin-bottom: 20px;
 }
 
-.intro-text {
+.intro-text2 {
   font-size: 1.1rem;
   opacity: 0.8;
   line-height: 1.8;
