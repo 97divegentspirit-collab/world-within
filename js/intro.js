@@ -1,44 +1,46 @@
 window.addEventListener("load", () => {
 
-  const intro = document.getElementById("intro-screen");
+  const intro =
+    document.getElementById("intro-screen");
+
+  const introScreen2 =
+    document.getElementById("intro-screen2");
+
+  const enterButton =
+    document.getElementById("enter-experience");
 
   // safety check
   if (!intro) return;
 
-  // OPEN BOOK (slight delay for atmosphere)
+  // OPEN BOOK
   setTimeout(() => {
     intro.classList.add("open");
   }, 600);
 
-  // TRANSITION INTO WEBSITE
+  // TRANSITION
   setTimeout(() => {
 
     intro.classList.add("fade-out");
 
+    // SHOW SECOND SCREEN
+    introScreen2.classList.add("show");
+
     document.body.classList.remove("loading");
     document.body.classList.add("loaded");
 
-    intro.style.transition = "opacity 1.5s ease";
-    intro.style.opacity = "0";
-
-    // REMOVE INTRO AFTER FADE
+    // REMOVE FIRST INTRO
     setTimeout(() => {
       intro.remove();
     }, 1600);
 
   }, 5200);
 
-});
+  // ENTER BUTTON
+  enterButton.addEventListener("click", () => {
 
-const introScreen2 =
-  document.getElementById("intro-screen2");
+    introScreen2.style.opacity = "0";
+    introScreen2.style.visibility = "hidden";
 
-const enterButton =
-  document.getElementById("enter-experience");
-
-enterButton.addEventListener("click", () => {
-
-  introScreen.style.opacity = "0";
-  introScreen.style.visibility = "hidden";
+  });
 
 });
