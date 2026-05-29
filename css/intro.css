@@ -35,7 +35,32 @@
   z-index: 0;
    
 }
+/* =========================================
+   GLOW
+========================================= */
 
+.book-glow {
+  position: absolute;
+  z-index: 0;   /* push it behind everything */
+  width: 420px;
+  height: 420px;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(255, 190, 120, 0.55) 0%,
+      rgba(255, 80, 200, 0.2) 35%,
+      rgba(120, 40, 255, 0.08) 55%,
+      transparent 75%
+    );
+
+  filter: blur(55px);
+
+  animation: pulseGlow 4s ease-in-out infinite;
+
+
+   
+}
 
 /* =========================================
    BOOK WRAPPER
@@ -51,6 +76,9 @@
   aspect-ratio: auto;
 
   perspective: 2000px;
+   
+  transform-style: preserve-3d;
+
 }
 
 
@@ -65,7 +93,7 @@
   height: 100%;
 
   top: 0;
-
+  z-index: 2;
   background:
   linear-gradient(
     145deg,
@@ -83,14 +111,18 @@
   inset 0 0 30px rgba(255,255,255,0.06),
   inset 0 0 8px rgba(255,220,180,0.08);
    
-transition:
-  transform 2.8s cubic-bezier(0.22, 1, 0.36, 1);
+  transition:
+     transform 2.8s cubic-bezier(0.22, 1, 0.36, 1);
+     backface-visibility: hidden;
+   
+    transform-style: preserve-3d;
 }
+
 /* LEFT */
 
 .left-cover {
   left: 0;
-
+  z-index: 3;
   border-radius:
     18px 0 0 18px;
 
@@ -101,7 +133,7 @@ transition:
 
 .right-cover {
   right: 0;
-
+  z-index: 3;
   border-radius:
     0 18px 18px 0;
 
@@ -126,7 +158,7 @@ transition:
 
 .book-center {
   position: absolute;
-
+  z-index: 2;
   inset: 0;
 
   display: flex;
@@ -146,40 +178,14 @@ transition:
   transition-delay: 1.3s;
 }
 
+
+
 #intro-screen.open .book-center {
   opacity: 1;
   transform: scale(1);
 }
 
-/* =========================================
-   GLOW
-========================================= */
 
-
-
-
-
-.book-glow {
-  position: absolute;
-
-  width: 420px;
-  height: 420px;
-
-  background:
-    radial-gradient(
-      circle,
-      rgba(255, 190, 120, 0.55) 0%,
-      rgba(255, 80, 200, 0.2) 35%,
-      rgba(120, 40, 255, 0.08) 55%,
-      transparent 75%
-    );
-
-  filter: blur(55px);
-
-  animation: pulseGlow 4s ease-in-out infinite;
-
-  z-index: 1;
-}
 /* =========================================
    LOGO
 ========================================= */
@@ -213,22 +219,11 @@ transition:
   z-index: 2;
 }
 
-.book-wrapper {
-  transform-style: preserve-3d;
-}
 
-.book-cover {
-  backface-visibility: hidden;
-}
 
-.book-center {
-  z-index: 1;
-}
 
-.left-cover,
-.right-cover {
-  z-index: 2;
-}
+
+
 
 /* =========================================
    GLOW ANIMATION
@@ -263,6 +258,10 @@ transition:
   pointer-events: none;
   transition: opacity 1.5s ease, visibility 1.5s ease;
 }
+
+
+
+
 
 
 /*secondly*/
