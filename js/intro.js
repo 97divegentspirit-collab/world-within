@@ -30,8 +30,8 @@ window.addEventListener("load", () => {
 
 });
 
-const introScreen =
-  document.getElementById("intro-screen");
+const introScreen2 =
+  document.getElementById("intro-screen2");
 
 const enterButton =
   document.getElementById("enter-experience");
