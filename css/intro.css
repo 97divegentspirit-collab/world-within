@@ -253,15 +253,9 @@
   align-items: center;
   text-align: center;
 
-  background:
-    radial-gradient(circle at center,
-      rgba(90, 0, 140, 0.4),
-      rgba(0,0,0,0.95));
+  background: transparent;
 
-  backdrop-filter: blur(20px);
-
-  transition: opacity 2s ease,
-              visibility 2s ease;
+  transition: opacity 2s ease, visibility 2s ease;
 }
 
 .intro-content2 {
