@@ -61,27 +61,31 @@
 .book-cover {
   position: absolute;
 
-  width: 50%;
+  width: 75%;
   height: 100%;
 
   top: 0;
 
   background:
-    linear-gradient(
-      145deg,
-      #3e2d20,
-      #5b4934,
-      #2b2118
-    );
-
+  linear-gradient(
+    145deg,
+    #5a3c28 0%,
+    #7b5d40 35%,
+    #3b2719 70%,
+    #24160f 100%
+  );
+   
   border: 2px solid rgba(255, 215, 160, 0.15);
 
   box-shadow:
-    0 0 40px rgba(0,0,0,0.6),
-    inset 0 0 20px rgba(255,255,255,0.05);
-
-  transition: transform 2.2s cubic-bezier(0.25, 1, 0.3, 1);
-}
+  0 20px 60px rgba(0,0,0,0.75),
+  0 0 50px rgba(255,180,120,0.08),
+  inset 0 0 30px rgba(255,255,255,0.06),
+  inset 0 0 8px rgba(255,220,180,0.08);
+   
+transition:
+  transform 2.8s cubic-bezier(0.22, 1, 0.36, 1);
+  
 /* LEFT */
 
 .left-cover {
@@ -154,20 +158,25 @@
 
 
 
+
 .book-glow {
   position: absolute;
-  width: 320px;
-  height: 320px;
 
-  background: radial-gradient(
-    circle,
-    rgba(255, 180, 120, 0.45),
-    rgba(255, 80, 200, 0.15),
-    transparent 70%
-  );
+  width: 420px;
+  height: 420px;
 
-  filter: blur(35px);
-  animation: pulseGlow 3.5s infinite ease-in-out;
+  background:
+    radial-gradient(
+      circle,
+      rgba(255, 190, 120, 0.55) 0%,
+      rgba(255, 80, 200, 0.2) 35%,
+      rgba(120, 40, 255, 0.08) 55%,
+      transparent 75%
+    );
+
+  filter: blur(55px);
+
+  animation: pulseGlow 4s ease-in-out infinite;
 
   z-index: 1;
 }
@@ -181,7 +190,9 @@
   z-index: 2;
 
   filter:
-    drop-shadow(0 0 25px rgba(255,220,150,0.5));
+  drop-shadow(0 0 15px rgba(255,220,180,0.4))
+  drop-shadow(0 0 35px rgba(255,160,220,0.35))
+  drop-shadow(0 0 60px rgba(255,255,255,0.15));
 }
 
 /* =========================================
