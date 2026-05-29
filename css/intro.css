@@ -344,8 +344,13 @@ transition:
   pointer-events: none;
 }
 
-#intro-screen2.show {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
+
+
+@media (max-width: 768px) {
+
+  .book-wrapper {
+    width: 92vw;
+    height: 460px;
+  }
+
 }
