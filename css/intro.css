@@ -239,7 +239,45 @@
 
 
 /*secondly*/
-#intro-screen2.fade-out {
+#intro-screen2 {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  background:
+    radial-gradient(circle at center,
+      rgba(90, 0, 140, 0.4),
+      rgba(0,0,0,0.95));
+
+  backdrop-filter: blur(20px);
+
+  transition: opacity 1.2s ease,
+              visibility 1.2s ease;
+}
+
+.intro-content2 {
+  max-width: 700px;
+  padding: 30px;
+}
+
+.intro-title2 {
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  line-height: 1.1;
+  margin-bottom: 20px;
+}
+
+.intro-text2 {
+  font-size: 1.1rem;
+  opacity: 0.8;
+  line-height: 1.8;
+  margin-bottom: 40px;
+}
+#intro-screen.fade-out {
   opacity: 0;
   transition: opacity 1.5s ease;
    }
