@@ -46,7 +46,7 @@
   position: relative;
   z-index: 2;
   width: 490px;
-  height: 280px;
+  height: 290px;
 
   perspective: 2000px;
 }
@@ -67,8 +67,8 @@
   background:
     linear-gradient(
       145deg,
-      #3e2d20,
-      #5b4434,
+      #3e7d20,
+      #5b4034,
       #2b2118
     );
 
