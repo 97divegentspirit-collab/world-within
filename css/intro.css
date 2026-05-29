@@ -41,7 +41,7 @@
 
 .book-glow {
   position: absolute;
-  z-index: 0;   /* push it behind everything */
+    /* push it behind everything z-index */
   width: 420px;
   height: 420px;
 
@@ -69,7 +69,7 @@
 
 .book-wrapper {
   position: relative;
-  z-index: 2;
+
 
    width: min(520px, 92vw);
    height: 680px;
@@ -93,7 +93,7 @@
   height: 100%;
 
   top: 0;
-  z-index: 2;
+  
   background:
   linear-gradient(
     145deg,
@@ -113,8 +113,8 @@
    
   transition:
      transform 2.8s cubic-bezier(0.22, 1, 0.36, 1);
-     backface-visibility: hidden;
    
+     backface-visibility: hidden;
     transform-style: preserve-3d;
 }
 
@@ -221,7 +221,27 @@
 
 
 
+/* =========================================
+   LAYER SYSTEM (IMPORTANT)
+========================================= */
 
+.book-glow {
+  z-index: 0;
+}
+
+.book-wrapper {
+  z-index: 2;
+  position: relative;
+}
+
+.book-center {
+  z-index: 2;
+}
+
+.left-cover,
+.right-cover {
+  z-index: 3;
+}
 
 
 
