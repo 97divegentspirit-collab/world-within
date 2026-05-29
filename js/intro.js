@@ -1,46 +1,38 @@
 
-
 window.addEventListener("load", () => {
 
   const intro = document.getElementById("intro-screen");
   const introScreen2 = document.getElementById("intro-screen2");
   const enterButton = document.getElementById("enter-experience");
 
-  // safety check
   if (!intro || !introScreen2 || !enterButton) return;
 
-  // OPEN BOOK
+  // STEP 1: OPEN INTRO 1
   setTimeout(() => {
     intro.classList.add("open");
   }, 600);
 
-  // TRANSITION INTO WEBSITE
+  // STEP 2: FADE OUT INTRO 1
   setTimeout(() => {
-
     intro.classList.add("fade-out");
-
-    document.body.classList.remove("loading");
-    document.body.classList.add("loaded");
-
-    // SHOW SECOND INTRO (FLOW BRIDGE)
-    setTimeout(() => {
-      introScreen2.classList.add("show");
-    }, 1200);
-
-    // SOFT HIDE FIRST INTRO (NOT HARD REMOVE)
-    setTimeout(() => {
-      intro.style.visibility = "hidden";
-      intro.style.pointerEvents = "none";
-    }, 2200);
-
   }, 5200);
 
-  // BUTTON INSIDE SECOND INTRO
-  enterButton.addEventListener("click", () => {
+  // STEP 3: SHOW INTRO 2 (AFTER FADE STARTS)
+  setTimeout(() => {
+    introScreen2.classList.add("show");
+  }, 6400);
 
+  // STEP 4: CLEANUP INTRO 1
+  setTimeout(() => {
+    intro.style.visibility = "hidden";
+    intro.style.pointerEvents = "none";
+  }, 7200);
+
+  // BUTTON FLOW
+  enterButton.addEventListener("click", () => {
+    introScreen2.classList.remove("show");
     introScreen2.style.opacity = "0";
     introScreen2.style.visibility = "hidden";
-
   });
 
 });
