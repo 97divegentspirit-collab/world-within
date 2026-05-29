@@ -22,14 +22,23 @@ window.addEventListener("load", () => {
     intro.style.opacity = "0";
 
     // REMOVE INTRO AFTER FADE
+    
+// HIDE FIRST INTRO SMOOTHLY
     setTimeout(() => {
-      intro.remove();
-    }, 1600);
 
+      intro.style.visibility = "hidden";
+      intro.style.pointerEvents = "none";
+
+    }, 2200);
   }, 5200);
 
 });
 
+setTimeout(() => {
+
+  introScreen2.classList.add("show");
+
+}, 1200);
 const introScreen2 =
   document.getElementById("intro-screen2");
 
