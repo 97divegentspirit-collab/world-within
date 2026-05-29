@@ -197,6 +197,23 @@
   z-index: 2;
 }
 
+.book-wrapper {
+  transform-style: preserve-3d;
+}
+
+.book-cover {
+  backface-visibility: hidden;
+}
+
+.book-center {
+  z-index: 1;
+}
+
+.left-cover,
+.right-cover {
+  z-index: 2;
+}
+
 /* =========================================
    GLOW ANIMATION
 ========================================= */
