@@ -61,38 +61,48 @@ body {
   overflow-x: hidden;
   min-height: 100vh;
 
-  background: radial-gradient(
-      circle at center,
-      #07020f 0%,
-      #05010d 60%,
-      #020007 100%
-  );
+ 
+  background:
+    #030303;
+
 
    position: relative;
   z-index: 1;
 }
 /* SOFT LIGHT ATMOSPHERE */
+
 body::before {
+
   content: "";
+
   position: fixed;
+
   inset: 0;
-  z-index: 0;
 
   background:
-    radial-gradient(circle at 20% 20%,
-      rgba(255, 182, 217, 0.10),
-      transparent 40%),
 
-    radial-gradient(circle at 80% 80%,
-      rgba(155, 123, 255, 0.12),
-      transparent 45%),
+    radial-gradient(
+      circle at 50% 20%,
+      rgba(255,140,197,0.10),
+      transparent 40%
+    ),
 
-    radial-gradient(circle at center,
-      rgba(246, 211, 101, 0.05),
-      transparent 60%);
+    radial-gradient(
+      circle at 20% 80%,
+      rgba(155,123,255,0.08),
+      transparent 50%
+    ),
+
+    radial-gradient(
+      circle at 80% 60%,
+      rgba(246,211,101,0.06),
+      transparent 45%
+    );
 
   pointer-events: none;
+
 }
+
 
 
 /* Floating atmosphere */
@@ -102,12 +112,14 @@ body::after {
   position: fixed;
   inset: 0;
   opacity: 0.6;
-  background:
-    linear-gradient(
-      180deg,
-      rgba(255,255,255,0.02),
+
+   background:
+      linear-gradient(
+       180deg,
+        rgba(255,255,255,0.02),
       transparent
-    );
+       );
+
 
   mix-blend-mode: screen;
   pointer-events: none;
@@ -340,6 +352,10 @@ button:hover,
 }
 
 
+
+
+
+   
 /* Hero */
 
 .hero {
@@ -719,6 +735,25 @@ footer {
     background-position: 0% 50%;
   }
 }
+
+   
+   @keyframes breathe {
+
+  0% {
+    transform: translateY(0px) scale(1);
+  }
+
+  50% {
+    transform: translateY(-10px) scale(1.025);
+  }
+
+  100% {
+    transform: translateY(0px) scale(1);
+  }
+
+   }
+
+   
 
 @media (max-width: 900px) {
 
