@@ -301,30 +301,32 @@ button:hover,
 
 /* Glass cards */
 
-
 .glass-card {
 
   background:
-    rgba(18, 8, 35, 0.72);
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,0.06),
+      rgba(255,255,255,0.02)
+    );
 
   border:
     1px solid rgba(255,255,255,0.08);
 
-  backdrop-filter: blur(20px);
+  backdrop-filter:
+    blur(30px);
 
-  border-radius: var(--radius-lg);
-
-  padding: 38px;
+  border-radius: 36px;
 
   box-shadow:
-    var(--shadow-soft),
-    0 0 30px rgba(255,182,217,0.08);
-
-  transition:
+    0 25px 80px rgba(0,0,0,0.45);
+   
+   transition:
     transform var(--transition-medium),
     border var(--transition-medium),
     background var(--transition-medium);
-}
+           }
+
 
 .glass-card:hover {
 
