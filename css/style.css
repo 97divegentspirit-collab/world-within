@@ -68,7 +68,7 @@ body {
 
 body:not([data-emotion]) {
   background: #020202;
-  filter: grayscale(1) brightness(0.35);
+  filter: grayscale(0) brightness(0.97);
 }
 /* SOFT LIGHT ATMOSPHERE */
 
