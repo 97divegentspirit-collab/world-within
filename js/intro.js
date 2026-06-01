@@ -10,11 +10,13 @@ window.addEventListener("load", () => {
   // STEP 1: OPEN INTRO 1
   setTimeout(() => {
     intro.classList.add("open");
+    console.log("OPEN");
   }, 600);
 
   // STEP 2: FADE OUT INTRO 1
   setTimeout(() => {
     intro.classList.add("fade-out");
+    console.log("FADE");
   }, 5200);
 
   // STEP 3: SHOW INTRO 2 (AFTER FADE STARTS)
