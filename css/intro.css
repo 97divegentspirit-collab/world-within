@@ -2,8 +2,12 @@
    INTRO SCREEN
 ========================================= */
  
-
-
+#splash {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: #000;
+}
 #intro-screen {
   position: fixed;
   inset: 0;
