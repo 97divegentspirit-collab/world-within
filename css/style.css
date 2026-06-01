@@ -52,22 +52,22 @@ html {
 
 
 
-
 body {
   margin: 0;
   font-family: "Poppins", sans-serif;
 
   color: var(--text-primary);
   overflow-x: hidden;
-  min-height: 100vh;
-
- 
-  background:
-    #030303;
+  min-height: 100vh
 
 
    position: relative;
   z-index: 1;
+}
+
+body:not([data-emotion]) {
+  background: #020202;
+  filter: grayscale(1) brightness(0.35);
 }
 /* SOFT LIGHT ATMOSPHERE */
 
