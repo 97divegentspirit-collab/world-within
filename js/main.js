@@ -8,9 +8,15 @@ function setEmotion(emotion) {
   document.body.setAttribute("data-emotion", emotion);
 }
 
+
+
+
 document.addEventListener("DOMContentLoaded", async () => {
   await loadEmotions();
-  setMood("calm");
+
+  // DO NOT set mood immediately
+  // leave world in void state
+
   startExperience();
 });
 
