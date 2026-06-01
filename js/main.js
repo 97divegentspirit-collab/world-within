@@ -33,15 +33,12 @@ function setMood(mood) {
   currentMood = mood;
 
   const data = emotionsData[mood];
-
   if (!data) return;
 
-  document.body.style.transition = "all 1.5s ease";
-  document.body.style.background = data.colors[0];
+  setEmotion(mood); // THIS triggers CSS system
 
   console.log("Mood set to:", mood);
 }
-
 // Scene controller (you will expand this later)
 function showScene(sceneName) {
   console.log("Now showing scene:", sceneName);
