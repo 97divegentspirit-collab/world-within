@@ -3,65 +3,36 @@
    EMOTIONAL ATMOSPHERES
 ========================================= */
 
-/* Calm */
+/* Main layout */
 
-.theme-calm {
-  background:
-    radial-gradient(circle at top,
-    #243b55,
-    #141e30);
+
+/* REMOVE HARD BOXES */
+
+
+body[data-emotion="calm"] {
+  background: radial-gradient(circle at center, #070b12, #05010d);
 }
 
-/* Electric */
-
-.theme-electric {
-  background:
-    radial-gradient(circle at top,
-    #200122,
-    #6f0000);
+body[data-emotion="electric"] {
+  background: radial-gradient(circle at center, #12001f, #1a0033);
 }
 
-/* Dreamy */
-
-.theme-dreamy {
-  background:
-    radial-gradient(circle at top,
-    #42275a,
-    #734b6d);
+body[data-emotion="dreamy"] {
+  background: radial-gradient(circle at center, #0f0818, #2a1045);
 }
 
-/* Sacred */
-
-.theme-sacred {
-  background:
-    radial-gradient(circle at top,
-    #4b3b00,
-    #161616);
+body[data-emotion="sacred"] {
+  background: radial-gradient(circle at center, #0a0a0a, #1d0b12);
 }
 
-/* Grounded */
-
-.theme-grounded {
-  background:
-    radial-gradient(circle at top,
-    #3e2723,
-    #1c1c1c);
+body[data-emotion="grounded"] {
+  background: radial-gradient(circle at center, #1c1c1c, #3e2723);
 }
 
-/* Intense */
-
-.theme-intense {
-  background:
-    radial-gradient(circle at top,
-    #000000,
-    #3b0000);
+body[data-emotion="intense"] {
+  background: radial-gradient(circle at center, #000000, #3b0000);
 }
 
-/* Playful */
-
-.theme-playful {
-  background:
-    radial-gradient(circle at top,
-    #ff9966,
-    #ff5e62);
+body[data-emotion="playful"] {
+  background: radial-gradient(circle at center, #ff9966, #ff5e62);
 }
