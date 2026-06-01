@@ -65,7 +65,10 @@ body {
    position: relative;
   z-index: 1;
 }
-
+body.splash-active {
+  overflow: hidden;
+  background: #000;
+}
 body:not([data-emotion]) {
   background: #020202;
   filter: grayscale(0) brightness(0.97);
