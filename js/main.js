@@ -4,6 +4,10 @@ console.log("World Within is alive.");
 let currentMood = "calm";
 let emotionsData = {};
 
+function setEmotion(emotion) {
+  document.body.setAttribute("data-emotion", emotion);
+}
+
 document.addEventListener("DOMContentLoaded", async () => {
   await loadEmotions();
   setMood("calm");
