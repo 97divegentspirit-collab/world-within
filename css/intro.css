@@ -1,16 +1,11 @@
 /* =========================================
-   INTRO SCREEN
+   INTRO SCREEN 1 — THE BOOK
 ========================================= */
- 
-#splash {
-  position: fixed;
-  inset: 0;
-  z-index: 99999;
-  background: #000;
-}
+
 #intro-screen {
   position: fixed;
   inset: 0;
+  z-index: 9999;
 
   background:
     radial-gradient(circle at 50% 40%, #1a0f1f 0%, #050505 70%, #000 100%);
@@ -19,72 +14,60 @@
   justify-content: center;
   align-items: center;
 
-  z-index: 9999;
   overflow: hidden;
+
+  transition: opacity 1.5s ease, visibility 1.5s ease;
 }
-
-
 
 #intro-screen::before {
   content: "";
   position: absolute;
   inset: 0;
-
   background: radial-gradient(
     circle at center,
     rgba(255, 160, 220, 0.08),
     rgba(10, 2, 18, 0.9)
   );
-
   z-index: 0;
-   
 }
+
 /* =========================================
-   GLOW
+   GLOW BEHIND BOOK
 ========================================= */
 
 .book-glow {
   position: absolute;
-    /* push it behind everything z-index */
+  z-index: 0;
+
   width: 420px;
   height: 420px;
 
-  background:
-    radial-gradient(
-      circle,
-      rgba(255, 190, 120, 0.55) 0%,
-      rgba(255, 80, 200, 0.2) 35%,
-      rgba(120, 40, 255, 0.08) 55%,
-      transparent 75%
-    );
+  background: radial-gradient(
+    circle,
+    rgba(255, 190, 120, 0.55) 0%,
+    rgba(255, 80,  200, 0.20) 35%,
+    rgba(120, 40,  255, 0.08) 55%,
+    transparent 75%
+  );
 
   filter: blur(55px);
-
   animation: pulseGlow 4s ease-in-out infinite;
-
-
-   
 }
 
 /* =========================================
    BOOK WRAPPER
 ========================================= */
 
-
 .book-wrapper {
   position: relative;
+  z-index: 2;
 
-
-   width: min(520px, 92vw);
-   height: 680px;
-  aspect-ratio: auto;
+  width: min(520px, 92vw);
+  height: 680px;
 
   perspective: 2000px;
-   
   transform-style: preserve-3d;
-
 }
-
 
 /* =========================================
    BOOK COVERS
@@ -92,103 +75,90 @@
 
 .book-cover {
   position: absolute;
+  top: 0;
 
   width: 51%;
   height: 100%;
 
-  top: 0;
-  
-  background:
-  linear-gradient(
+  background: linear-gradient(
     145deg,
     #5a3c28 0%,
     #7b5d40 35%,
     #3b2719 70%,
     #24160f 100%
   );
-   
+
   border: 2px solid rgba(255, 215, 160, 0.15);
 
   box-shadow:
-  0 20px 60px rgba(0,0,0,0.75),
-  0 0 50px rgba(255,180,120,0.08),
-  inset 0 0 30px rgba(255,255,255,0.06),
-  inset 0 0 8px rgba(255,220,180,0.08);
-   
-  transition:
-     transform 2.8s cubic-bezier(0.22, 1, 0.36, 1);
-   
-     backface-visibility: hidden;
-    transform-style: preserve-3d;
+    0 20px 60px rgba(0, 0, 0, 0.75),
+    0 0 50px rgba(255, 180, 120, 0.08),
+    inset 0 0 30px rgba(255, 255, 255, 0.06),
+    inset 0 0 8px rgba(255, 220, 180, 0.08);
+
+  transition: transform 2.8s cubic-bezier(0.22, 1, 0.36, 1);
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  will-change: transform;
 }
 
-/* LEFT */
-
+/* LEFT COVER — hinges on the LEFT, swings out left */
 .left-cover {
   left: 0;
   z-index: 3;
-  border-radius:
-    18px 0 0 18px;
-
+  border-radius: 18px 0 0 18px;
   transform-origin: left center;
 }
 
-/* RIGHT */
-
+/* RIGHT COVER — hinges on the RIGHT, swings out right */
 .right-cover {
   right: 0;
   z-index: 3;
-  border-radius:
-    0 18px 18px 0;
-
+  border-radius: 0 18px 18px 0;
   transform-origin: right center;
 }
 
 /* =========================================
-   OPEN STATE
+   OPEN STATE — covers swing away
 ========================================= */
 
 #intro-screen.open .left-cover {
-  transform: rotateY(-130deg);
+  transform: rotateY(140deg);
 }
 
 #intro-screen.open .right-cover {
-  transform: rotateY(130deg);
+  transform: rotateY(-140deg);
 }
 
 /* =========================================
-   BOOK CENTER
+   BOOK CENTER — logo + welcome text
 ========================================= */
 
 .book-center {
   position: absolute;
-  z-index: 2;
   inset: 0;
+  z-index: 2;
 
   display: flex;
   flex-direction: column;
-
   justify-content: center;
   align-items: center;
 
   opacity: 0;
+  transform: scale(0.82);
 
-  transform: scale(0.8);
-
-  transition:
-    opacity 1.5s ease,
-    transform 1.5s ease;
-
+  transition: opacity 1.5s ease, transform 1.5s ease;
   transition-delay: 1.3s;
+
+  gap: 10px;
+  text-align: center;
+  padding: 30px;
 }
-
-
 
 #intro-screen.open .book-center {
   opacity: 1;
   transform: scale(1);
 }
-
 
 /* =========================================
    LOGO
@@ -196,83 +166,46 @@
 
 .intro-logo {
   width: 120px;
-
   z-index: 2;
 
   filter:
-  drop-shadow(0 0 15px rgba(255,220,180,0.4))
-  drop-shadow(0 0 35px rgba(255,160,220,0.35))
-  drop-shadow(0 0 60px rgba(255,255,255,0.15));
+    drop-shadow(0 0 15px rgba(255, 220, 180, 0.45))
+    drop-shadow(0 0 35px rgba(255, 160, 220, 0.38))
+    drop-shadow(0 0 65px rgba(255, 255, 255, 0.15));
+
+  animation: breatheLogo 5s ease-in-out infinite;
 }
 
 /* =========================================
-   CREDIT
+   CREDIT / TITLE TEXT
 ========================================= */
 
 .intro-credit {
-  margin-top: 20px;
+  margin-top: 18px;
 
   color: #f1d8b5;
-
   font-size: 14px;
-
+  font-weight: 400;
   letter-spacing: 3px;
-
   text-transform: uppercase;
 
   z-index: 2;
 }
 
+.intro-welcome {
+  margin-top: 6px;
 
+  color: rgba(241, 216, 181, 0.55);
+  font-size: 11px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
 
-/* =========================================
-   LAYER SYSTEM (IMPORTANT)
-========================================= */
-
-.book-glow {
-  z-index: 0;
-}
-
-.book-wrapper {
-  z-index: 2;
-  position: relative;
-}
-
-.book-center {
   z-index: 2;
 }
 
-.left-cover,
-.right-cover {
-  z-index: 3;
-}
-
-
-
 /* =========================================
-   GLOW ANIMATION
+   HIDE / FADE OUT
 ========================================= */
-
-@keyframes pulseGlow {
-
-  0% {
-    transform: scale(1);
-    opacity: 0.5;
-  }
-
-  50% {
-    transform: scale(1.15);
-    opacity: 1;
-  }
-
-  100% {
-    transform: scale(1);
-    opacity: 0.5;
-  }
-
-}
-
-
 
 #intro-screen.hide,
 #intro-screen.fade-out {
@@ -282,17 +215,14 @@
   transition: opacity 1.5s ease, visibility 1.5s ease;
 }
 
-
-
-
-
-
-/*secondly*/
+/* =========================================
+   INTRO SCREEN 2 — THE INVITATION
+========================================= */
 
 #intro-screen2 {
   position: fixed;
   inset: 0;
-  z-index: 9999;
+  z-index: 9998;
 
   display: flex;
   justify-content: center;
@@ -312,51 +242,6 @@
   opacity: 1;
   visibility: visible;
   pointer-events: auto;
-  transform: translateY(0);
-}
-
-
-
-
-.intro-content2 {
-  max-width: 700px;
-  padding: 30px;
-
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 1.5s ease;
-}
-
-
-
-.intro-title2 {
-  font-size: clamp(2.5rem, 7vw, 5rem);
-  line-height: 1.1;
-  margin-bottom: 20px;
-   opacity: 0;
-  transform: translateY(20px);
-  transition: all 1.2s ease;
-}
-
-
-.intro-text2 {
-  font-size: 1.1rem;
-  opacity: 0.8;
-  line-height: 1.8;
-  margin-bottom: 40px;
-   opacity: 0;
-  transform: translateY(20px);
-  transition: all 1.2s ease;
-}
-
-#intro-screen2.show .intro-title2,
-#intro-screen2.show .intro-text2 {
-  opacity: 1;
-  transform: translateY(0);
-}
-#intro-screen2.show .intro-content2 {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 #intro-screen2.fade-out {
@@ -365,8 +250,57 @@
   pointer-events: none;
 }
 
+/* ── Inner content wrapper ── */
 
+.intro-content2 {
+  max-width: 700px;
+  padding: 30px;
 
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1.5s ease, transform 1.5s ease;
+}
+
+#intro-screen2.show .intro-content2 {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Headline ── */
+
+.intro-title2 {
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  line-height: 1.1;
+  margin-bottom: 20px;
+
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1.2s ease 0.2s, transform 1.2s ease 0.2s;
+}
+
+#intro-screen2.show .intro-title2 {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Body text ── */
+
+.intro-text2 {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 40px;
+
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1.2s ease 0.45s, transform 1.2s ease 0.45s;
+}
+
+#intro-screen2.show .intro-text2 {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Enter button ── */
 
 #enter-experience {
   padding: 18px 42px;
@@ -374,11 +308,7 @@
   border: none;
   border-radius: 999px;
 
-  background: linear-gradient(
-    135deg,
-    #ff4fd8,
-    #7b5cff
-  );
+  background: linear-gradient(135deg, #ff4fd8, #7b5cff);
 
   color: white;
   font-size: 1rem;
@@ -386,27 +316,63 @@
 
   cursor: pointer;
 
-  box-shadow:
-    0 0 30px rgba(255, 79, 216, 0.5);
+  box-shadow: 0 0 30px rgba(255, 79, 216, 0.5);
 
-  transition: all 0.4s ease;
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity 1s ease 0.7s,
+    transform 1s ease 0.7s,
+    box-shadow 0.4s ease;
+}
+
+#intro-screen2.show #enter-experience {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 #enter-experience:hover {
   transform: translateY(-4px) scale(1.03);
-
-  box-shadow:
-    0 0 60px rgba(255, 79, 216, 0.8);
+  box-shadow: 0 0 60px rgba(255, 79, 216, 0.8);
 }
 
+/* =========================================
+   ANIMATIONS
+========================================= */
 
+@keyframes pulseGlow {
+  0%   { transform: scale(1);    opacity: 0.5; }
+  50%  { transform: scale(1.15); opacity: 1;   }
+  100% { transform: scale(1);    opacity: 0.5; }
+}
 
+@keyframes breatheLogo {
+  0%,100% { filter:
+    drop-shadow(0 0 15px rgba(255,220,180,0.45))
+    drop-shadow(0 0 35px rgba(255,160,220,0.38))
+    drop-shadow(0 0 65px rgba(255,255,255,0.15)); }
+  50% { filter:
+    drop-shadow(0 0 22px rgba(255,220,180,0.65))
+    drop-shadow(0 0 55px rgba(255,160,220,0.55))
+    drop-shadow(0 0 90px rgba(255,255,255,0.25)); }
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
 
 @media (max-width: 768px) {
-
   .book-wrapper {
     width: 92vw;
     height: 460px;
   }
 
+  .book-glow {
+    width: 280px;
+    height: 280px;
+  }
+
+  .intro-logo {
+    width: 90px;
+  }
 }
