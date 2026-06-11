@@ -4,14 +4,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <title>World Within</title>
 
-  <!-- CSS -->
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <!-- CSS — your original load order kept -->
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/animations.css" />
   <link rel="stylesheet" href="css/intro.css" />
-  
   <link rel="stylesheet" href="css/themes.css" />
   <link rel="stylesheet" href="css/responsive.css" />
 </head>
@@ -19,12 +22,16 @@
 
 <body class="loading">
 
-<!-- =========================================
-     ANCIENT BOOK FIRST 🥇 INTRO
-========================================== -->
+
+<!-- =============================================
+     INTRO SCREEN 1 — THE ANCIENT BOOK
+============================================== -->
 <div id="intro-screen">
 
   <div class="book-wrapper">
+
+    <!-- GLOW BEHIND BOOK -->
+    <div class="book-glow"></div>
 
     <!-- LEFT COVER -->
     <div class="book-cover left-cover"></div>
@@ -32,21 +39,19 @@
     <!-- RIGHT COVER -->
     <div class="book-cover right-cover"></div>
 
-    <!-- BOOK CENTER -->
+    <!-- CENTER — revealed when covers open -->
     <div class="book-center">
 
-      <div class="book-glow"></div>
+      <img
+        src="assets/images/123_045549.png"
+        alt="World Within Logo"
+        class="intro-logo"
+      >
 
-      <img src="assets/images/123_045549.png"
-        alt="Logo"
-        class="intro-logo">
-      
+      <p class="intro-credit">Created by Mazien</p>
 
-      <p class="intro-credit">
-        Created by Mazien
-      </p>
-      
-     <h5> WELCOME, BEAUTIFUL SOUL</h5> 
+      <p class="intro-welcome">Welcome, Beautiful Soul</p>
+
     </div>
 
   </div>
@@ -54,18 +59,20 @@
 </div>
 
 
-    <!-- INTRO SCREEN2 -->
-  <div id="intro-screen2">
+<!-- =============================================
+     INTRO SCREEN 2 — THE INVITATION
+============================================== -->
+<div id="intro-screen2">
 
   <div class="intro-content2">
 
     <h1 class="intro-title2">
-      Every person carries a world within them.
+      Every person carries<br>a world within them.
     </h1>
 
     <p class="intro-text2">
-      Some worlds are soft.
-      Some are electric.
+      Some worlds are soft.<br>
+      Some are electric.<br>
       Some are still waiting to be understood.
     </p>
 
@@ -75,102 +82,98 @@
 
   </div>
 
-  </div>
+</div>
 
 
-      <!-- MAIN WEBSITE STARTS-->
+<!-- =============================================
+     MAIN WEBSITE
+============================================== -->
+<div id="site-content">
 
-  <div id="site-content">
-  <!-- EVERYTHING except intro goes here -->
 
-
-    
-  <!-- =========================================
-       AMBIENT PARTICLES CONTAINER
-  ========================================== -->
+  <!-- AMBIENT PARTICLES -->
   <div id="particles-container"></div>
 
 
-   <!-- EVERYTHING ELSE -->  
-  <!-- =========================================
+  <!-- ==========================================
        HERO / ARRIVAL PORTAL
-  ========================================== -->
+  =========================================== -->
   <section class="hero">
 
-  <div class="container">
+    <div class="container">
 
-    <div class="hero-layout">
+      <div class="hero-layout">
 
-      <!-- LEFT SIDE -->
-      <div class="hero-left fade-up">
+        <!-- LEFT — text -->
+        <div class="hero-left fade-up">
 
-        <span class="hero-tag">
-          PURE LOVE EXPERIENCE
-        </span>
+          <span class="hero-tag">Pure Love Experience</span>
 
-        <h1>
-          Every person carries
-          <span>a world</span>
-        </h1>
+          <h1>
+            Every person carries<br>
+            <span>a world</span>
+          </h1>
 
-        <p class="hero-description">
-          Let’s bring yours to life.
-          You are loved here.
+          <p class="hero-description">
+            Let's bring yours to life.<br>
+            You are loved here.<br><br>
+            This is more than a questionnaire.<br>
+            It's a gentle journey of self-expression,<br>
+            story, and identity.<br><br>
+            A space where you are seen,<br>
+            valued, and celebrated.
+          </p>
 
-          This is more than a questionnaire.
-          It’s a gentle journey of self-expression,
-          story, and identity.
+        </div>
 
-          A space where you are seen,
-          valued, and celebrated.
-        </p>
+        <!-- RIGHT — images -->
+        <div class="hero-right">
 
-      </div>
+          <!-- Medium logo — floats top right of this column -->
+          <div class="medium-frame visual-frame">
+            <img
+              src="assets/images/nobackground.png"
+              alt="World Within Symbol"
+              class="floating-symbol"
+            >
+          </div>
 
-      <!-- RIGHT SIDE -->
-      <div class="hero-right">
+          <!-- Large brain / neurodivergent image — center glow -->
+          <div class="large-frame visual-frame">
+            <img
+              src="assets/images/Neurodivegents_045555.png"
+              alt="World Within — Neurodivergent Mind"
+              class="main-hero-image float-soft"
+            >
+          </div>
 
-        <!-- FLOATING SYMBOL -->
-        <img
-          src="assets/images/nobackground.png"
-          alt="Atmosphere"
-          class="floating-symbol"
-        >
+        </div><!-- /hero-right -->
 
-        <!-- MAIN IMAGE -->
-        <img
-          src="assets/images/Neurodivegents_045555.png"
-          alt="World Portal"
-          class="main-hero-image float-soft"
-        >
+      </div><!-- /hero-layout -->
 
-        
-             </div> <!-- hero-right -->
-
-         </div> <!-- hero-layout -->
-
-     </div> <!-- container -->
+    </div><!-- /container -->
 
   </section>
 
-  <!-- =========================================
-       INTRODUCTION SECTION
-  ========================================== -->
+
+  <!-- ==========================================
+       INTRODUCTION — FELT TRUTH
+  =========================================== -->
   <section>
 
     <div class="container">
 
       <div class="glass-card fade-up">
 
-        <p class="prompt-text">
+        <p class="prompt-text serif">
           Instead of pressure, there is exploration.
         </p>
 
         <p>
           Instead of interrogation, there is emotional discovery.
-          <br /><br />
+          <br><br>
           You are not being measured here.
-          <br />
+          <br>
           You are being understood.
         </p>
 
@@ -180,16 +183,21 @@
 
   </section>
 
-  <!-- =========================================
-       ATMOSPHERE PREVIEW
-  ========================================== -->
+
+  <!-- ==========================================
+       ATMOSPHERE — EMOTIONAL WORLD SELECTOR
+  =========================================== -->
   <section>
 
     <div class="container">
 
-      <h2 class="fade-up" style="margin-bottom: 30px;">
+      <h2 class="fade-up serif" style="margin-bottom: 14px; font-style: italic;">
         What kind of world lives within you?
       </h2>
+
+      <p style="text-align:center; margin-bottom: 44px; opacity: 0.55; font-size: 0.88rem; letter-spacing: 0.08em;">
+        Choose the one that feels most like home right now.
+      </p>
 
       <div class="emotion-grid">
 
@@ -223,24 +231,25 @@
 
   </section>
 
-  <!-- =========================================
-       ENCOURAGEMENT SECTION
-  ========================================== -->
+
+  <!-- ==========================================
+       ENCOURAGEMENT
+  =========================================== -->
   <section>
 
     <div class="container">
 
       <div class="glass-card fade-up">
 
-        <p class="prompt-text">
+        <p class="prompt-text serif">
           There is no wrong way to express yourself.
         </p>
 
         <p>
           Your uniqueness matters.
-          <br />
+          <br>
           Your inner world deserves to be seen.
-          <br /><br />
+          <br><br>
           Take your time.
         </p>
 
@@ -250,31 +259,37 @@
 
   </section>
 
-  <!-- =========================================
+
+  <!-- ==========================================
        NAVIGATION PORTAL
-  ========================================== -->
+  =========================================== -->
   <section>
 
     <div class="container">
 
+      <h2 class="fade-up" style="text-align:center; margin-bottom: 14px;">
+        Where would you like to go?
+      </h2>
+
+      <p style="text-align:center; margin-bottom: 44px; opacity: 0.50; font-size: 0.88rem; letter-spacing: 0.06em;">
+        Every door leads somewhere meaningful.
+      </p>
+
       <div class="emotion-grid">
 
-        <a href="about.html"
-          class="emotion-card glass-card"
+        <a href="about.html" class="emotion-card glass-card"
           style="text-decoration: none; color: white;">
           <h3>Identity Reflection</h3>
           <p>Explore philosophy, emotional identity, and the heart behind the experience.</p>
         </a>
 
-        <a href="experience.html"
-          class="emotion-card glass-card"
+        <a href="experience.html" class="emotion-card glass-card"
           style="text-decoration: none; color: white;">
           <h3>The Journey Engine</h3>
           <p>Step into the guided emotional experience and begin expressing your world.</p>
         </a>
 
-        <a href="contact.html"
-          class="emotion-card glass-card"
+        <a href="contact.html" class="emotion-card glass-card"
           style="text-decoration: none; color: white;">
           <h3>Final Connection</h3>
           <p>Reach out, submit your reflections, and continue the conversation.</p>
@@ -286,9 +301,10 @@
 
   </section>
 
-  <!-- =========================================
+
+  <!-- ==========================================
        FOOTER
-  ========================================== -->
+  =========================================== -->
   <footer>
 
     <div class="container">
@@ -297,22 +313,28 @@
         Your story matters.
       </p>
 
+      <p style="margin-top: 12px; font-size: 0.75rem; opacity: 0.28; letter-spacing: 0.14em;">
+        World Within &nbsp;·&nbsp; Created with love by Mazien
+      </p>
+
     </div>
 
   </footer>
-</div>
 
-  <!-- =========================================
-       JAVASCRIPT
-  ========================================== -->
-  
-  <script src="js/animations.js"></script>
-  <script src="js/interactions.js"></script>
-  <script src="js/form-handler.js"></script>
-  <script src="js/particles.js"></script>
 
-    <script src="js/intro.js"></script>
-    <script src="js/main.js"></script>
-  
+</div><!-- /site-content -->
+
+
+<!-- =============================================
+     JAVASCRIPT — your original files, order kept
+============================================== -->
+<script src="js/animations.js"></script>
+<script src="js/interactions.js"></script>
+<script src="js/form-handler.js"></script>
+<script src="js/particles.js"></script>
+<script src="js/intro.js"></script>
+<script src="js/main.js"></script>
+
+
 </body>
 </html>
