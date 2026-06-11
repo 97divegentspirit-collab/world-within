@@ -1,40 +1,51 @@
+/* =============================================
+   intro.js
+   Handles the full 3-stage intro sequence:
+   1. Book opens → logo + welcome revealed
+   2. Book fades → screen 2 (invitation) appears
+   3. Button clicked → screen 2 fades → site revealed
+============================================== */
 
-window.addEventListener("load", () => {
+(function () {
 
-  const intro = document.getElementById("intro-screen");
-  const introScreen2 = document.getElementById("intro-screen2");
-  const enterButton = document.getElementById("enter-experience");
+  const introScreen  = document.getElementById('intro-screen');
+  const introScreen2 = document.getElementById('intro-screen2');
+  const siteContent  = document.getElementById('site-content');
+  const enterBtn     = document.getElementById('enter-experience');
 
-  if (!intro || !introScreen2 || !enterButton) return;
+  // ── STAGE 1: Open the book after a short breath ──
+  // Small delay lets the page paint and the user settle
+  setTimeout(function () {
+    introScreen.classList.add('open');
+  }, 700);
 
-  // STEP 1: OPEN INTRO 1
-  setTimeout(() => {
-    intro.classList.add("open");
-    console.log("OPEN");
-  }, 600);
 
-  // STEP 2: FADE OUT INTRO 1
-  setTimeout(() => {
-    intro.classList.add("fade-out");
-    console.log("FADE");
-  }, 5200);
+  // ── STAGE 2: Book fades, invitation screen appears ──
+  // 700ms delay + 2300ms for book to open + 800ms to read the logo = ~3800ms
+  setTimeout(function () {
+    introScreen.classList.add('fade-out');   // book fades away
+    introScreen2.classList.add('show');      // invitation fades in
+  }, 3800);
 
-  // STEP 3: SHOW INTRO 2 (AFTER FADE STARTS)
-  setTimeout(() => {
-    introScreen2.classList.add("show");
-  }, 6400);
 
-  // STEP 4: CLEANUP INTRO 1
-  setTimeout(() => {
-    intro.style.visibility = "hidden";
-    intro.style.pointerEvents = "none";
-  }, 7200);
+  // ── STAGE 3: Button click — invitation fades, site is revealed ──
+  if (enterBtn) {
+    enterBtn.addEventListener('click', function () {
 
-  // BUTTON FLOW
-  enterButton.addEventListener("click", () => {
-    introScreen2.classList.remove("show");
-    introScreen2.style.opacity = "0";
-    introScreen2.style.visibility = "hidden";
-  });
+      // Fade out screen 2
+      introScreen2.classList.remove('show');
+      introScreen2.classList.add('fade-out');
 
-});
+      // Reveal main site after transition starts
+      setTimeout(function () {
+        siteContent.classList.add('visible');
+
+        // Allow body to scroll again
+        document.body.classList.remove('loading');
+        document.body.style.overflow = '';
+      }, 400);
+
+    });
+  }
+
+})();
