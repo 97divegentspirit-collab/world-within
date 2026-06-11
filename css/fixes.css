@@ -1,0 +1,233 @@
+/* =============================================
+   fixes.css
+   Add this LAST in your <head> after all other CSS
+   Fixes: particles visibility, intro mobile centering,
+   intro-screen2 layering & fade sequence
+============================================== */
+
+
+/* ─────────────────────────────────────────────
+   1. PARTICLES — brighter on dark background
+────────────────────────────────────────────── */
+
+#particles-container {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* If your particles.js injects <canvas> */
+#particles-container canvas {
+  position: absolute;
+  inset: 0;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* If your particles.js injects individual .particle divs/spans */
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  /* Force warm gold tint so they show on dark void */
+  background: radial-gradient(
+    circle,
+    rgba(247, 217, 139, 0.75) 0%,
+    rgba(255, 180, 200, 0.40) 50%,
+    transparent 100%
+  ) !important;
+  /* Minimum visibility */
+  opacity: 0.65 !important;
+  mix-blend-mode: screen;
+}
+
+
+/* ─────────────────────────────────────────────
+   2. INTRO SCREEN 1 — BOOK CENTERED ON MOBILE
+   Problem: book-wrapper too tall, overflows viewport,
+   only a corner is visible on small screens
+────────────────────────────────────────────── */
+
+#intro-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;       /* vertical center */
+  justify-content: center;   /* horizontal center */
+  overflow: hidden;
+}
+
+.book-wrapper {
+  /* Let it shrink to fit the screen */
+  width: min(480px, 88vw);
+  height: min(620px, 82vh);  /* KEY FIX — was 680px fixed, overflowed on phones */
+
+  position: relative;
+  perspective: 2000px;
+  transform-style: preserve-3d;
+
+  /* Always centered */
+  margin: auto;
+}
+
+/* Covers fill their half of the wrapper */
+.book-cover {
+  width: 50.5%;
+  height: 100%;
+}
+
+/* Responsive shrink */
+@media (max-width: 480px) {
+  .book-wrapper {
+    width: 90vw;
+    height: 72vh;
+  }
+
+  .intro-logo {
+    width: 88px;
+  }
+
+  .intro-credit {
+    font-size: 12px;
+    letter-spacing: 2px;
+  }
+}
+
+
+/* ─────────────────────────────────────────────
+   3. INTRO SCREEN 2 — sits on top, backdrop,
+      fades out on button click, site-content
+      is hidden underneath until revealed
+────────────────────────────────────────────── */
+
+/* Site content hidden by default — JS reveals it */
+#site-content {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 1.6s ease, visibility 1.6s ease;
+  position: relative;
+  z-index: 1;
+}
+
+#site-content.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Screen 2 — full screen overlay above everything */
+#intro-screen2 {
+  position: fixed;
+  inset: 0;
+  z-index: 9998;   /* just below book (9999) */
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  /* Dark blurred backdrop so it feels like its own world */
+  background: rgba(3, 3, 9, 0.92);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  transition: opacity 1.8s ease, visibility 1.8s ease;
+}
+
+#intro-screen2.show {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* Fading OUT when button is clicked */
+#intro-screen2.fade-out {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 1.2s ease, visibility 1.2s ease;
+}
+
+/* Content inside screen 2 */
+.intro-content2 {
+  max-width: 680px;
+  padding: 30px 24px;
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 1.4s ease 0.3s, transform 1.4s ease 0.3s;
+}
+
+#intro-screen2.show .intro-content2 {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Title */
+.intro-title2 {
+  font-size: clamp(2.2rem, 8vw, 4.8rem);
+  line-height: 1.1;
+  margin-bottom: 22px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1.2s ease 0.25s, transform 1.2s ease 0.25s;
+}
+
+#intro-screen2.show .intro-title2 {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Body text */
+.intro-text2 {
+  font-size: 1.08rem;
+  line-height: 1.9;
+  margin-bottom: 42px;
+  color: rgba(253, 243, 228, 0.70);
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 1.2s ease 0.5s, transform 1.2s ease 0.5s;
+}
+
+#intro-screen2.show .intro-text2 {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Enter button */
+#enter-experience {
+  padding: 18px 44px;
+  border: none;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #ff4fd8, #7b5cff);
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+  letter-spacing: 0.06em;
+
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity 1s ease 0.75s,
+    transform 1s ease 0.75s,
+    box-shadow 0.4s ease;
+
+  box-shadow: 0 0 30px rgba(255, 79, 216, 0.45);
+}
+
+#intro-screen2.show #enter-experience {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#enter-experience:hover {
+  transform: translateY(-4px) scale(1.03) !important;
+  box-shadow: 0 0 60px rgba(255, 79, 216, 0.80) !important;
+}
