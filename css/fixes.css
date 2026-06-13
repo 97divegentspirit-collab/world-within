@@ -1,320 +1,335 @@
 /* =============================================
    fixes.css  — World Within
-   Load this LAST in <head> after all other CSS
+   Load LAST in <head>
 ============================================== */
 
-
 /* ─────────────────────────────────────────────
-   1. SITE CONTENT — hidden during intro,
-      revealed by intro.js calling revealSite()
-      Uses inline style override so JS wins
+   CRITICAL: Body background shows immediately
+   so there's never a white flash
 ────────────────────────────────────────────── */
-
-#site-content {
-  /* Start hidden — intro.js will set inline
-     opacity:1 / visibility:visible to override */
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 1.4s ease, visibility 1.4s ease;
-  position: relative;
-  z-index: 1;
+html, body {
+  background: #030309 !important;
+  margin: 0;
+  padding: 0;
 }
 
-/* Class-based reveal (fallback) */
-#site-content.visible {
+/* ─────────────────────────────────────────────
+   INTRO SCREEN 1 — always visible immediately,
+   perfectly centered, fits any screen
+────────────────────────────────────────────── */
+#intro-screen {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  z-index: 9999 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  overflow: hidden !important;
+  /* Visible by default — JS adds fade-out to hide it */
   opacity: 1 !important;
   visibility: visible !important;
+  background: radial-gradient(circle at 50% 40%, #1a0f1f 0%, #050505 70%, #000 100%) !important;
 }
 
-
-/* ─────────────────────────────────────────────
-   2. INTRO SCREEN 1 — book, centered on mobile
-────────────────────────────────────────────── */
-
-#intro-screen {
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  transition: opacity 1.5s ease, visibility 1.5s ease;
-}
-
+/* Fade out state — added by JS */
 #intro-screen.fade-out {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  transition: opacity 1.5s ease, visibility 1.5s ease !important;
 }
 
-/* Book wrapper — fits any screen height */
+/* Book wrapper — scales to fit screen */
 .book-wrapper {
-  width: min(480px, 88vw);
-  height: min(600px, 80vh);   /* was 680px fixed — overflowed phones */
-  position: relative;
-  perspective: 2000px;
-  transform-style: preserve-3d;
-  margin: auto;
+  width: min(460px, 84vw) !important;
+  height: min(580px, 78vh) !important;
+  position: relative !important;
+  perspective: 2000px !important;
+  transform-style: preserve-3d !important;
+  margin: auto !important;
 }
 
+/* Covers — full height of wrapper */
 .book-cover {
-  width: 50.5%;
-  height: 100%;
+  height: 100% !important;
+  width: 50.5% !important;
 }
-
 
 /* ─────────────────────────────────────────────
-   3. INTRO SCREEN 2 — invitation overlay
+   INTRO SCREEN 2 — hidden until JS shows it
 ────────────────────────────────────────────── */
-
 #intro-screen2 {
-  position: fixed;
-  inset: 0;
-  z-index: 9998;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-
-  background: rgba(3, 3, 9, 0.94);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-
-  transition: opacity 1.8s ease, visibility 1.8s ease;
+  position: fixed !important;
+  top: 0 !important; left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  z-index: 9998 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  padding: 24px !important;
+  background: rgba(3, 3, 9, 0.96) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  /* Hidden until .show added */
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  transition: opacity 1.8s ease, visibility 1.8s ease !important;
 }
 
 #intro-screen2.show {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
 }
 
 #intro-screen2.fade-out {
   opacity: 0 !important;
   visibility: hidden !important;
   pointer-events: none !important;
-  transition: opacity 1.2s ease, visibility 1.2s ease;
+  transition: opacity 1s ease, visibility 1s ease !important;
 }
 
-/* Content inside */
+/* Content stagger animations */
 .intro-content2 {
-  max-width: 680px;
-  padding: 30px 24px;
+  max-width: 660px;
+  padding: 20px;
   opacity: 0;
-  transform: translateY(26px);
-  transition: opacity 1.3s ease 0.3s, transform 1.3s ease 0.3s;
+  transform: translateY(24px);
+  transition: opacity 1.3s ease 0.2s, transform 1.3s ease 0.2s;
 }
-
 #intro-screen2.show .intro-content2 {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* Title */
 .intro-title2 {
-  font-size: clamp(2rem, 8vw, 4.6rem);
+  font-size: clamp(1.9rem, 7vw, 4.4rem);
   line-height: 1.1;
   margin-bottom: 20px;
   color: #fdf3e4;
   opacity: 0;
   transform: translateY(18px);
-  transition: opacity 1.1s ease 0.25s, transform 1.1s ease 0.25s;
+  transition: opacity 1.1s ease 0.3s, transform 1.1s ease 0.3s;
 }
-
 #intro-screen2.show .intro-title2 {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* Body text */
 .intro-text2 {
-  font-size: 1.05rem;
+  font-size: 1rem;
   line-height: 1.9;
-  margin-bottom: 40px;
-  color: rgba(253, 243, 228, 0.68);
+  margin-bottom: 38px;
+  color: rgba(253, 243, 228, 0.65);
   opacity: 0;
-  transform: translateY(16px);
-  transition: opacity 1.1s ease 0.5s, transform 1.1s ease 0.5s;
+  transform: translateY(14px);
+  transition: opacity 1.1s ease 0.55s, transform 1.1s ease 0.55s;
 }
-
 #intro-screen2.show .intro-text2 {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* Enter button */
 #enter-experience {
-  padding: 18px 44px;
+  padding: 17px 42px;
   border: none;
   border-radius: 999px;
   background: linear-gradient(135deg, #ff4fd8, #7b5cff);
   color: white;
-  font-size: 1rem;
+  font-size: 0.97rem;
   font-weight: 600;
-  font-family: 'Poppins', sans-serif;
   cursor: pointer;
   letter-spacing: 0.06em;
   box-shadow: 0 0 30px rgba(255, 79, 216, 0.45);
-
   opacity: 0;
-  transform: translateY(14px);
-  transition:
-    opacity   1s ease 0.75s,
-    transform 1s ease 0.75s,
-    box-shadow 0.4s ease;
+  transform: translateY(12px);
+  transition: opacity 1s ease 0.8s, transform 1s ease 0.8s, box-shadow 0.4s ease;
 }
-
 #intro-screen2.show #enter-experience {
   opacity: 1;
   transform: translateY(0);
 }
-
 #enter-experience:hover {
   transform: translateY(-4px) scale(1.03) !important;
-  box-shadow: 0 0 60px rgba(255, 79, 216, 0.80) !important;
+  box-shadow: 0 0 60px rgba(255, 79, 216, 0.8) !important;
 }
 
+/* ─────────────────────────────────────────────
+   SITE CONTENT — hidden until intro finishes
+────────────────────────────────────────────── */
+#site-content {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 1.4s ease, visibility 1.4s ease;
+}
+#site-content.visible {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
 
 /* ─────────────────────────────────────────────
-   4. PARTICLES — visible on dark background
+   HERO LAYOUT FIX — remove the gap
 ────────────────────────────────────────────── */
+.hero {
+  padding: 80px 0 60px !important;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
 
+.hero-layout {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  align-items: center !important;
+  gap: 40px !important;         /* was 80px — too wide */
+  width: 100% !important;
+}
+
+/* LEFT side — text flush, no extra margin */
+.hero-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 0 !important;
+}
+
+/* RIGHT side — images stacked, no overflow */
+.hero-right {
+  position: relative !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  overflow: visible !important;
+}
+
+/* Large frame — contained, not overflowing */
+.large-frame {
+  width: 100% !important;
+  max-width: 500px !important;
+  position: relative !important;
+  margin: 0 auto !important;
+}
+
+.large-frame img,
+.main-hero-image {
+  width: 100% !important;
+  height: auto !important;
+  object-fit: contain !important;
+  display: block !important;
+  filter:
+    drop-shadow(0 0 28px rgba(247, 217, 139, 0.22))
+    drop-shadow(0 0 65px rgba(200, 184, 255, 0.16))
+    drop-shadow(0 0 110px rgba(255, 180, 200, 0.10)) !important;
+  animation: breatheImage 7s ease-in-out infinite !important;
+}
+
+/* Medium frame — top right corner of the RIGHT column */
+.medium-frame {
+  position: absolute !important;
+  top: -10px !important;
+  right: -10px !important;
+  width: 80px !important;
+  height: auto !important;
+  z-index: 5 !important;
+  opacity: 0.92 !important;
+}
+
+.medium-frame img,
+.floating-symbol {
+  width: 100% !important;
+  height: auto !important;
+  filter:
+    drop-shadow(0 0 12px rgba(247, 217, 139, 0.5))
+    drop-shadow(0 0 28px rgba(255, 160, 220, 0.3)) !important;
+  animation: floatMedium 5s ease-in-out infinite !important;
+}
+
+/* ─────────────────────────────────────────────
+   PARTICLES — warm and visible
+────────────────────────────────────────────── */
 #particles-container {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 0 !important;
+  pointer-events: none !important;
 }
 
 .particle {
-  position: absolute;
-  border-radius: 50%;
-  pointer-events: none;
-  mix-blend-mode: screen;
-  background: radial-gradient(
-    circle,
-    rgba(247, 217, 139, 0.80) 0%,
-    rgba(255, 180, 200, 0.45) 55%,
-    transparent 100%
-  ) !important;
-  opacity: 0.70 !important;
+  mix-blend-mode: screen !important;
+  opacity: 0.65 !important;
 }
 
-
 /* ─────────────────────────────────────────────
-   5. MOBILE — small screen adjustments
+   KEYFRAMES needed here as fallback
 ────────────────────────────────────────────── */
-
-@media (max-width: 480px) {
-
-  .book-wrapper {
-    width: 90vw;
-    height: 70vh;
-  }
-
-  .intro-logo {
-    width: 82px;
-  }
-
-  .intro-credit {
-    font-size: 11px;
-    letter-spacing: 2px;
-  }
+@keyframes breatheImage {
+  0%,100% { transform: scale(1); }
+  50%      { transform: scale(1.03); }
+}
+@keyframes floatMedium {
+  0%,100% { transform: translateY(0px); }
+  50%      { transform: translateY(-8px); }
 }
 
-
 /* ─────────────────────────────────────────────
-   MOBILE SAFETY — critical overrides
-   Mobile browsers (especially Android Chrome)
-   can block fixed+hidden elements from ever
-   becoming visible if the initial paint fails
+   MOBILE — single column, no gaps
 ────────────────────────────────────────────── */
-
-/* Force intro screens to paint immediately on mobile */
 @media (max-width: 768px) {
 
-  /* Book screen — guaranteed centered and visible */
-  #intro-screen {
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    width: 100%;
-    height: 100%;
-    min-height: 100vh;
-    min-height: -webkit-fill-available; /* iOS Safari fix */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: radial-gradient(circle at 50% 40%, #1a0f1f 0%, #050505 70%, #000 100%);
-    z-index: 9999;
+  .hero-layout {
+    grid-template-columns: 1fr !important;
+    gap: 30px !important;
+    text-align: center !important;
   }
 
-  /* Book wrapper — never taller than screen */
+  .hero-left {
+    align-items: center !important;
+  }
+
+  .hero-right {
+    position: relative !important;
+  }
+
+  .medium-frame {
+    top: -8px !important;
+    right: 0px !important;
+    width: 60px !important;
+  }
+
+  .large-frame {
+    width: 88vw !important;
+    max-width: 360px !important;
+  }
+
   .book-wrapper {
-    width: 82vw;
-    height: 62vh;
-    max-height: 520px;
+    width: 86vw !important;
+    height: 68vh !important;
+    max-height: 500px !important;
   }
 
-  /* Invitation screen — same full coverage */
+  /* iOS Safari viewport fix */
+  #intro-screen,
   #intro-screen2 {
-    position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    width: 100%;
-    height: 100%;
-    min-height: 100vh;
-    min-height: -webkit-fill-available;
-    z-index: 9998;
-    padding: 24px;
-  }
-
-  /* Text scales down gracefully on small phones */
-  .intro-title2 {
-    font-size: clamp(1.8rem, 7vw, 3rem);
-  }
-
-  .intro-text2 {
-    font-size: 0.98rem;
-  }
-
-  /* Site content — when revealed, scrolls normally */
-  #site-content.visible,
-  #site-content[style*="opacity: 1"] {
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch; /* smooth iOS scroll */
-  }
-
-  /* Particles stay behind everything on mobile */
-  #particles-container {
-    z-index: 0;
-    position: fixed;
+    height: -webkit-fill-available !important;
+    min-height: -webkit-fill-available !important;
   }
 }
 
-/* Extra small phones — Galaxy A series, older iPhones */
-@media (max-width: 380px) {
+@media (max-width: 400px) {
   .book-wrapper {
-    width: 88vw;
-    height: 58vh;
+    width: 90vw !important;
+    height: 62vh !important;
   }
-
-  .intro-logo {
-    width: 72px;
-  }
-
-  .intro-credit {
-    font-size: 10px;
-    letter-spacing: 1.5px;
-    margin-top: 12px;
-  }
-
-  #enter-experience {
-    padding: 15px 34px;
-    font-size: 0.9rem;
-  }
-}
+  .intro-logo { width: 76px !important; }
+  .intro-credit { font-size: 10px !important; letter-spacing: 1.5px !important; }
+  #enter-experience { padding: 14px 32px !important; font-size: 0.88rem !important; }
+   }
+   
