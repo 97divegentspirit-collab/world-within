@@ -1,8 +1,14 @@
 /* =============================================
    intro.js — World Within
-   Screen 2 ONLY dismisses on button click.
-   Never auto-fades. Safety net only reveals
-   site — never hides screen 2 prematurely.
+   
+   SEQUENCE:
+   0s    — Page loads, book visible CLOSED
+   1.5s  — Pause so you see the closed book
+   1.5s  — Covers begin slowly swinging open
+   ~7s   — Covers fully open, logo fully visible
+   9s    — Book fades away
+   9.8s  — Invitation screen appears
+   ∞     — Waits for button click. Never auto-fades.
 ============================================== */
 (function () {
 
@@ -12,7 +18,7 @@
   var btn      = document.getElementById('enter-experience');
   var revealed = false;
 
-  /* ── Reveal site (called ONLY after button click) ── */
+  /* ── Reveal site — only called by button ── */
   function revealSite() {
     if (revealed) return;
     revealed = true;
@@ -24,54 +30,50 @@
 
     setTimeout(function () {
       if (site) {
-        site.style.transition  = 'opacity 1.6s ease';
-        site.style.opacity     = '1';
-        site.style.visibility  = 'visible';
-        site.classList.add('visible');
-      }
-      if (screen1) {
-        screen1.style.display = 'none';
-      }
-      document.body.style.overflow = '';
-      document.documentElement.style.overflow = '';
-    }, 600);
-  }
-
-  /* ── Safety net — only shows site if everything broke ──
-     Does NOT hide screen2 before button is clicked.
-     Waits a long time so normal flow runs first. ── */
-  var safetyTimer = setTimeout(function () {
-    if (!revealed) {
-      // Something broke — just show the site directly
-      revealed = true;
-      if (site) {
+        site.style.transition = 'opacity 1.6s ease';
         site.style.opacity    = '1';
         site.style.visibility = 'visible';
+        site.classList.add('visible');
       }
+      if (screen1) screen1.style.display = 'none';
+      document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
+    }, 700);
+  }
+
+  /* ── Safety net — 45s, so normal users always click button ── */
+  var safety = setTimeout(function () {
+    if (!revealed) {
+      revealed = true;
+      if (site) { site.style.opacity = '1'; site.style.visibility = 'visible'; }
       if (screen1) screen1.style.display = 'none';
       if (screen2) screen2.style.display = 'none';
       document.body.style.overflow = '';
     }
-  }, 30000); // 30 seconds — very long, normal users will click button
+  }, 45000);
 
-  /* ── STAGE 1: open book after short pause ── */
+  /* ── STAGE 0: Book is visible CLOSED on load ──
+     No JS needed — CSS shows it closed by default.
+     We just wait 1500ms so the person SEES it closed. ── */
+
+  /* ── STAGE 1: Begin opening — slow and majestic ── */
   setTimeout(function () {
     if (screen1) screen1.classList.add('open');
-  }, 1200); /* 1.2s breath before doors begin moving */
+  }, 1500); /* 1.5s of seeing it closed first */
 
-  /* ── STAGE 2: book fades → screen2 appears ──
-     Screen2 then WAITS for button. No timeout. ── */
+  /* ── STAGE 2: Book fades — screen2 invitation appears ── */
+  /* Covers take 5.5s to open fully + 1.5s delay = 7s, then logo visible ~2s more */
   setTimeout(function () {
     if (screen1) screen1.classList.add('fade-out');
     setTimeout(function () {
       if (screen2) screen2.classList.add('show');
-    }, 800);
-  }, 8500); /* book open 8.5s total — slow, intentional */
+    }, 900);
+  }, 10000); /* Total: 10s of book experience before invitation */
 
-  /* ── STAGE 3: button is the ONLY gate ── */
+  /* ── STAGE 3: Button is the ONLY gate to the site ── */
   function handleEnter(e) {
-    if (e) e.preventDefault();
-    clearTimeout(safetyTimer);
+    if (e && e.type === 'touchend') e.preventDefault();
+    clearTimeout(safety);
     revealSite();
   }
 
@@ -80,13 +82,11 @@
     btn.addEventListener('touchend', handleEnter);
   }
 
-  /* ── Tab recovery — if page was hidden and restored ── */
+  /* ── Tab visibility recovery ── */
   document.addEventListener('visibilitychange', function () {
     if (!document.hidden && !revealed) {
-      /* Don't auto-reveal — just make sure screen2 is showing */
-      if (screen2 && !screen2.classList.contains('show')) {
-        /* If book already faded, show screen2 */
-        if (screen1 && screen1.classList.contains('fade-out')) {
+      if (screen1 && screen1.classList.contains('fade-out')) {
+        if (screen2 && !screen2.classList.contains('show')) {
           screen2.classList.add('show');
         }
       }
