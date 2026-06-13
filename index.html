@@ -1,17 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>World Within</title>
+
+  <!--
+    CRITICAL INLINE STYLE — paints BEFORE any CSS file loads.
+    This is what stops the black screen on mobile.
+    Do not move this below the CSS links.
+  -->
+  <style>
+    html, body {
+      margin: 0; padding: 0;
+      background: #030309;
+      overflow: hidden;
+    }
+    /* Intro screen visible immediately — no waiting for CSS files */
+    #intro-screen {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at 50% 40%, #1a0f1f 0%, #050505 70%, #000 100%);
+    }
+    /* Site content invisible until intro.js reveals it */
+    #site-content {
+      opacity: 0;
+      visibility: hidden;
+    }
+  </style>
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
-  <!-- CSS — original order kept, fixes.css loads last so it wins -->
+  <!-- CSS — fixes.css loads last so it wins -->
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/animations.css" />
   <link rel="stylesheet" href="css/intro.css" />
@@ -21,8 +49,7 @@
 </head>
 
 
-<body style="overflow: hidden; background: #030309;">
-
+<body>
 
 <!-- =============================================
      INTRO SCREEN 1 — THE ANCIENT BOOK
@@ -31,28 +58,19 @@
 
   <div class="book-wrapper">
 
-    <!-- GLOW BEHIND BOOK -->
     <div class="book-glow"></div>
 
-    <!-- LEFT COVER -->
     <div class="book-cover left-cover"></div>
-
-    <!-- RIGHT COVER -->
     <div class="book-cover right-cover"></div>
 
-    <!-- CENTER — revealed when covers open -->
     <div class="book-center">
-
       <img
         src="assets/images/123_045549.png"
         alt="World Within Logo"
         class="intro-logo"
       >
-
       <p class="intro-credit">Created by Mazien</p>
-
       <p class="intro-welcome">Welcome, Beautiful Soul</p>
-
     </div>
 
   </div>
@@ -87,34 +105,24 @@
 
 
 <!-- =============================================
-     MAIN WEBSITE — hidden until intro completes
+     MAIN WEBSITE
 ============================================== -->
 <div id="site-content">
 
-
-  <!-- AMBIENT PARTICLES -->
   <div id="particles-container"></div>
 
-
-  <!-- ==========================================
-       HERO
-  =========================================== -->
+  <!-- HERO -->
   <section class="hero">
-
     <div class="container">
-
       <div class="hero-layout">
 
         <!-- LEFT — text -->
         <div class="hero-left fade-up">
-
           <span class="hero-tag">Pure Love Experience</span>
-
           <h1>
             Every person carries<br>
             <span>a world</span>
           </h1>
-
           <p class="hero-description">
             Let's bring yours to life.<br>
             You are loved here.<br><br>
@@ -124,13 +132,11 @@
             A space where you are seen,<br>
             valued, and celebrated.
           </p>
-
         </div>
 
         <!-- RIGHT — images -->
         <div class="hero-right">
 
-          <!-- Medium logo — floats top right -->
           <div class="medium-frame visual-frame">
             <img
               src="assets/images/nobackground.png"
@@ -139,7 +145,6 @@
             >
           </div>
 
-          <!-- Large brain image — glows in dark -->
           <div class="large-frame visual-frame">
             <img
               src="assets/images/Neurodivegents_045555.png"
@@ -148,26 +153,20 @@
             >
           </div>
 
-        </div><!-- /hero-right -->
+        </div>
 
-      </div><!-- /hero-layout -->
-
-    </div><!-- /container -->
-
+      </div>
+    </div>
   </section>
 
 
-  <!-- ==========================================
-       INTRODUCTION
-  =========================================== -->
+  <!-- INTRODUCTION -->
   <section>
     <div class="container">
       <div class="glass-card fade-up">
-
         <p class="prompt-text serif">
           Instead of pressure, there is exploration.
         </p>
-
         <p>
           Instead of interrogation, there is emotional discovery.
           <br><br>
@@ -175,15 +174,12 @@
           <br>
           You are being understood.
         </p>
-
       </div>
     </div>
   </section>
 
 
-  <!-- ==========================================
-       ATMOSPHERE — EMOTIONAL WORLD SELECTOR
-  =========================================== -->
+  <!-- ATMOSPHERE -->
   <section>
     <div class="container">
 
@@ -196,44 +192,35 @@
       </p>
 
       <div class="emotion-grid">
-
         <div class="emotion-card glass-card float-soft" onclick="selectEmotion('calm')">
           <h3>Calm</h3>
           <p>Gentle stillness, spacious thoughts, soft emotional breathing.</p>
         </div>
-
         <div class="emotion-card glass-card float-soft" onclick="selectEmotion('electric')">
           <h3>Electric</h3>
           <p>Neon pulses, intensity, movement, energetic curiosity.</p>
         </div>
-
         <div class="emotion-card glass-card float-soft" onclick="selectEmotion('dreamy')">
           <h3>Dreamy</h3>
           <p>Floating imagination, softness, emotional depth and wonder.</p>
         </div>
-
         <div class="emotion-card glass-card float-soft" onclick="selectEmotion('sacred')">
           <h3>Sacred</h3>
           <p>Silence, warmth, gold light, spiritual presence and reflection.</p>
         </div>
-
       </div>
 
     </div>
   </section>
 
 
-  <!-- ==========================================
-       ENCOURAGEMENT
-  =========================================== -->
+  <!-- ENCOURAGEMENT -->
   <section>
     <div class="container">
       <div class="glass-card fade-up">
-
         <p class="prompt-text serif">
           There is no wrong way to express yourself.
         </p>
-
         <p>
           Your uniqueness matters.
           <br>
@@ -241,15 +228,12 @@
           <br><br>
           Take your time.
         </p>
-
       </div>
     </div>
   </section>
 
 
-  <!-- ==========================================
-       NAVIGATION PORTAL
-  =========================================== -->
+  <!-- NAVIGATION -->
   <section>
     <div class="container">
 
@@ -262,57 +246,38 @@
       </p>
 
       <div class="emotion-grid">
-
-        <a href="about.html" class="emotion-card glass-card"
-          style="text-decoration: none; color: white;">
+        <a href="about.html" class="emotion-card glass-card" style="text-decoration:none; color:white;">
           <h3>Identity Reflection</h3>
           <p>Explore philosophy, emotional identity, and the heart behind the experience.</p>
         </a>
-
-        <a href="experience.html" class="emotion-card glass-card"
-          style="text-decoration: none; color: white;">
+        <a href="experience.html" class="emotion-card glass-card" style="text-decoration:none; color:white;">
           <h3>The Journey Engine</h3>
           <p>Step into the guided emotional experience and begin expressing your world.</p>
         </a>
-
-        <a href="contact.html" class="emotion-card glass-card"
-          style="text-decoration: none; color: white;">
+        <a href="contact.html" class="emotion-card glass-card" style="text-decoration:none; color:white;">
           <h3>Final Connection</h3>
           <p>Reach out, submit your reflections, and continue the conversation.</p>
         </a>
-
       </div>
 
     </div>
   </section>
 
 
-  <!-- ==========================================
-       FOOTER
-  =========================================== -->
+  <!-- FOOTER -->
   <footer>
     <div class="container">
-
-      <p class="supportive-message">
-        Your story matters.
-      </p>
-
-      <p style="margin-top: 12px; font-size: 0.75rem; opacity: 0.28; letter-spacing: 0.14em;">
+      <p class="supportive-message">Your story matters.</p>
+      <p style="margin-top:12px; font-size:0.75rem; opacity:0.28; letter-spacing:0.14em;">
         World Within &nbsp;·&nbsp; Created with love by Mazien
       </p>
-
     </div>
   </footer>
-
 
 </div><!-- /site-content -->
 
 
-<!-- =============================================
-     JAVASCRIPT
-     intro.js loads BEFORE main.js so the
-     intro sequence runs first
-============================================== -->
+<!-- JS -->
 <script src="js/animations.js"></script>
 <script src="js/interactions.js"></script>
 <script src="js/form-handler.js"></script>
@@ -320,6 +285,5 @@
 <script src="js/intro.js"></script>
 <script src="js/main.js"></script>
 
-
 </body>
-  </html>
+</html>
