@@ -57,7 +57,7 @@
   /* ── STAGE 1: open book after short pause ── */
   setTimeout(function () {
     if (screen1) screen1.classList.add('open');
-  }, 500);
+  }, 1200); /* 1.2s breath before doors begin moving */
 
   /* ── STAGE 2: book fades → screen2 appears ──
      Screen2 then WAITS for button. No timeout. ── */
@@ -66,7 +66,7 @@
     setTimeout(function () {
       if (screen2) screen2.classList.add('show');
     }, 800);
-  }, 4500); /* book stays open longer — 4.5s */
+  }, 8500); /* book open 8.5s total — slow, intentional */
 
   /* ── STAGE 3: button is the ONLY gate ── */
   function handleEnter(e) {
