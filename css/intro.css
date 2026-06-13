@@ -1,93 +1,82 @@
 /* =========================================
    intro.css — World Within
-   FULL REDESIGN: fills screen, doors open OUT,
-   logo zooms from book, all sizes bold
+   FULL SCREEN BOOK COVER VERSION
 ========================================= */
 
 /* =========================================
-   INTRO SCREEN 1 — THE BOOK
+   INTRO SCREEN 1 — BOOK FILLS THE SCREEN
 ========================================= */
 
 #intro-screen {
   position: fixed;
   top: 0; left: 0;
-  width: 100dvw;
-  height: 100dvh;
+  width: 100%; height: 100%;
   z-index: 9999;
 
   background:
-    radial-gradient(circle at 50% 38%, #2a0a2e 0%, #0d050f 60%, #000 100%);
+    radial-gradient(ellipse at 50% 42%,
+      #2e0d35 0%, #120818 45%, #040208 100%);
 
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-
   overflow: hidden;
-  transition: opacity 1.5s ease, visibility 1.5s ease;
+
+  transition: opacity 1.8s ease, visibility 1.8s ease;
 }
 
-@supports not (height: 100dvh) {
-  #intro-screen { height: 100vh; height: -webkit-fill-available; }
-}
-
+/* Pink/purple atmospheric glow behind book */
 #intro-screen::before {
   content: "";
-  position: absolute;
-  inset: 0;
+  position: absolute; inset: 0;
   background: radial-gradient(
-    ellipse at 50% 42%,
-    rgba(255, 130, 220, 0.12) 0%,
-    rgba(120, 40, 200, 0.06) 40%,
-    transparent 70%
+    ellipse at 50% 45%,
+    rgba(200, 80, 220, 0.14) 0%,
+    rgba(120, 30, 180, 0.08) 40%,
+    transparent 68%
   );
-  z-index: 0;
-  pointer-events: none;
+  z-index: 0; pointer-events: none;
 }
 
 /* =========================================
-   GLOW — big and warm
+   GLOW — warm, behind the book
 ========================================= */
 
 .book-glow {
   position: absolute;
-  z-index: 0;
-  width: 70vw;
-  height: 70vw;
-  max-width: 500px;
-  max-height: 500px;
-
-  background: radial-gradient(
-    circle,
-    rgba(255, 190, 120, 0.55) 0%,
-    rgba(255, 80,  200, 0.22) 35%,
-    rgba(120, 40,  255, 0.09) 55%,
+  z-index: 1;
+  width: 90vw; height: 90vw;
+  max-width: 600px; max-height: 600px;
+  background: radial-gradient(circle,
+    rgba(255, 190, 100, 0.45) 0%,
+    rgba(220, 80, 200, 0.20) 38%,
+    rgba(100, 30, 220, 0.08) 58%,
     transparent 72%
   );
-  filter: blur(60px);
+  filter: blur(70px);
   animation: pulseGlow 4s ease-in-out infinite;
   pointer-events: none;
 }
 
 /* =========================================
-   BOOK WRAPPER — fills the screen like a door
+   BOOK WRAPPER — COVERS THE FULL SCREEN
 ========================================= */
 
 .book-wrapper {
   position: relative;
   z-index: 2;
 
-  /* Fill most of the visible screen */
-  width: min(500px, 92vw);
-  height: min(640px, 82dvh);
+  /* Book IS the screen */
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
 
-  perspective: 1800px;
+  perspective: 2400px;
   transform-style: preserve-3d;
-  flex-shrink: 0;
 }
 
 /* =========================================
-   BOOK COVERS — rich wood texture
+   BOOK COVERS — two halves of the screen
 ========================================= */
 
 .book-cover {
@@ -96,60 +85,77 @@
   width: 50%;
   height: 100%;
 
-  background: linear-gradient(
-    145deg,
-    #6b4828 0%,
-    #8c6a40 25%,
-    #5a3c22 55%,
-    #3a2414 80%,
-    #1e1208 100%
-  );
+  background:
+    linear-gradient(160deg,
+      #7a5230 0%,
+      #9c7248 18%,
+      #6b4828 38%,
+      #4a3018 62%,
+      #2e1c0c 82%,
+      #180e06 100%
+    );
 
-  border: 2px solid rgba(255, 215, 160, 0.20);
+  border: none;
 
   box-shadow:
-    0 30px 80px rgba(0, 0, 0, 0.85),
-    0 0 60px rgba(255, 180, 120, 0.10),
-    inset 0 0 40px rgba(255, 255, 255, 0.05),
-    inset 0 0 10px rgba(255, 220, 180, 0.08);
+    0 0 80px rgba(0,0,0,0.9),
+    inset 0 0 60px rgba(255,255,255,0.04),
+    inset 0 0 20px rgba(255,210,160,0.06);
 
-  transition: transform 2.6s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 2.8s cubic-bezier(0.16, 1, 0.3, 1);
   transform-style: preserve-3d;
   backface-visibility: hidden;
   will-change: transform;
 }
 
-/* LEFT — opens outward to the LEFT */
+/* Spine detail — center line where covers meet */
+.book-cover::after {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg,
+    transparent,
+    rgba(255,210,160,0.25) 20%,
+    rgba(255,210,160,0.40) 50%,
+    rgba(255,210,160,0.25) 80%,
+    transparent
+  );
+}
+
+/* LEFT cover — spine on right edge */
 .left-cover {
   left: 0;
-  z-index: 3;
-  border-radius: 20px 0 0 20px;
+  border-radius: 0;
   transform-origin: left center;
+  z-index: 3;
 }
+.left-cover::after { right: 0; }
 
-/* RIGHT — opens outward to the RIGHT */
+/* RIGHT cover — spine on left edge */
 .right-cover {
   right: 0;
-  z-index: 3;
-  border-radius: 0 20px 20px 0;
+  border-radius: 0;
   transform-origin: right center;
+  z-index: 3;
 }
+.right-cover::after { left: 0; }
 
 /* =========================================
-   OPEN STATE — swings OUT like real doors
-   left swings left, right swings right
+   OPEN — doors swing away from center
+   left goes left, right goes right
 ========================================= */
 
 #intro-screen.open .left-cover {
-  transform: rotateY(-150deg);
+  transform: rotateY(-160deg);
 }
 
 #intro-screen.open .right-cover {
-  transform: rotateY(150deg);
+  transform: rotateY(160deg);
 }
 
 /* =========================================
-   BOOK CENTER — logo zooms OUT of book
+   BOOK CENTER — logo zooms from center
 ========================================= */
 
 .book-center {
@@ -162,18 +168,18 @@
   justify-content: center;
   align-items: center;
 
-  /* Starts tiny — zooms out as book opens */
+  /* Starts invisible at tiny scale — zooms out */
   opacity: 0;
-  transform: scale(0.1);
+  transform: scale(0.05);
 
+  /* Spring zoom — fast out, gentle settle */
   transition:
-    opacity 1.8s cubic-bezier(0.16, 1, 0.3, 1),
-    transform 1.8s cubic-bezier(0.16, 1, 0.3, 1);
-  transition-delay: 1.2s;
+    opacity  2s cubic-bezier(0.16, 1, 0.3, 1) 1.2s,
+    transform 2s cubic-bezier(0.16, 1, 0.3, 1) 1.2s;
 
-  gap: 14px;
+  gap: 16px;
   text-align: center;
-  padding: 30px;
+  padding: 40px;
 }
 
 #intro-screen.open .book-center {
@@ -182,42 +188,43 @@
 }
 
 /* =========================================
-   LOGO — large, glowing, breathing
+   LOGO — large, breathing, glowing
 ========================================= */
 
 .intro-logo {
-  width: min(160px, 38vw);
+  width: clamp(130px, 32vw, 200px);
   height: auto;
   display: block;
   z-index: 2;
 
   filter:
-    drop-shadow(0 0 20px rgba(255, 220, 180, 0.6))
-    drop-shadow(0 0 50px rgba(255, 160, 220, 0.5))
-    drop-shadow(0 0 90px rgba(255, 255, 255, 0.2));
+    drop-shadow(0 0 24px rgba(255,220,160,0.70))
+    drop-shadow(0 0 60px rgba(255,140,220,0.55))
+    drop-shadow(0 0 100px rgba(255,255,255,0.22));
 
   animation: breatheLogo 4s ease-in-out infinite;
 }
 
 /* =========================================
-   TEXT — bold and readable
+   TEXT
 ========================================= */
 
 .intro-credit {
-  margin-top: 20px;
-  color: #f1d8b5;
-  font-size: clamp(13px, 3.5vw, 16px);
+  margin-top: 24px;
+  color: #f2dbb8;
+  font-size: clamp(14px, 3.8vw, 18px);
   font-weight: 400;
-  letter-spacing: 4px;
+  letter-spacing: 5px;
   text-transform: uppercase;
   z-index: 2;
+  text-shadow: 0 0 20px rgba(242,219,184,0.4);
 }
 
 .intro-welcome {
-  margin-top: 8px;
-  color: rgba(241, 216, 181, 0.60);
-  font-size: clamp(10px, 2.5vw, 12px);
-  letter-spacing: 5px;
+  margin-top: 10px;
+  color: rgba(242, 219, 184, 0.55);
+  font-size: clamp(10px, 2.6vw, 13px);
+  letter-spacing: 6px;
   text-transform: uppercase;
   z-index: 2;
 }
@@ -231,18 +238,18 @@
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transition: opacity 1.5s ease, visibility 1.5s ease;
+  transition: opacity 1.8s ease, visibility 1.8s ease;
 }
 
 /* =========================================
-   INTRO SCREEN 2 — INVITATION
-   Bold, centered, breathing
+   INTRO SCREEN 2 — STAYS UNTIL BUTTON CLICKED
+   Never auto-disappears
 ========================================= */
 
 #intro-screen2 {
   position: fixed;
   top: 0; left: 0;
-  width: 100dvw;
+  width: 100%; height: 100%;
   height: 100dvh;
   z-index: 9998;
 
@@ -250,18 +257,20 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 32px 24px;
+  padding: 40px 28px;
 
-  background: rgba(3, 2, 10, 0.97);
+  /* Starfield background — atmospheric */
+  background:
+    radial-gradient(ellipse at 50% 35%,
+      rgba(160, 60, 200, 0.12) 0%,
+      transparent 55%
+    ),
+    rgba(3, 2, 10, 0.97);
 
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
   transition: opacity 2s ease, visibility 2s ease;
-}
-
-@supports not (height: 100dvh) {
-  #intro-screen2 { height: 100vh; height: -webkit-fill-available; }
 }
 
 #intro-screen2.show {
@@ -270,19 +279,20 @@
   pointer-events: auto;
 }
 
+/* Only fades when JS explicitly adds this */
 #intro-screen2.fade-out {
   opacity: 0 !important;
   visibility: hidden !important;
   pointer-events: none !important;
-  transition: opacity 1s ease, visibility 1s ease !important;
+  transition: opacity 1.2s ease, visibility 1.2s ease !important;
 }
 
 .intro-content2 {
-  max-width: 680px;
+  max-width: 700px;
   width: 100%;
   opacity: 0;
-  transform: translateY(32px);
-  transition: opacity 1.4s ease 0.2s, transform 1.4s ease 0.2s;
+  transform: translateY(36px);
+  transition: opacity 1.5s ease 0.3s, transform 1.5s ease 0.3s;
 }
 
 #intro-screen2.show .intro-content2 {
@@ -290,83 +300,82 @@
   transform: translateY(0);
 }
 
-/* BIG bold title — this should feel like a statement */
+/* BIG headline — this is a statement */
 .intro-title2 {
-  font-size: clamp(2.4rem, 9vw, 5.5rem);
-  line-height: 1.08;
-  margin-bottom: 28px;
+  font-size: clamp(2.6rem, 9vw, 6rem);
+  line-height: 1.06;
+  margin-bottom: 32px;
   color: #fdf3e4;
   font-weight: 700;
-  letter-spacing: -0.5px;
+  letter-spacing: -1px;
 
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 1.2s ease 0.3s, transform 1.2s ease 0.3s;
+  transform: translateY(24px);
+  transition: opacity 1.3s ease 0.4s, transform 1.3s ease 0.4s;
 
-  /* Subtle gold glow on the text */
   text-shadow:
-    0 0 40px rgba(247, 217, 139, 0.15),
-    0 0 80px rgba(255, 160, 220, 0.08);
+    0 0 60px rgba(247,217,139,0.18),
+    0 0 120px rgba(200,130,255,0.10);
 }
 
 #intro-screen2.show .intro-title2 {
-  opacity: 1;
-  transform: translateY(0);
+  opacity: 1; transform: translateY(0);
 }
 
 .intro-text2 {
-  font-size: clamp(1rem, 3.5vw, 1.3rem);
-  line-height: 2.0;
-  margin-bottom: 48px;
-  color: rgba(253, 243, 228, 0.62);
+  font-size: clamp(1.05rem, 3.2vw, 1.4rem);
+  line-height: 2.1;
+  margin-bottom: 56px;
+  color: rgba(253,243,228,0.60);
   font-weight: 300;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.03em;
 
   opacity: 0;
-  transform: translateY(16px);
-  transition: opacity 1.2s ease 0.6s, transform 1.2s ease 0.6s;
+  transform: translateY(18px);
+  transition: opacity 1.3s ease 0.7s, transform 1.3s ease 0.7s;
 }
 
 #intro-screen2.show .intro-text2 {
-  opacity: 1;
-  transform: translateY(0);
+  opacity: 1; transform: translateY(0);
 }
 
-/* Button — glowing and inviting */
+/* Button — the intentional gate */
 #enter-experience {
-  padding: 20px 52px;
+  padding: 22px 60px;
   border: none;
   border-radius: 999px;
-  background: linear-gradient(135deg, #ff4fd8, #7b5cff);
+  background: linear-gradient(135deg, #ff4fd8 0%, #a855f7 50%, #7b5cff 100%);
   color: white;
-  font-size: clamp(1rem, 3vw, 1.1rem);
+  font-size: clamp(1rem, 3.2vw, 1.15rem);
   font-weight: 600;
   font-family: 'Poppins', sans-serif;
   cursor: pointer;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+
   box-shadow:
-    0 0 40px rgba(255, 79, 216, 0.55),
-    0 0 80px rgba(123, 92, 255, 0.25);
+    0 0 50px rgba(255, 79, 216, 0.60),
+    0 0 100px rgba(168, 85, 247, 0.30),
+    0 8px 32px rgba(0,0,0,0.4);
 
   opacity: 0;
-  transform: translateY(16px);
+  transform: translateY(20px);
   transition:
-    opacity 1s ease 0.9s,
-    transform 1s ease 0.9s,
-    box-shadow 0.4s ease,
-    transform 0.3s ease;
+    opacity  1.2s ease 1.0s,
+    transform 1.2s ease 1.0s,
+    box-shadow 0.4s ease;
 }
 
 #intro-screen2.show #enter-experience {
-  opacity: 1;
-  transform: translateY(0);
+  opacity: 1; transform: translateY(0);
 }
 
 #enter-experience:hover {
-  transform: translateY(-5px) scale(1.04) !important;
+  transform: translateY(-6px) scale(1.05) !important;
   box-shadow:
-    0 0 70px rgba(255, 79, 216, 0.85),
-    0 0 120px rgba(123, 92, 255, 0.40) !important;
+    0 0 80px rgba(255, 79, 216, 0.85),
+    0 0 160px rgba(168, 85, 247, 0.45),
+    0 12px 40px rgba(0,0,0,0.5) !important;
 }
 
 /* =========================================
@@ -374,50 +383,23 @@
 ========================================= */
 
 @keyframes pulseGlow {
-  0%,100% { transform: scale(1);    opacity: 0.55; }
-  50%      { transform: scale(1.18); opacity: 1;    }
+  0%,100% { transform:scale(1);    opacity:0.55; }
+  50%      { transform:scale(1.20); opacity:1;   }
 }
 
 @keyframes breatheLogo {
   0%,100% {
     filter:
-      drop-shadow(0 0 20px rgba(255,220,180,0.55))
-      drop-shadow(0 0 50px rgba(255,160,220,0.45))
-      drop-shadow(0 0 90px rgba(255,255,255,0.18));
+      drop-shadow(0 0 24px rgba(255,220,160,0.70))
+      drop-shadow(0 0 60px rgba(255,140,220,0.55))
+      drop-shadow(0 0 100px rgba(255,255,255,0.22));
     transform: scale(1);
   }
   50% {
     filter:
-      drop-shadow(0 0 30px rgba(255,220,180,0.80))
-      drop-shadow(0 0 70px rgba(255,160,220,0.65))
-      drop-shadow(0 0 120px rgba(255,255,255,0.30));
-    transform: scale(1.06);
+      drop-shadow(0 0 38px rgba(255,220,160,0.90))
+      drop-shadow(0 0 90px rgba(255,140,220,0.75))
+      drop-shadow(0 0 140px rgba(255,255,255,0.35));
+    transform: scale(1.08);
   }
 }
-
-/* =========================================
-   MOBILE
-========================================= */
-
-@media (max-width: 480px) {
-  .book-wrapper {
-    width: 94vw;
-    height: 70dvh;
-    max-height: 520px;
-  }
-
-  .intro-logo { width: min(140px, 36vw); }
-
-  .intro-title2 { font-size: clamp(2rem, 10vw, 3rem); }
-
-  #enter-experience { padding: 18px 42px; }
-}
-
-@media (max-width: 380px) {
-  .book-wrapper {
-    width: 96vw;
-    height: 65dvh;
-  }
-  .intro-logo { width: 110px; }
-   }
-     
