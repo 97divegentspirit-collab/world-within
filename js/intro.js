@@ -1,97 +1,93 @@
 /* =============================================
-   intro.js  — World Within
-   Mobile-safe version with multiple fallbacks
+   intro.js — World Within
+   Bulletproof version: always shows the site
 ============================================== */
-
 (function () {
 
   var introScreen  = document.getElementById('intro-screen');
   var introScreen2 = document.getElementById('intro-screen2');
   var siteContent  = document.getElementById('site-content');
   var enterBtn     = document.getElementById('enter-experience');
+  var revealed     = false;
 
-  // ── REVEAL SITE — called from multiple places ──
-  var revealed = false;
+  /* ── Always reveal site — called by button OR safety timer ── */
   function revealSite() {
-    if (revealed) return;   // only run once
+    if (revealed) return;
     revealed = true;
 
-    clearTimeout(safetyTimer);
-    clearTimeout(autoTimer);
+    clearTimeout(safety);
 
-    // Force site visible with inline styles (beats any CSS)
+    /* Force inline styles — beats any CSS rule */
     if (siteContent) {
-      siteContent.style.opacity    = '1';
-      siteContent.style.visibility = 'visible';
-      siteContent.style.transition = 'opacity 1.4s ease';
+      siteContent.style.transition  = 'opacity 1.4s ease';
+      siteContent.style.opacity     = '1';
+      siteContent.style.visibility  = 'visible';
       siteContent.classList.add('visible');
     }
 
-    // Hide intros
-    if (introScreen) {
-      introScreen.style.opacity    = '0';
-      introScreen.style.visibility = 'hidden';
-      introScreen.style.pointerEvents = 'none';
-    }
-    if (introScreen2) {
-      introScreen2.style.opacity    = '0';
-      introScreen2.style.visibility = 'hidden';
-      introScreen2.style.pointerEvents = 'none';
-    }
+    /* Hide both intro screens */
+    [introScreen, introScreen2].forEach(function(el) {
+      if (!el) return;
+      el.style.transition   = 'opacity 0.8s ease';
+      el.style.opacity      = '0';
+      el.style.visibility   = 'hidden';
+      el.style.pointerEvents = 'none';
+    });
 
-    // Restore scroll
-    document.body.style.overflow  = '';
+    /* Restore scroll */
+    document.body.style.overflow           = '';
+    document.body.style.height             = '';
     document.documentElement.style.overflow = '';
   }
 
-  // ── SAFETY NET — site always appears, no matter what ──
-  // 8 seconds on desktop, 6 on mobile (slower devices)
+  /* ── Safety net — site WILL appear no matter what ── */
   var isMobile = window.innerWidth <= 768;
-  var safetyTimer = setTimeout(revealSite, isMobile ? 6000 : 8000);
+  var safety   = setTimeout(revealSite, isMobile ? 5500 : 7500);
 
-  // ── If no intro screen in HTML at all, show site now ──
+  /* ── If no intro elements exist, show site immediately ── */
   if (!introScreen && !introScreen2) {
     revealSite();
     return;
   }
 
-  // ── STAGE 1: open the book ──
-  if (introScreen) {
-    setTimeout(function () {
-      introScreen.classList.add('open');
-    }, 600);
-  }
+  /* ── STAGE 1: open book ── */
+  setTimeout(function () {
+    if (introScreen) introScreen.classList.add('open');
+  }, 500);
 
-  // ── STAGE 2: book fades, invitation appears ──
+  /* ── STAGE 2: book fades → invitation appears ── */
   setTimeout(function () {
     if (introScreen)  introScreen.classList.add('fade-out');
     if (introScreen2) introScreen2.classList.add('show');
-  }, 3800);
+  }, 3600);
 
-  // ── STAGE 3: button click reveals site ──
-  var autoTimer;
+  /* ── STAGE 3: button → reveal site ── */
   if (enterBtn) {
     enterBtn.addEventListener('click', function () {
       if (introScreen2) {
-        introScreen2.classList.add('fade-out');
         introScreen2.classList.remove('show');
+        introScreen2.classList.add('fade-out');
       }
-      setTimeout(revealSite, 400);
+      setTimeout(revealSite, 350);
     });
-  } else {
-    // No button — auto-reveal 3s after invitation appears
-    autoTimer = setTimeout(revealSite, 7000);
+
+    /* Touch fallback for mobile tap */
+    enterBtn.addEventListener('touchend', function (e) {
+      e.preventDefault();
+      if (introScreen2) {
+        introScreen2.classList.remove('show');
+        introScreen2.classList.add('fade-out');
+      }
+      setTimeout(revealSite, 350);
+    });
   }
 
-  // ── VISIBILITY CHANGE — if user switches tabs and back ──
-  // Some mobile browsers suspend timers; this restarts them
+  /* ── Tab switch recovery ── */
   document.addEventListener('visibilitychange', function () {
     if (!document.hidden && !revealed) {
-      // Page became visible again — check if we're stuck
-      setTimeout(function () {
-        if (!revealed) revealSite();
-      }, 500);
+      setTimeout(function () { if (!revealed) revealSite(); }, 300);
     }
   });
 
 })();
+       
