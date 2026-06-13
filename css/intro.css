@@ -59,18 +59,21 @@
 }
 
 /* =========================================
-   BOOK WRAPPER — full phone width
-   Covers touch both edges of the screen.
-   Height is proportional — frames the logo.
+   BOOK WRAPPER — H4H reference proportions
+   Full width, centered height, rounded corners
 ========================================= */
 
 .book-wrapper {
   position: relative;
   z-index: 2;
 
-  /* Full screen width — covers touch phone edges */
-  width: 100vw;
-  height: min(480px, 62dvh);
+  /* Full screen width like H4H */
+  width: 96vw;
+  height: min(520px, 56dvh);
+
+  /* Rounded on all outer corners — book feel */
+  border-radius: 28px;
+  overflow: hidden;
 
   perspective: 2400px;
   transform-style: preserve-3d;
@@ -111,19 +114,18 @@
   will-change: transform;
 }
 
-/* LEFT cover — hinges on left edge of screen */
+/* LEFT cover — hinges on left, wrapper clips corners */
 .left-cover {
   left: 0;
-  border-radius: 0;          /* flush with screen edge */
+  border-radius: 0;
   transform-origin: left center;
   z-index: 3;
-  /* Starts closed — no transform needed, default position IS closed */
 }
 
-/* RIGHT cover — hinges on right edge of screen */
+/* RIGHT cover — hinges on right */
 .right-cover {
   right: 0;
-  border-radius: 0;          /* flush with screen edge */
+  border-radius: 0;
   transform-origin: right center;
   z-index: 3;
 }
