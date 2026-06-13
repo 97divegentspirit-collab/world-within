@@ -621,4 +621,153 @@ footer p { font-size: 0.8rem; color: var(--text-dim); letter-spacing: 0.14em; }
     right: 4px;
     width: 54px;
   }
-   }
+}
+
+
+/* =========================================
+   HERO — IMMERSIVE MOBILE VERSION
+   On mobile: text centered top, image fills
+   center, logo in corner beside image
+========================================= */
+
+/* Full-screen hero feel */
+.hero {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 100px 0 60px;
+  position: relative;
+  overflow: visible;
+}
+
+/* Atmospheric glow behind hero */
+.hero::after {
+  content: "";
+  position: absolute;
+  top: 10%; left: 50%;
+  transform: translateX(-50%);
+  width: 80vw; height: 80vw;
+  max-width: 700px; max-height: 700px;
+  background: radial-gradient(circle,
+    rgba(200, 100, 255, 0.06) 0%,
+    rgba(247, 180, 220, 0.04) 40%,
+    transparent 70%
+  );
+  filter: blur(60px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Desktop: two columns */
+.hero-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 60px;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+/* Heading — massive and commanding */
+.hero-left h1 {
+  font-size: clamp(3.2rem, 7vw, 6rem);
+  line-height: 0.98;
+  font-weight: 700;
+  letter-spacing: -2px;
+  margin-bottom: 32px;
+  color: #fdf3e4;
+}
+
+.hero-left h1 span {
+  color: #ffb4c8;
+  display: block;
+  font-style: italic;
+}
+
+/* =========================================
+   MOBILE HERO — single column, immersive
+========================================= */
+
+@media (max-width: 860px) {
+
+  .hero {
+    padding: 70px 0 50px;
+    min-height: 100dvh;
+    align-items: flex-start;
+  }
+
+  .hero-layout {
+    grid-template-columns: 1fr;
+    gap: 0;
+    text-align: center;
+  }
+
+  .hero-left {
+    text-align: center;
+    padding-bottom: 20px;
+  }
+
+  .hero-left h1 {
+    font-size: clamp(3rem, 13vw, 5rem);
+    letter-spacing: -1.5px;
+    margin-bottom: 24px;
+  }
+
+  .hero-left h1 span { display: inline; }
+
+  .hero-description {
+    font-size: clamp(1rem, 3.5vw, 1.15rem);
+    margin: 0 auto;
+    max-width: 90%;
+    line-height: 2.0;
+  }
+
+  /* Image area — full width, centered */
+  .hero-right {
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    min-height: 280px;
+  }
+
+  /* Brain image — large and centered */
+  .large-frame {
+    width: min(340px, 86vw) !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Logo — top right corner, overlapping image */
+  .medium-frame {
+    position: absolute !important;
+    top: -16px !important;
+    right: max(4vw, 8px) !important;
+    width: clamp(56px, 14vw, 80px) !important;
+    z-index: 5 !important;
+  }
+}
+
+@media (max-width: 480px) {
+
+  .hero-left h1 {
+    font-size: clamp(2.6rem, 14vw, 4rem);
+  }
+
+  .large-frame {
+    width: min(300px, 88vw) !important;
+  }
+
+  .medium-frame {
+    width: clamp(48px, 13vw, 64px) !important;
+    top: -10px !important;
+    right: 6px !important;
+  }
+}
