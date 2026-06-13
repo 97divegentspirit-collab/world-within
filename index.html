@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
-  <!-- CSS — your original load order kept -->
+  <!-- CSS — original order kept, fixes.css loads last so it wins -->
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/animations.css" />
   <link rel="stylesheet" href="css/intro.css" />
@@ -21,7 +21,7 @@
 </head>
 
 
-<body class="loading" style="overflow:hidden;">
+<body style="overflow: hidden; background: #030309;">
 
 
 <!-- =============================================
@@ -87,7 +87,7 @@
 
 
 <!-- =============================================
-     MAIN WEBSITE
+     MAIN WEBSITE — hidden until intro completes
 ============================================== -->
 <div id="site-content">
 
@@ -97,7 +97,7 @@
 
 
   <!-- ==========================================
-       HERO / ARRIVAL PORTAL
+       HERO
   =========================================== -->
   <section class="hero">
 
@@ -130,7 +130,7 @@
         <!-- RIGHT — images -->
         <div class="hero-right">
 
-          <!-- Medium logo — floats top right of this column -->
+          <!-- Medium logo — floats top right -->
           <div class="medium-frame visual-frame">
             <img
               src="assets/images/nobackground.png"
@@ -139,7 +139,7 @@
             >
           </div>
 
-          <!-- Large brain / neurodivergent image — center glow -->
+          <!-- Large brain image — glows in dark -->
           <div class="large-frame visual-frame">
             <img
               src="assets/images/Neurodivegents_045555.png"
@@ -158,12 +158,10 @@
 
 
   <!-- ==========================================
-       INTRODUCTION — FELT TRUTH
+       INTRODUCTION
   =========================================== -->
   <section>
-
     <div class="container">
-
       <div class="glass-card fade-up">
 
         <p class="prompt-text serif">
@@ -179,9 +177,7 @@
         </p>
 
       </div>
-
     </div>
-
   </section>
 
 
@@ -189,39 +185,34 @@
        ATMOSPHERE — EMOTIONAL WORLD SELECTOR
   =========================================== -->
   <section>
-
     <div class="container">
 
-      <h2 class="fade-up serif" style="margin-bottom: 14px; font-style: italic;">
+      <h2 class="fade-up serif" style="margin-bottom: 14px; font-style: italic; text-align: center;">
         What kind of world lives within you?
       </h2>
 
-      <p style="text-align:center; margin-bottom: 44px; opacity: 0.55; font-size: 0.88rem; letter-spacing: 0.08em;">
+      <p style="text-align:center; margin-bottom: 44px; opacity: 0.52; font-size: 0.88rem; letter-spacing: 0.08em;">
         Choose the one that feels most like home right now.
       </p>
 
       <div class="emotion-grid">
 
-        <div class="emotion-card glass-card float-soft"
-          onclick="selectEmotion('calm')">
+        <div class="emotion-card glass-card float-soft" onclick="selectEmotion('calm')">
           <h3>Calm</h3>
           <p>Gentle stillness, spacious thoughts, soft emotional breathing.</p>
         </div>
 
-        <div class="emotion-card glass-card float-soft"
-          onclick="selectEmotion('electric')">
+        <div class="emotion-card glass-card float-soft" onclick="selectEmotion('electric')">
           <h3>Electric</h3>
           <p>Neon pulses, intensity, movement, energetic curiosity.</p>
         </div>
 
-        <div class="emotion-card glass-card float-soft"
-          onclick="selectEmotion('dreamy')">
+        <div class="emotion-card glass-card float-soft" onclick="selectEmotion('dreamy')">
           <h3>Dreamy</h3>
           <p>Floating imagination, softness, emotional depth and wonder.</p>
         </div>
 
-        <div class="emotion-card glass-card float-soft"
-          onclick="selectEmotion('sacred')">
+        <div class="emotion-card glass-card float-soft" onclick="selectEmotion('sacred')">
           <h3>Sacred</h3>
           <p>Silence, warmth, gold light, spiritual presence and reflection.</p>
         </div>
@@ -229,7 +220,6 @@
       </div>
 
     </div>
-
   </section>
 
 
@@ -237,9 +227,7 @@
        ENCOURAGEMENT
   =========================================== -->
   <section>
-
     <div class="container">
-
       <div class="glass-card fade-up">
 
         <p class="prompt-text serif">
@@ -255,9 +243,7 @@
         </p>
 
       </div>
-
     </div>
-
   </section>
 
 
@@ -265,14 +251,13 @@
        NAVIGATION PORTAL
   =========================================== -->
   <section>
-
     <div class="container">
 
       <h2 class="fade-up" style="text-align:center; margin-bottom: 14px;">
         Where would you like to go?
       </h2>
 
-      <p style="text-align:center; margin-bottom: 44px; opacity: 0.50; font-size: 0.88rem; letter-spacing: 0.06em;">
+      <p style="text-align:center; margin-bottom: 44px; opacity: 0.48; font-size: 0.88rem; letter-spacing: 0.06em;">
         Every door leads somewhere meaningful.
       </p>
 
@@ -299,7 +284,6 @@
       </div>
 
     </div>
-
   </section>
 
 
@@ -307,7 +291,6 @@
        FOOTER
   =========================================== -->
   <footer>
-
     <div class="container">
 
       <p class="supportive-message">
@@ -319,7 +302,6 @@
       </p>
 
     </div>
-
   </footer>
 
 
@@ -327,7 +309,9 @@
 
 
 <!-- =============================================
-     JAVASCRIPT — your original files, order kept
+     JAVASCRIPT
+     intro.js loads BEFORE main.js so the
+     intro sequence runs first
 ============================================== -->
 <script src="js/animations.js"></script>
 <script src="js/interactions.js"></script>
@@ -338,4 +322,4 @@
 
 
 </body>
-</html>
+  </html>
