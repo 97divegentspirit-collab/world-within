@@ -376,6 +376,82 @@
 
   </section>
 
+
+<!-- MISSING Q1: What is this website FOR? -->
+<div class="glass-card fade-up">
+  <p class="prompt-text">What does your world DO for others?</p>
+  <div class="emotion-grid">
+    <div class="emotion-card" onclick="setData('purpose','portfolio')">
+      <h3>Portfolio</h3><p>Show my work and skills</p>
+    </div>
+    <div class="emotion-card" onclick="setData('purpose','business')">
+      <h3>Business</h3><p>Offer a service or product</p>
+    </div>
+    <div class="emotion-card" onclick="setData('purpose','personal')">
+      <h3>Personal Brand</h3><p>Share who I am and what I believe</p>
+    </div>
+    <div class="emotion-card" onclick="setData('purpose','community')">
+      <h3>Community</h3><p>Build a space for others like me</p>
+    </div>
+  </div>
+</div>
+
+<!-- MISSING Q2: Their name / brand name -->
+<div class="glass-card fade-up">
+  <p class="prompt-text">What do you want the world to call you?</p>
+  <input type="text" placeholder="Your name, brand, or project title" 
+         oninput="setData('brandName', this.value)">
+</div>
+
+<!-- MISSING Q3: Their one-line truth -->
+<div class="glass-card fade-up">
+  <p class="prompt-text">If your world had one sentence — what would it say?</p>
+  <input type="text" placeholder="Your tagline or mission in one breath..."
+         oninput="setData('tagline', this.value)">
+</div>
+
+<!-- MISSING Q4: What they offer -->
+<div class="glass-card fade-up">
+  <p class="prompt-text">What do you offer, create, or give?</p>
+  <textarea rows="4" placeholder="Describe what you do in your own words..."
+            oninput="setData('offering', this.value)"></textarea>
+</div>
+
+<!-- MISSING Q5: 3 words that describe them -->
+<div class="glass-card fade-up">
+  <p class="prompt-text">Give me 3 words that live inside your world.</p>
+  <input type="text" placeholder="e.g. honest, electric, tender..."
+         oninput="setData('threeWords', this.value)">
+</div>
+
+<!-- MISSING Q6: Who they're for -->
+<div class="glass-card fade-up">
+  <p class="prompt-text">Who is your world meant for?</p>
+  <textarea rows="3" placeholder="Describe who you want to reach..."
+            oninput="setData('audience', this.value)"></textarea>
+</div>
+
+<!-- MISSING Q7: Color instinct -->
+<div class="glass-card fade-up">
+  <p class="prompt-text">When you close your eyes and think of YOUR color — what do you see?</p>
+  <div style="display:flex; gap:16px; flex-wrap:wrap; margin-top:20px;">
+    <div onclick="setData('colorVibe','deep-purple')" style="width:60px;height:60px;border-radius:50%;background:#2d0a4e;cursor:pointer;border:2px solid rgba(255,255,255,0.2);"></div>
+    <div onclick="setData('colorVibe','warm-gold')"   style="width:60px;height:60px;border-radius:50%;background:#c8860a;cursor:pointer;border:2px solid rgba(255,255,255,0.2);"></div>
+    <div onclick="setData('colorVibe','rose-pink')"   style="width:60px;height:60px;border-radius:50%;background:#c0346a;cursor:pointer;border:2px solid rgba(255,255,255,0.2);"></div>
+    <div onclick="setData('colorVibe','ocean-teal')"  style="width:60px;height:60px;border-radius:50%;background:#0a7c6e;cursor:pointer;border:2px solid rgba(255,255,255,0.2);"></div>
+    <div onclick="setData('colorVibe','electric-blue')style="width:60px;height:60px;border-radius:50%;background:#0a3ec8;cursor:pointer;border:2px solid rgba(255,255,255,0.2);"></div>
+    <div onclick="setData('colorVibe','forest-green')"style="width:60px;height:60px;border-radius:50%;background:#1a4d2e;cursor:pointer;border:2px solid rgba(255,255,255,0.2);"></div>
+  </div>
+</div>
+
+<!-- MISSING Q8: Social links (optional) -->
+<div class="glass-card fade-up">
+  <p class="prompt-text">Where else does your world live?</p>
+  <input type="text" placeholder="Instagram, TikTok, LinkedIn, YouTube... (optional)"
+         oninput="setData('socialLinks', this.value)">
+</div>
+
+     
   <!-- =========================================
        FOOTER
   ========================================== -->
