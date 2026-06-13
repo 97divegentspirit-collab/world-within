@@ -1,93 +1,96 @@
 /* =============================================
    intro.js — World Within
-   Bulletproof version: always shows the site
+   Screen 2 ONLY dismisses on button click.
+   Never auto-fades. Safety net only reveals
+   site — never hides screen 2 prematurely.
 ============================================== */
 (function () {
 
-  var introScreen  = document.getElementById('intro-screen');
-  var introScreen2 = document.getElementById('intro-screen2');
-  var siteContent  = document.getElementById('site-content');
-  var enterBtn     = document.getElementById('enter-experience');
-  var revealed     = false;
+  var screen1  = document.getElementById('intro-screen');
+  var screen2  = document.getElementById('intro-screen2');
+  var site     = document.getElementById('site-content');
+  var btn      = document.getElementById('enter-experience');
+  var revealed = false;
 
-  /* ── Always reveal site — called by button OR safety timer ── */
+  /* ── Reveal site (called ONLY after button click) ── */
   function revealSite() {
     if (revealed) return;
     revealed = true;
 
-    clearTimeout(safety);
-
-    /* Force inline styles — beats any CSS rule */
-    if (siteContent) {
-      siteContent.style.transition  = 'opacity 1.4s ease';
-      siteContent.style.opacity     = '1';
-      siteContent.style.visibility  = 'visible';
-      siteContent.classList.add('visible');
+    if (screen2) {
+      screen2.classList.add('fade-out');
+      screen2.classList.remove('show');
     }
 
-    /* Hide both intro screens */
-    [introScreen, introScreen2].forEach(function(el) {
-      if (!el) return;
-      el.style.transition   = 'opacity 0.8s ease';
-      el.style.opacity      = '0';
-      el.style.visibility   = 'hidden';
-      el.style.pointerEvents = 'none';
-    });
-
-    /* Restore scroll */
-    document.body.style.overflow           = '';
-    document.body.style.height             = '';
-    document.documentElement.style.overflow = '';
+    setTimeout(function () {
+      if (site) {
+        site.style.transition  = 'opacity 1.6s ease';
+        site.style.opacity     = '1';
+        site.style.visibility  = 'visible';
+        site.classList.add('visible');
+      }
+      if (screen1) {
+        screen1.style.display = 'none';
+      }
+      document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
+    }, 600);
   }
 
-  /* ── Safety net — site WILL appear no matter what ── */
-  var isMobile = window.innerWidth <= 768;
-  var safety   = setTimeout(revealSite, isMobile ? 5500 : 7500);
+  /* ── Safety net — only shows site if everything broke ──
+     Does NOT hide screen2 before button is clicked.
+     Waits a long time so normal flow runs first. ── */
+  var safetyTimer = setTimeout(function () {
+    if (!revealed) {
+      // Something broke — just show the site directly
+      revealed = true;
+      if (site) {
+        site.style.opacity    = '1';
+        site.style.visibility = 'visible';
+      }
+      if (screen1) screen1.style.display = 'none';
+      if (screen2) screen2.style.display = 'none';
+      document.body.style.overflow = '';
+    }
+  }, 30000); // 30 seconds — very long, normal users will click button
 
-  /* ── If no intro elements exist, show site immediately ── */
-  if (!introScreen && !introScreen2) {
-    revealSite();
-    return;
-  }
-
-  /* ── STAGE 1: open book ── */
+  /* ── STAGE 1: open book after short pause ── */
   setTimeout(function () {
-    if (introScreen) introScreen.classList.add('open');
+    if (screen1) screen1.classList.add('open');
   }, 500);
 
-  /* ── STAGE 2: book fades → invitation appears ── */
+  /* ── STAGE 2: book fades → screen2 appears ──
+     Screen2 then WAITS for button. No timeout. ── */
   setTimeout(function () {
-    if (introScreen)  introScreen.classList.add('fade-out');
-    if (introScreen2) introScreen2.classList.add('show');
-  }, 3600);
+    if (screen1) screen1.classList.add('fade-out');
+    setTimeout(function () {
+      if (screen2) screen2.classList.add('show');
+    }, 800);
+  }, 4500); /* book stays open longer — 4.5s */
 
-  /* ── STAGE 3: button → reveal site ── */
-  if (enterBtn) {
-    enterBtn.addEventListener('click', function () {
-      if (introScreen2) {
-        introScreen2.classList.remove('show');
-        introScreen2.classList.add('fade-out');
-      }
-      setTimeout(revealSite, 350);
-    });
-
-    /* Touch fallback for mobile tap */
-    enterBtn.addEventListener('touchend', function (e) {
-      e.preventDefault();
-      if (introScreen2) {
-        introScreen2.classList.remove('show');
-        introScreen2.classList.add('fade-out');
-      }
-      setTimeout(revealSite, 350);
-    });
+  /* ── STAGE 3: button is the ONLY gate ── */
+  function handleEnter(e) {
+    if (e) e.preventDefault();
+    clearTimeout(safetyTimer);
+    revealSite();
   }
 
-  /* ── Tab switch recovery ── */
+  if (btn) {
+    btn.addEventListener('click',    handleEnter);
+    btn.addEventListener('touchend', handleEnter);
+  }
+
+  /* ── Tab recovery — if page was hidden and restored ── */
   document.addEventListener('visibilitychange', function () {
     if (!document.hidden && !revealed) {
-      setTimeout(function () { if (!revealed) revealSite(); }, 300);
+      /* Don't auto-reveal — just make sure screen2 is showing */
+      if (screen2 && !screen2.classList.contains('show')) {
+        /* If book already faded, show screen2 */
+        if (screen1 && screen1.classList.contains('fade-out')) {
+          screen2.classList.add('show');
+        }
+      }
     }
   });
 
 })();
-       
