@@ -59,17 +59,19 @@
 }
 
 /* =========================================
-   BOOK WRAPPER — COVERS THE FULL SCREEN
+   BOOK WRAPPER — centered, proportional
+   Wide enough to feel like a real cover,
+   tall enough to frame the logo perfectly.
+   Not the whole screen — just the right size.
 ========================================= */
 
 .book-wrapper {
   position: relative;
   z-index: 2;
 
-  /* Book IS the screen */
-  width: 100vw;
-  height: 100vh;
-  height: 100dvh;
+  /* Width fills most of screen, height frames logo */
+  width: min(520px, 90vw);
+  height: min(420px, 58dvh);
 
   perspective: 2400px;
   transform-style: preserve-3d;
@@ -95,51 +97,36 @@
       #180e06 100%
     );
 
-  border: none;
+  /* Rounded on outer edges only — book cover feel */
+  border: 1px solid rgba(255, 210, 150, 0.12);
 
   box-shadow:
-    0 0 80px rgba(0,0,0,0.9),
-    inset 0 0 60px rgba(255,255,255,0.04),
-    inset 0 0 20px rgba(255,210,160,0.06);
+    0 20px 80px rgba(0,0,0,0.85),
+    0 0 40px rgba(255,180,100,0.08),
+    inset 0 0 50px rgba(255,255,255,0.04),
+    inset 0 0 15px rgba(255,210,160,0.06);
 
-  transition: transform 2.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 5.5s cubic-bezier(0.10, 0.8, 0.2, 1);
   transform-style: preserve-3d;
   backface-visibility: hidden;
   will-change: transform;
 }
 
-/* Spine detail — center line where covers meet */
-.book-cover::after {
-  content: '';
-  position: absolute;
-  top: 0; bottom: 0;
-  width: 3px;
-  background: linear-gradient(180deg,
-    transparent,
-    rgba(255,210,160,0.25) 20%,
-    rgba(255,210,160,0.40) 50%,
-    rgba(255,210,160,0.25) 80%,
-    transparent
-  );
-}
-
-/* LEFT cover — spine on right edge */
+/* LEFT cover — outer left edge rounded */
 .left-cover {
   left: 0;
-  border-radius: 0;
+  border-radius: 16px 0 0 16px;
   transform-origin: left center;
   z-index: 3;
 }
-.left-cover::after { right: 0; }
 
-/* RIGHT cover — spine on left edge */
+/* RIGHT cover — outer right edge rounded */
 .right-cover {
   right: 0;
-  border-radius: 0;
+  border-radius: 0 16px 16px 0;
   transform-origin: right center;
   z-index: 3;
 }
-.right-cover::after { left: 0; }
 
 /* =========================================
    OPEN — doors swing away from center
@@ -174,8 +161,8 @@
 
   /* Spring zoom — fast out, gentle settle */
   transition:
-    opacity  2s cubic-bezier(0.16, 1, 0.3, 1) 1.2s,
-    transform 2s cubic-bezier(0.16, 1, 0.3, 1) 1.2s;
+    opacity  2.5s cubic-bezier(0.16, 1, 0.3, 1) 2s,
+    transform 2.5s cubic-bezier(0.16, 1, 0.3, 1) 2s;
 
   gap: 16px;
   text-align: center;
@@ -402,4 +389,5 @@
       drop-shadow(0 0 140px rgba(255,255,255,0.35));
     transform: scale(1.08);
   }
-}
+   }
+   
