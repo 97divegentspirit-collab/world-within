@@ -36,9 +36,13 @@
         site.classList.add('visible');
       }
       if (screen1) screen1.style.display = 'none';
-      document.body.style.overflow = '';
-      document.documentElement.style.overflow = '';
-    }, 700);
+      
+
+    //repairs 
+ 
+      document.body.style.overflow = 'auto';
+      document.documentElement.style.overflow = 'auto';
+       }, 700);
   }
 
   /* ── Safety net — 45s, so normal users always click button ── */
@@ -48,7 +52,9 @@
       if (site) { site.style.opacity = '1'; site.style.visibility = 'visible'; }
       if (screen1) screen1.style.display = 'none';
       if (screen2) screen2.style.display = 'none';
-      document.body.style.overflow = '';
+      
+      document.body.style.overflow = 'auto';
+      document.documentElement.style.overflow = 'auto';
     }
   }, 45000);
 
