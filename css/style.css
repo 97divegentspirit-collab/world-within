@@ -1,6 +1,7 @@
 /* =========================================
    style.css — World Within
-   CAPTIVATING VERSION
+   CONSOLIDATED — single source of truth
+   Hero gap fixed. Atmosphere system added.
 ========================================= */
 
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Poppins:wght@300;400;600;700&display=swap');
@@ -18,6 +19,62 @@
   --radius-lg:    30px;
   --radius-xl:    40px;
   --max-width:    1280px;
+
+  /* ── ATMOSPHERE — default (sacred/gold-rose) ── */
+  --particle-1: rgba(247,217,139,0.90);
+  --particle-2: rgba(255,180,200,0.55);
+  --atmo-1: rgba(255,130,200,0.09);
+  --atmo-2: rgba(200,184,255,0.07);
+  --atmo-3: rgba(247,217,139,0.06);
+}
+
+/* =========================================
+   ATMOSPHERE THEMES
+   Selecting an emotion card sets
+   body[data-emotion="..."] via JS.
+   This shifts the particle colors and
+   the ambient glow — without ever
+   washing out the text.
+========================================= */
+
+body[data-emotion="calm"] {
+  --particle-1: rgba(150,205,255,0.85);
+  --particle-2: rgba(190,225,255,0.45);
+  --atmo-1: rgba(120,180,255,0.10);
+  --atmo-2: rgba(160,210,255,0.07);
+  --atmo-3: rgba(200,230,255,0.05);
+}
+
+body[data-emotion="electric"] {
+  --particle-1: rgba(190,150,255,0.90);
+  --particle-2: rgba(220,180,255,0.50);
+  --atmo-1: rgba(180,130,255,0.11);
+  --atmo-2: rgba(220,160,255,0.08);
+  --atmo-3: rgba(150,100,255,0.06);
+}
+
+body[data-emotion="dreamy"] {
+  --particle-1: rgba(255,160,205,0.88);
+  --particle-2: rgba(255,200,225,0.50);
+  --atmo-1: rgba(255,140,200,0.10);
+  --atmo-2: rgba(255,180,220,0.07);
+  --atmo-3: rgba(220,160,255,0.05);
+}
+
+body[data-emotion="sacred"] {
+  --particle-1: rgba(247,217,139,0.92);
+  --particle-2: rgba(255,200,150,0.55);
+  --atmo-1: rgba(247,217,139,0.10);
+  --atmo-2: rgba(255,200,150,0.07);
+  --atmo-3: rgba(255,180,200,0.05);
+}
+
+body[data-emotion="grounded"] {
+  --particle-1: rgba(200,190,140,0.85);
+  --particle-2: rgba(170,210,170,0.45);
+  --atmo-1: rgba(180,160,110,0.09);
+  --atmo-2: rgba(140,180,140,0.06);
+  --atmo-3: rgba(200,180,140,0.05);
 }
 
 html { scroll-behavior: smooth; }
@@ -32,15 +89,16 @@ body {
   position: relative;
 }
 
-/* ── Atmospheric glow layers ── */
+/* ── Atmospheric glow layers — shift with emotion ── */
 body::before {
   content: "";
   position: fixed; inset: 0;
   pointer-events: none; z-index: 0;
   background:
-    radial-gradient(ellipse at 50% 0%,   rgba(255,130,200,0.09), transparent 55%),
-    radial-gradient(ellipse at 15% 80%,  rgba(200,184,255,0.07), transparent 50%),
-    radial-gradient(ellipse at 85% 60%,  rgba(247,217,139,0.06), transparent 48%);
+    radial-gradient(ellipse at 50% 0%,   var(--atmo-1), transparent 55%),
+    radial-gradient(ellipse at 15% 80%,  var(--atmo-2), transparent 50%),
+    radial-gradient(ellipse at 85% 60%,  var(--atmo-3), transparent 48%);
+  transition: background 1.8s ease;
 }
 
 body::after {
@@ -52,7 +110,7 @@ body::after {
 }
 
 /* =========================================
-   PARTICLES — warm stars floating upward
+   PARTICLES — color follows atmosphere
 ========================================= */
 
 #particles-container {
@@ -61,7 +119,6 @@ body::after {
   overflow: hidden;
 }
 
-/* JS-generated particles */
 .particle {
   position: absolute;
   border-radius: 50%;
@@ -69,12 +126,13 @@ body::after {
   mix-blend-mode: screen;
   background: radial-gradient(
     circle,
-    rgba(247,217,139,0.90) 0%,
-    rgba(255,180,200,0.55) 45%,
+    var(--particle-1) 0%,
+    var(--particle-2) 45%,
     transparent 100%
   ) !important;
   opacity: 0.75 !important;
   animation: floatUp linear infinite !important;
+  transition: background 1.8s ease;
 }
 
 @keyframes floatUp {
@@ -134,20 +192,22 @@ p {
   font-size: 0.72rem;
   letter-spacing: 3px;
   text-transform: uppercase;
-  margin-bottom: 32px;
+  margin-bottom: 28px;
   backdrop-filter: blur(10px);
 }
 
 /* =========================================
-   HERO SECTION
+   HERO — single definition, no duplicates
+   Text and images grouped close together
 ========================================= */
 
 .hero {
   min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 100px 0 60px;
+  padding: 90px 0 50px;
   position: relative;
   overflow: visible;
 }
@@ -159,12 +219,12 @@ p {
   pointer-events: none;
 }
 
-/* ── TWO COLUMN: text left, images right ── */
+/* TWO COLUMN on desktop */
 .hero-layout {
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
-  gap: 60px;
+  gap: 50px;
   width: 100%;
 }
 
@@ -180,7 +240,7 @@ p {
   line-height: 1.0;
   font-weight: 700;
   letter-spacing: -1.5px;
-  margin-bottom: 28px;
+  margin-bottom: 24px;
   color: var(--text);
 }
 
@@ -191,25 +251,23 @@ p {
 
 .hero-description {
   font-size: clamp(1rem, 2vw, 1.1rem);
-  line-height: 2.1;
+  line-height: 2.0;
   color: var(--text-soft);
-  max-width: 500px;
+  max-width: 480px;
 }
 
-/* RIGHT — images stacked, logo in corner */
+/* RIGHT — image group: large image + logo TOGETHER */
 .hero-right {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
-  min-height: 400px;
 }
 
-/* LARGE IMAGE — center, glowing */
 .large-frame {
   width: 100%;
-  max-width: 520px;
+  max-width: 480px;
   position: relative;
   z-index: 2;
 }
@@ -238,15 +296,16 @@ p {
     drop-shadow(0 0 160px rgba(255,180,200,0.22));
 }
 
-/* MEDIUM LOGO — top right corner of hero-right */
+/* MEDIUM LOGO — sits right beside/on the large image,
+   NOT floating away to a separate corner of the screen */
 .medium-frame {
   position: absolute;
-  top: 0;
-  right: 0;
-  width: clamp(60px, 12vw, 100px);
+  top: -4%;
+  right: 2%;
+  width: clamp(56px, 11vw, 96px);
   height: auto;
   z-index: 5;
-  opacity: 0.92;
+  opacity: 0.94;
 
   filter:
     drop-shadow(0 0 14px rgba(247,217,139,0.55))
@@ -297,7 +356,7 @@ p {
 }
 
 /* =========================================
-   PROMPT TEXT — big italic, breathing
+   PROMPT TEXT
 ========================================= */
 
 .prompt-text {
@@ -312,7 +371,8 @@ p {
 }
 
 /* =========================================
-   EMOTION GRID — VISIBLE COLOR CHANGES
+   EMOTION GRID — visible color, persistent
+   selection via .selected class
 ========================================= */
 
 .emotion-grid {
@@ -339,7 +399,6 @@ p {
     box-shadow 0.5s ease;
 }
 
-/* Glow layer that reveals on hover */
 .emotion-card::before {
   content: '';
   position: absolute;
@@ -361,16 +420,25 @@ p {
   transition: opacity 0.6s ease;
 }
 
-.emotion-card:hover {
+.emotion-card:hover,
+.emotion-card.selected {
   transform: translateY(-12px) scale(1.02);
   border-color: var(--card-border, rgba(255,255,255,0.18));
   box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 40px var(--card-shadow, rgba(247,217,139,0.12));
 }
 
 .emotion-card:hover::before,
-.emotion-card:hover::after { opacity: 1; }
+.emotion-card:hover::after,
+.emotion-card.selected::before,
+.emotion-card.selected::after { opacity: 1; }
 
-/* CALM — cool blue */
+/* Small "selected" checkmark badge */
+.emotion-card.selected::after {
+  opacity: 1;
+}
+
+/* Per-card colors — by data-feel attribute (preferred) or nth-child fallback */
+.emotion-card[data-feel="calm"],
 .emotion-card[onclick*="calm"],
 .emotion-card:nth-child(1) {
   --card-bg:     rgba(120,180,255,0.08);
@@ -378,12 +446,15 @@ p {
   --card-border: rgba(120,180,255,0.35);
   --card-shadow: rgba(120,180,255,0.18);
 }
+.emotion-card[data-feel="calm"]:hover,
 .emotion-card[onclick*="calm"]:hover,
+.emotion-card[data-feel="calm"].selected,
+.emotion-card[onclick*="calm"].selected,
 .emotion-card:nth-child(1):hover {
   background: rgba(120,180,255,0.10);
 }
 
-/* ELECTRIC — vivid purple */
+.emotion-card[data-feel="electric"],
 .emotion-card[onclick*="electric"],
 .emotion-card:nth-child(2) {
   --card-bg:     rgba(180,130,255,0.10);
@@ -391,12 +462,15 @@ p {
   --card-border: rgba(180,130,255,0.40);
   --card-shadow: rgba(180,130,255,0.22);
 }
+.emotion-card[data-feel="electric"]:hover,
 .emotion-card[onclick*="electric"]:hover,
+.emotion-card[data-feel="electric"].selected,
+.emotion-card[onclick*="electric"].selected,
 .emotion-card:nth-child(2):hover {
   background: rgba(180,130,255,0.12);
 }
 
-/* DREAMY — warm rose */
+.emotion-card[data-feel="dreamy"],
 .emotion-card[onclick*="dreamy"],
 .emotion-card:nth-child(3) {
   --card-bg:     rgba(255,140,200,0.09);
@@ -404,12 +478,15 @@ p {
   --card-border: rgba(255,140,200,0.38);
   --card-shadow: rgba(255,140,200,0.20);
 }
+.emotion-card[data-feel="dreamy"]:hover,
 .emotion-card[onclick*="dreamy"]:hover,
+.emotion-card[data-feel="dreamy"].selected,
+.emotion-card[onclick*="dreamy"].selected,
 .emotion-card:nth-child(3):hover {
   background: rgba(255,140,200,0.11);
 }
 
-/* SACRED — gold */
+.emotion-card[data-feel="sacred"],
 .emotion-card[onclick*="sacred"],
 .emotion-card:nth-child(4) {
   --card-bg:     rgba(247,217,139,0.09);
@@ -417,9 +494,26 @@ p {
   --card-border: rgba(247,217,139,0.38);
   --card-shadow: rgba(247,217,139,0.18);
 }
+.emotion-card[data-feel="sacred"]:hover,
 .emotion-card[onclick*="sacred"]:hover,
+.emotion-card[data-feel="sacred"].selected,
+.emotion-card[onclick*="sacred"].selected,
 .emotion-card:nth-child(4):hover {
   background: rgba(247,217,139,0.11);
+}
+
+.emotion-card[data-feel="grounded"],
+.emotion-card[onclick*="grounded"] {
+  --card-bg:     rgba(180,200,140,0.09);
+  --card-glow:   rgba(180,200,140,0.22);
+  --card-border: rgba(180,200,140,0.38);
+  --card-shadow: rgba(180,200,140,0.18);
+}
+.emotion-card[data-feel="grounded"]:hover,
+.emotion-card[onclick*="grounded"]:hover,
+.emotion-card[data-feel="grounded"].selected,
+.emotion-card[onclick*="grounded"].selected {
+  background: rgba(180,200,140,0.11);
 }
 
 .emotion-card h3 {
@@ -435,6 +529,25 @@ p {
   line-height: 1.75;
   color: var(--text-dim);
   position: relative; z-index: 1;
+}
+
+/* Small selection badge */
+.emotion-card .selected-badge {
+  position: absolute;
+  top: 16px; right: 16px;
+  width: 26px; height: 26px;
+  border-radius: 50%;
+  background: var(--card-border, rgba(247,217,139,0.5));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; color: #0a0612;
+  opacity: 0;
+  transform: scale(0.5);
+  transition: all 0.4s ease;
+  z-index: 2;
+}
+.emotion-card.selected .selected-badge {
+  opacity: 1;
+  transform: scale(1);
 }
 
 /* =========================================
@@ -501,6 +614,39 @@ button:hover, .cta-button:hover {
 }
 
 /* =========================================
+   PROGRESS INDICATOR (experience.html)
+========================================= */
+
+.progress-bar {
+  position: sticky;
+  top: 16px;
+  z-index: 50;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 0 0;
+  pointer-events: none;
+}
+
+.progress-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.12);
+  transition: all 0.5s ease;
+}
+
+.progress-dot.active {
+  background: var(--gold);
+  box-shadow: 0 0 12px rgba(247,217,139,0.6);
+  width: 22px;
+  border-radius: 5px;
+}
+
+.progress-dot.done {
+  background: rgba(247,217,139,0.45);
+}
+
+/* =========================================
    FOOTER
 ========================================= */
 
@@ -550,52 +696,63 @@ footer p { font-size: 0.8rem; color: var(--text-dim); letter-spacing: 0.14em; }
 .fade-up.delay-3 { animation-delay: 0.8s; }
 
 /* =========================================
-   RESPONSIVE — MOBILE SINGLE COLUMN
+   MOBILE — single consolidated block
+   Text and images close together, no gap
 ========================================= */
 
 @media (max-width: 860px) {
 
-  section { padding: 80px 0; }
+  section { padding: 64px 0; }
 
+  /* No forced full-screen height — content
+     determines height. This removes the
+     "two pages" empty-gap feeling. */
   .hero {
-    padding: 80px 0 50px;
     min-height: auto;
+    height: auto;
+    padding: 36px 0 30px;
+    align-items: flex-start;
   }
 
   .hero-layout {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 24px;              /* tight — text and image feel together */
     text-align: center;
   }
 
   .hero-left { text-align: center; }
 
   .hero-left h1 {
-    font-size: clamp(2.8rem, 11vw, 4.5rem);
+    font-size: clamp(2.8rem, 12vw, 4.5rem);
     letter-spacing: -1px;
+    margin-bottom: 18px;
   }
 
   .hero-left h1 span { display: inline; }
 
-  .hero-description { margin: 0 auto; max-width: 100%; }
+  .hero-description {
+    margin: 0 auto;
+    max-width: 100%;
+    font-size: clamp(0.95rem, 3.4vw, 1.1rem);
+    line-height: 1.9;
+  }
 
   .hero-right {
     width: 100%;
-    min-height: 320px;
-    justify-content: center;
+    margin-top: 4px;
   }
 
   .large-frame {
-    width: min(320px, 82vw);
+    width: min(320px, 84vw);
     max-width: 100%;
     margin: 0 auto;
   }
 
-  /* Medium logo — top right corner of the image area */
+  /* Logo sits ON the image group — close together */
   .medium-frame {
-    top: -12px;
-    right: calc(50% - min(160px, 41vw) - 10px);
-    width: clamp(52px, 12vw, 72px);
+    top: -2%;
+    right: 4%;
+    width: clamp(50px, 13vw, 70px);
   }
 
   .emotion-grid {
@@ -604,11 +761,13 @@ footer p { font-size: 0.8rem; color: var(--text-dim); letter-spacing: 0.14em; }
   }
 
   .emotion-card { min-height: 160px; padding: 24px 18px; }
+
+  .progress-bar { top: 10px; }
 }
 
 @media (max-width: 480px) {
 
-  .hero-left h1 { font-size: clamp(2.4rem, 12vw, 3.5rem); }
+  .hero-left h1 { font-size: clamp(2.4rem, 13vw, 3.5rem); }
 
   .emotion-grid { grid-template-columns: 1fr; gap: 12px; }
 
@@ -616,158 +775,12 @@ footer p { font-size: 0.8rem; color: var(--text-dim); letter-spacing: 0.14em; }
 
   .prompt-text { font-size: clamp(1.5rem, 7vw, 2.2rem); }
 
-  .medium-frame {
-    top: -8px;
-    right: 4px;
-    width: 54px;
-  }
-}
-
-
-/* =========================================
-   HERO — IMMERSIVE MOBILE VERSION
-   On mobile: text centered top, image fills
-   center, logo in corner beside image
-========================================= */
-
-/* Full-screen hero feel */
-.hero {
-  min-height: 100vh;
-  min-height: 100dvh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 100px 0 60px;
-  position: relative;
-  overflow: visible;
-}
-
-/* Atmospheric glow behind hero */
-.hero::after {
-  content: "";
-  position: absolute;
-  top: 10%; left: 50%;
-  transform: translateX(-50%);
-  width: 80vw; height: 80vw;
-  max-width: 700px; max-height: 700px;
-  background: radial-gradient(circle,
-    rgba(200, 100, 255, 0.06) 0%,
-    rgba(247, 180, 220, 0.04) 40%,
-    transparent 70%
-  );
-  filter: blur(60px);
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* Desktop: two columns */
-.hero-layout {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
-  gap: 60px;
-  width: 100%;
-  position: relative;
-  z-index: 2;
-}
-
-/* Heading — massive and commanding */
-.hero-left h1 {
-  font-size: clamp(3.2rem, 7vw, 6rem);
-  line-height: 0.98;
-  font-weight: 700;
-  letter-spacing: -2px;
-  margin-bottom: 32px;
-  color: #fdf3e4;
-}
-
-.hero-left h1 span {
-  color: #ffb4c8;
-  display: block;
-  font-style: italic;
-}
-
-/* =========================================
-   MOBILE HERO — single column, immersive
-========================================= */
-
-@media (max-width: 860px) {
-
-  .hero {
-    padding: 70px 0 50px;
-    min-height: 100dvh;
-    align-items: flex-start;
-  }
-
-  .hero-layout {
-    grid-template-columns: 1fr;
-    gap: 0;
-    text-align: center;
-  }
-
-  .hero-left {
-    text-align: center;
-    padding-bottom: 20px;
-  }
-
-  .hero-left h1 {
-    font-size: clamp(3rem, 13vw, 5rem);
-    letter-spacing: -1.5px;
-    margin-bottom: 24px;
-  }
-
-  .hero-left h1 span { display: inline; }
-
-  .hero-description {
-    font-size: clamp(1rem, 3.5vw, 1.15rem);
-    margin: 0 auto;
-    max-width: 90%;
-    line-height: 2.0;
-  }
-
-  /* Image area — full width, centered */
-  .hero-right {
-    width: 100%;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 20px;
-    min-height: 280px;
-  }
-
-  /* Brain image — large and centered */
-  .large-frame {
-    width: min(340px, 86vw) !important;
-    max-width: 100% !important;
-    margin: 0 auto !important;
-    position: relative;
-    z-index: 2;
-  }
-
-  /* Logo — top right corner, overlapping image */
-  .medium-frame {
-    position: absolute !important;
-    top: -16px !important;
-    right: max(4vw, 8px) !important;
-    width: clamp(56px, 14vw, 80px) !important;
-    z-index: 5 !important;
-  }
-}
-
-@media (max-width: 480px) {
-
-  .hero-left h1 {
-    font-size: clamp(2.6rem, 14vw, 4rem);
-  }
-
-  .large-frame {
-    width: min(300px, 88vw) !important;
-  }
+  .large-frame { width: min(280px, 88vw); }
 
   .medium-frame {
-    width: clamp(48px, 13vw, 64px) !important;
-    top: -10px !important;
-    right: 6px !important;
+    width: clamp(46px, 12vw, 60px);
+    top: -2%;
+    right: 4%;
   }
-}
+                               }
+   
