@@ -137,21 +137,25 @@
         Choose the one that feels most like home right now.
       </p>
       <div class="emotion-grid">
-        <div class="emotion-card glass-card float-soft" onclick="selectEmotion('calm')">
+        <div class="emotion-card glass-card float-soft" data-feel="calm" onclick="selectEmotion('calm', this)">
           <h3>Calm</h3>
           <p>Gentle stillness, spacious thoughts, soft emotional breathing.</p>
+          <span class="selected-badge">✓</span>
         </div>
-        <div class="emotion-card glass-card float-soft" onclick="selectEmotion('electric')">
+        <div class="emotion-card glass-card float-soft" data-feel="electric" onclick="selectEmotion('electric', this)">
           <h3>Electric</h3>
           <p>Neon pulses, intensity, movement, energetic curiosity.</p>
+          <span class="selected-badge">✓</span>
         </div>
-        <div class="emotion-card glass-card float-soft" onclick="selectEmotion('dreamy')">
+        <div class="emotion-card glass-card float-soft" data-feel="dreamy" onclick="selectEmotion('dreamy', this)">
           <h3>Dreamy</h3>
           <p>Floating imagination, softness, emotional depth and wonder.</p>
+          <span class="selected-badge">✓</span>
         </div>
-        <div class="emotion-card glass-card float-soft" onclick="selectEmotion('sacred')">
+        <div class="emotion-card glass-card float-soft" data-feel="sacred" onclick="selectEmotion('sacred', this)">
           <h3>Sacred</h3>
           <p>Silence, warmth, gold light, spiritual presence and reflection.</p>
+          <span class="selected-badge">✓</span>
         </div>
       </div>
     </div>
@@ -211,6 +215,7 @@
 <script src="js/interactions.js" defer></script>
 <script src="js/form-handler.js" defer></script>
 <script src="js/particles.js" defer></script>
+<script src="js/experience-progress.js" defer></script>
 <script src="js/intro.js"></script><!-- NOT deferred — must run immediately -->
 <script src="js/main.js" defer></script>
 
