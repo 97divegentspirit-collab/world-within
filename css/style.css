@@ -783,4 +783,113 @@ footer p { font-size: 0.8rem; color: var(--text-dim); letter-spacing: 0.14em; }
     right: 4%;
   }
                                }
-   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ===== FLOATING DOOR NAV ===== */
+#world-door-nav {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 500;
+  font-family: 'Poppins', sans-serif;
+}
+
+#world-door-toggle {
+  width: 64px; height: 64px;
+  border-radius: 50%;
+  border: 1px solid rgba(247,217,139,0.35);
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  padding: 0;
+  background: radial-gradient(circle at 35% 30%, rgba(255,255,255,0.12), rgba(20,10,30,0.55));
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 0 18px rgba(247,217,139,0.35), 0 0 40px rgba(168,85,247,0.18);
+  animation: doorPulse 3.5s ease-in-out infinite;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+#world-door-toggle:hover,
+#world-door-toggle:focus-visible {
+  transform: scale(1.08);
+  box-shadow: 0 0 26px rgba(247,217,139,0.55), 0 0 60px rgba(168,85,247,0.3);
+}
+
+.world-door-icon {
+  width: 38px; height: 38px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 8px rgba(247,217,139,0.5));
+}
+
+@keyframes doorPulse {
+  0%, 100% { box-shadow: 0 0 18px rgba(247,217,139,0.35), 0 0 40px rgba(168,85,247,0.18); }
+  50%      { box-shadow: 0 0 28px rgba(247,217,139,0.6), 0 0 60px rgba(168,85,247,0.32); }
+}
+
+#world-door-panel {
+  position: absolute;
+  bottom: 78px; right: 0;
+  width: 230px;
+  display: flex; flex-direction: column; gap: 8px;
+  padding: 14px;
+  border-radius: 18px;
+  background: rgba(10,6,18,0.78);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 10px 50px rgba(0,0,0,0.6);
+  opacity: 0; visibility: hidden; pointer-events: none;
+  transform: translateY(16px) scale(0.96);
+  transform-origin: bottom right;
+  transition: opacity 0.35s ease, transform 0.35s ease, visibility 0.35s ease;
+}
+
+#world-door-nav.open #world-door-panel {
+  opacity: 1; visibility: visible; pointer-events: auto;
+  transform: translateY(0) scale(1);
+}
+
+.world-door-link {
+  display: flex; flex-direction: column;
+  padding: 10px 12px;
+  border-radius: 12px;
+  text-decoration: none;
+  color: rgba(253,243,228,0.85);
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.world-door-link:hover { background: rgba(255,255,255,0.06); transform: translateX(-4px); }
+
+.world-door-link-title { font-size: 0.95rem; font-weight: 600; letter-spacing: 0.02em; }
+
+.world-door-link-sub {
+  font-size: 0.72rem; opacity: 0.55; margin-top: 2px;
+  font-family: 'Cormorant Garamond', serif; font-style: italic;
+}
+
+.world-door-link-featured {
+  border: 1px solid rgba(247,217,139,0.4);
+  background: rgba(247,217,139,0.06);
+}
+
+.world-door-link-featured .world-door-link-title { color: #f7d98b; }
+
+@media (max-width: 480px) {
+  #world-door-nav { bottom: 18px; right: 18px; }
+  #world-door-toggle { width: 56px; height: 56px; }
+  .world-door-icon { width: 32px; height: 32px; }
+  #world-door-panel { width: 200px; bottom: 68px; }
+}
