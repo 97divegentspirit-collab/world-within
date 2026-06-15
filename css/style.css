@@ -893,3 +893,8 @@ footer p { font-size: 0.8rem; color: var(--text-dim); letter-spacing: 0.14em; }
   .world-door-icon { width: 32px; height: 32px; }
   #world-door-panel { width: 200px; bottom: 68px; }
 }
+
+
+.form-status { margin-top: 16px; font-size: 0.9rem; min-height: 1.2em; }
+.form-status.success { color: #9ee6b8; }
+.form-status.error { color: #f4a3a3; }
