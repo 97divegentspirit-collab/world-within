@@ -81,7 +81,7 @@
 
         <textarea
           rows="7"
-          placeholder="Write your reflection here...">
+          placeholder="Write your reflection he...">
         </textarea>
 
         <p class="supportive-message float-soft">
@@ -98,65 +98,39 @@
        CONTACT FORM
   ========================================== -->
 
-  <section>
+  <
 
-    <div class="container">
 
-      <div class="glass-card fade-up">
 
-        <p class="prompt-text">
-          Stay connected.
-        </p>
+     <section>
+  <div class="container">
+    <form id="contact-form" class="glass-card fade-up" onsubmit="return window.submitContactForm(event, this)">
+      <p class="prompt-text">Stay connected.</p>
+      <p style="margin-bottom: 30px;">If you would like to continue the conversation, leave your details below.</p>
 
-        <p style="margin-bottom: 30px;">
-          If you would like to continue the conversation,
-          leave your details below.
-        </p>
-
-        <!-- Name -->
-
-        <div style="margin-bottom: 20px;">
-
-          <input
-            type="text"
-            placeholder="Your name" />
-
-        </div>
-
-        <!-- Email -->
-
-        <div style="margin-bottom: 20px;">
-
-          <input
-            type="email"
-            placeholder="Your email" />
-
-        </div>
-
-        <!-- Message -->
-
-        <div style="margin-bottom: 20px;">
-
-          <textarea
-            rows="6"
-            placeholder="Anything else you would like to express?">
-          </textarea>
-
-        </div>
-
-        <!-- Submit -->
-
-        <button class="cta-button glow-pulse">
-
-          Send Reflection
-
-        </button>
-
+         
+         
+<!-- Name -->
+      <div style="margin-bottom: 20px;">
+        <input type="text" name="name" placeholder="Your name" required />
       </div>
-
-    </div>
-
-  </section>
+<!-- Email -->
+         
+      <div style="margin-bottom: 20px;">
+        <input type="email" name="email" placeholder="Your email" required />
+      </div>
+<!-- Message -->
+         
+      <div style="margin-bottom: 20px;">
+        <textarea name="message" rows="6" placeholder="Anything else you would like to express?" required></textarea>
+      </div>
+         
+<!-- Submit -->
+      <button type="submit" class="cta-button glow-pulse">Send Reflection</button>
+      <p id="contact-status" class="form-status"></p>
+    </form>
+  </div>
+     </section>
 
   <!-- =========================================
        ENCOURAGEMENT SECTION
