@@ -1,0 +1,32 @@
+<!-- ============================================
+     SHOWCASE ENTRY TEMPLATE
+     Duplicate this whole block (card + overlay)
+     for each new website. Replace [id] everywhere
+     with a unique short name, e.g. h4h, lumacafe...
+============================================ -->
+
+<!-- CARD — goes inside .showcase-grid -->
+<div class="showcase-door glass-card fade-up" onclick="openDoor('[id]')">
+  <img src="assets/images/showcase/[id]-logo.png" alt="[Name] logo" class="showcase-logo">
+  <h3>[Name]</h3>
+  <p class="showcase-tagline">[One-line tagline / what it's for]</p>
+  <span class="showcase-open-btn">Open this door</span>
+</div>
+
+<!-- OVERLAY — goes near the end of <body>, alongside other overlays -->
+<div class="door-overlay" id="overlay-[id]">
+  <div class="door-overlay-content glass-card">
+    <button class="door-close" onclick="closeDoor('[id]')" aria-label="Close">×</button>
+    <img src="assets/images/showcase/[id]-logo.png" alt="[Name] logo" class="door-overlay-logo">
+    <h2>[Name]</h2>
+    <p class="door-overlay-tagline">[Tagline]</p>
+    <div class="door-overlay-story">
+      <p>[The story behind this project — who it's for, what it means]</p>
+    </div>
+    <p class="door-overlay-desc">[Short description of what it offers]</p>
+    <div class="door-overlay-social">
+      <!-- optional: <a href="...">Instagram</a> -->
+    </div>
+    <a href="[live website URL]" target="_blank" class="cta-button glow-pulse">Visit [Name]</a>
+  </div>
+</div>
