@@ -352,18 +352,21 @@ p {
 
 
 .glass-card {
+  
   background: linear-gradient(160deg,
-    rgba(255,255,255,0.09),
-    rgba(255,255,255,0.04)
+    rgba(255,255,255,0.13),
+    rgba(255,255,255,0.07)
   );
-  border: 1px solid rgba(255,255,255,0.18);
+   border: 1px solid rgba(255,255,255,0.45);
   backdrop-filter: blur(30px);
   -webkit-backdrop-filter: blur(30px);
   border-radius: var(--radius-lg);
-  box-shadow:
-    0 8px 32px rgba(0,0,0,0.55),
-    0 1px 0 rgba(255,255,255,0.12) inset,
-    0 0 40px rgba(180,130,255,0.08) inset;
+  
+
+   box-shadow:
+    0 8px 40px rgba(0,0,0,0.70),
+    0 1px 0 rgba(255,255,255,0.30) inset,
+    0 0 0 1px rgba(255,255,255,0.10);
   padding: clamp(28px, 5vw, 50px);
   transition: transform 0.6s ease, border-color 0.6s ease, box-shadow 0.6s ease;
 }
