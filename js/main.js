@@ -18,6 +18,15 @@ document.addEventListener("DOMContentLoaded", async () => {
   // leave world in void state
 
   startExperience();
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) e.target.classList.add('in-view');
+  });
+}, { threshold: 0.2 });
+
+document.querySelectorAll('section').forEach(s => observer.observe(s));
+  
 });
 
 // Load emotional database
