@@ -729,8 +729,14 @@ section.in-view {
 
 @media (max-width: 860px) {
 
-  section { padding: 64px 0; }
+  
 
+   
+section {
+  padding: 64px 0;
+  min-height: 100vh;
+  scroll-snap-align: start;
+}
   /* No forced full-screen height — content
      determines height. This removes the
      "two pages" empty-gap feeling. */
