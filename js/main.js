@@ -26,7 +26,7 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.2 });
 
 document.querySelectorAll('section').forEach(s => observer.observe(s));
-  
+
 });
 
 // Load emotional database
