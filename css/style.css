@@ -77,7 +77,11 @@ body[data-emotion="grounded"] {
   --atmo-3: rgba(200,180,140,0.05);
 }
 
-html { scroll-behavior: smooth; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+}
 
 body {
   font-family: 'Poppins', sans-serif;
@@ -153,8 +157,17 @@ body::after {
   z-index: 2;
 }
 
-section { padding: 110px 0; position: relative; z-index: 2; }
-
+section {
+  padding: 110px 0;
+  position: relative;
+  z-index: 2;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
 /* =========================================
    TYPOGRAPHY
 ========================================= */
@@ -685,6 +698,18 @@ footer p { font-size: 0.8rem; color: var(--text-dim); letter-spacing: 0.14em; }
   50%      { transform: translateY(-7px); opacity: 1;  }
 }
 
+/* ── SECTION ENTRANCE — each world arrives ── */
+section {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 1.2s ease, transform 1.2s ease;
+}
+
+section.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 @keyframes fadeUp {
   from { opacity:0; transform:translateY(30px); }
   to   { opacity:1; transform:translateY(0);    }
@@ -694,6 +719,8 @@ footer p { font-size: 0.8rem; color: var(--text-dim); letter-spacing: 0.14em; }
 .fade-up.delay-1 { animation-delay: 0.2s; }
 .fade-up.delay-2 { animation-delay: 0.5s; }
 .fade-up.delay-3 { animation-delay: 0.8s; }
+
+
 
 /* =========================================
    MOBILE — single consolidated block
