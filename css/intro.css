@@ -58,7 +58,7 @@
   max-width: 100vw;
   
   height: min(520px, 62dvh);
-  border-radius: 30px;
+  border-radius: 0;
   overflow: visible;
   perspective: 1600px;
   transform-style: preserve-3d;
@@ -74,7 +74,7 @@
   top: 0;
   width: 50%;
   height: 100%;
-
+  border-radius: 30px;
   /* ...existing styles... */
   backface-visibility: hidden;
 
