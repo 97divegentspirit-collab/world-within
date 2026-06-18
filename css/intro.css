@@ -74,15 +74,15 @@
   top: 0;
   width: 50%;
   height: 100%;
-  border-radius: 30px;
+  border-radius: 10px;
   /* ...existing styles... */
   backface-visibility: hidden;
 
   background: linear-gradient(155deg,
     #8a6038 0%,
     #a07848 15%,
-    #7a5030 35%,
-    #542e14 62%,
+    #7a5730 35%,
+    #542914 62%,
     #301808 82%,
     #180c04 100%);
 
