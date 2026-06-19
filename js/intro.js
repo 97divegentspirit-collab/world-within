@@ -74,7 +74,7 @@
     setTimeout(function () {
       if (screen2) screen2.classList.add('show');
     }, 600);
-  }, 7300); /* Total: 10s of book experience before invitation */
+  }, 7700); /* Total: 10s of book experience before invitation */
 
   /* ── STAGE 3: Button is the ONLY gate to the site ── */
   function handleEnter(e) {
