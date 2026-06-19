@@ -413,8 +413,9 @@ p {
   min-height: 200px;
   padding: 36px 28px;
   border-radius: var(--radius-lg);
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.07);
+  
+   background: rgba(255,255,255,0.05);
+   border: 1px solid rgba(255,255,255,0.12);
   backdrop-filter: blur(16px);
   cursor: pointer;
   overflow: hidden;
@@ -484,10 +485,11 @@ p {
 .emotion-card[data-feel="electric"],
 .emotion-card[onclick*="electric"],
 .emotion-card:nth-child(2) {
-  --card-bg:     rgba(180,130,255,0.10);
-  --card-glow:   rgba(180,130,255,0.24);
-  --card-border: rgba(180,130,255,0.40);
-  --card-shadow: rgba(180,130,255,0.22);
+
+--card-bg:     rgba(100,220,255,0.08);
+--card-glow:   rgba(80,200,255,0.28);
+--card-border: rgba(100,220,255,0.45);
+--card-shadow: rgba(80,200,255,0.25);
 }
 .emotion-card[data-feel="electric"]:hover,
 .emotion-card[onclick*="electric"]:hover,
