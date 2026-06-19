@@ -102,7 +102,7 @@
 .left-cover {
   left: 0;
   transform-origin: left center;
-  z-index: 3;
+  z-index: 1;
   /* Closed = no rotation (default) */
   /* Open  = rotates away to the left */
 }
@@ -111,7 +111,7 @@
 .right-cover {
   right: 0;
   transform-origin: right center;
-  z-index: 3;
+  z-index: 1;
 }
 
 /* Spine line where covers meet */
@@ -145,7 +145,7 @@
 .book-center {
   position: absolute;
   inset: 0;
-  z-index: 2;
+  z-index: 4;
   display: flex;
   flex-direction: column;
   justify-content: center;
