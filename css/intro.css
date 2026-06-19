@@ -158,9 +158,11 @@ background: transparent;
   /* Starts tiny — zooms as book opens */
   opacity: 0;
   transform: scale(0.06);
-  transition:
-    opacity  2.8s cubic-bezier(0.16, 1, 0.3, 1) 1.8s,
-    transform 2.8s cubic-bezier(0.16, 1, 0.3, 1) 1.8s;
+  
+
+   transition:
+  opacity  2.8s cubic-bezier(0.16, 1, 0.3, 1) 0.8s,
+  transform 2.8s cubic-bezier(0.16, 1, 0.3, 1) 0.8s;
 }
 
 #intro-screen.open .book-center {
