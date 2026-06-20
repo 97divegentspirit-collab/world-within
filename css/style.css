@@ -413,9 +413,10 @@ p {
   min-height: 200px;
   padding: 36px 28px;
   border-radius: var(--radius-lg);
-  
+
+   
    background: rgba(255,255,255,0.05);
-   border: 1px solid rgba(255,255,255,0.12);
+   border: 2px solid rgba(255,255,255,0.12);
   backdrop-filter: blur(16px);
   cursor: pointer;
   overflow: hidden;
@@ -490,6 +491,7 @@ p {
 --card-glow:   rgba(80,200,255,0.28);
 --card-border: rgba(100,220,255,0.45);
 --card-shadow: rgba(80,200,255,0.25);
+
 }
 .emotion-card[data-feel="electric"]:hover,
 .emotion-card[onclick*="electric"]:hover,
