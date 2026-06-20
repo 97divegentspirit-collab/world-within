@@ -414,9 +414,8 @@ p {
   padding: 36px 28px;
   border-radius: var(--radius-lg);
 
-   
-   background: rgba(255,255,255,0.05);
-   border: 2px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.05) !important;
+  border: 1px solid rgba(255,255,255,0.18) !important;
   backdrop-filter: blur(16px);
   cursor: pointer;
   overflow: hidden;
@@ -717,16 +716,21 @@ footer p { font-size: 0.8rem; color: var(--text-dim); letter-spacing: 0.14em; }
 }
 
 /* ── SECTION ENTRANCE — each world arrives ── */
+
+
 section {
   opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 1.2s ease, transform 1.2s ease;
+  transform: translateY(28px);
+  transition: opacity 1.6s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 1.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 section.in-view {
   opacity: 1;
   transform: translateY(0);
 }
+
+
 
 @keyframes fadeUp {
   from { opacity:0; transform:translateY(30px); }
