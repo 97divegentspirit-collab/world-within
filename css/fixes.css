@@ -337,12 +337,12 @@ html, body {
    SECTION FLOAT-IN — content breathes into view
    No flicker, no visible gap between screens
 ────────────────────────────────────────────── */
-section {
+   section {
   opacity: 0 !important;
-  transform: translateY(28px) !important;
-  transition: opacity 1.6s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 1.6s cubic-bezier(0.16, 1, 0.3, 1) !important;
-}
+  transform: translateY(16px) !important;
+  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.9s cubic-bezier(0.16, 1, 0.3, 1) !important;
+   }
 
 section.in-view {
   opacity: 1 !important;
