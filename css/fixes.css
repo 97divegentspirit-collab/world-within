@@ -331,5 +331,62 @@ html, body {
   .intro-logo { width: 76px !important; }
   .intro-credit { font-size: 10px !important; letter-spacing: 1.5px !important; }
   #enter-experience { padding: 14px 32px !important; font-size: 0.88rem !important; }
-   }
+   
+
+   /* ─────────────────────────────────────────────
+   SECTION FLOAT-IN — content breathes into view
+   No flicker, no visible gap between screens
+────────────────────────────────────────────── */
+section {
+  opacity: 0 !important;
+  transform: translateY(28px) !important;
+  transition: opacity 1.6s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 1.6s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+section.in-view {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* Hero is always visible — no float-in delay */
+.hero {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* ─────────────────────────────────────────────
+   EMOTION CARDS — always show border/shape
+────────────────────────────────────────────── */
+.emotion-card {
+  background: rgba(255,255,255,0.05) !important;
+  border: 1px solid rgba(255,255,255,0.18) !important;
+}
+
+/* ─────────────────────────────────────────────
+   ELECTRIC — cyan/crackling, distinct from Dreamy
+────────────────────────────────────────────── */
+.emotion-card[data-feel="electric"] {
+  border-color: rgba(80,220,255,0.25) !important;
+}
+.emotion-card[data-feel="electric"].selected,
+.emotion-card[data-feel="electric"]:hover {
+  background: rgba(80,220,255,0.10) !important;
+  border-color: rgba(80,220,255,0.50) !important;
+  box-shadow: 0 0 40px rgba(80,220,255,0.20) !important;
+}
+
+/* ─────────────────────────────────────────────
+   DREAMY — soft pink/rose, distinct from Electric
+────────────────────────────────────────────── */
+.emotion-card[data-feel="dreamy"] {
+  border-color: rgba(255,140,200,0.25) !important;
+}
+.emotion-card[data-feel="dreamy"].selected,
+.emotion-card[data-feel="dreamy"]:hover {
+  background: rgba(255,140,200,0.10) !important;
+  border-color: rgba(255,140,200,0.50) !important;
+  box-shadow: 0 0 40px rgba(255,140,200,0.20) !important;
+}
+     }
    
