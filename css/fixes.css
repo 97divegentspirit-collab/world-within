@@ -358,7 +358,7 @@ section.in-view {
     width: 100% !important;
     max-width: 100% !important;
     height: 60dvh !important;
-  }
+  } 
 
   #intro-screen,
   #intro-screen2 {
@@ -393,4 +393,9 @@ section.in-view {
   background: rgba(247,217,139,0.10) !important;
   border-color: rgba(247,217,139,0.50) !important;
   box-shadow: 0 0 40px rgba(247,217,139,0.20) !important;
+}
+/* Emotion section — don't force full height */
+section:has(.emotion-grid) {
+  min-height: auto !important;
+  padding: 60px 0 !important;
 }
