@@ -373,3 +373,24 @@ section.in-view {
   .intro-credit { font-size: 10px !important; letter-spacing: 1.5px !important; }
   #enter-experience { padding: 14px 32px !important; font-size: 0.88rem !important; }
 }
+
+
+
+/* ─────────────────────────────────────────────
+   EMOTION GRID — 2 columns on mobile
+────────────────────────────────────────────── */
+.emotion-grid {
+  grid-template-columns: 1fr 1fr !important;
+  gap: 14px !important;
+}
+
+/* Sacred card visible border */
+.emotion-card[data-feel="sacred"] {
+  border-color: rgba(247,217,139,0.25) !important;
+}
+.emotion-card[data-feel="sacred"].selected,
+.emotion-card[data-feel="sacred"]:hover {
+  background: rgba(247,217,139,0.10) !important;
+  border-color: rgba(247,217,139,0.50) !important;
+  box-shadow: 0 0 40px rgba(247,217,139,0.20) !important;
+}
