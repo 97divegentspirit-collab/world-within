@@ -257,7 +257,8 @@ transition:
 #intro-screen2.show .intro-content2 { opacity: 1; transform: translateY(0); }
 
 .intro-title2 {
-  font-size: clamp(2.4rem, 9vw, 5.5rem);
+   
+  font-size: clamp(1.9rem, 5vw, 3.2rem);
   line-height: 1.06; margin-bottom: 28px;
   color: #fdf3e4; font-weight: 700; letter-spacing: -1px;
   text-shadow: 0 0 60px rgba(247,217,139,0.16), 0 0 120px rgba(200,130,255,0.09);
