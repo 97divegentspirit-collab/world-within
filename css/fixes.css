@@ -399,3 +399,11 @@ section:has(.emotion-grid) {
   min-height: auto !important;
   padding: 60px 0 !important;
 }
+
+/* ─────────────────────────────────────────────
+   COMPACT SECTIONS — content fills, no void
+────────────────────────────────────────────── */
+.section-compact {
+  min-height: auto !important;
+  padding: 70px 0 !important;
+}
