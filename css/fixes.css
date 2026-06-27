@@ -1,11 +1,11 @@
 /* =============================================
-   fixes.css  — World Within
+   fixes.css — World Within
    Load LAST in <head>
+   Single source of truth for all overrides.
 ============================================== */
 
 /* ─────────────────────────────────────────────
-   CRITICAL: Body background shows immediately
-   so there's never a white flash
+   CRITICAL: Background — no white flash
 ────────────────────────────────────────────── */
 html, body {
   background: #030309 !important;
@@ -14,8 +14,26 @@ html, body {
 }
 
 /* ─────────────────────────────────────────────
-   INTRO SCREEN 1 — always visible immediately,
-   perfectly centered, fits any screen
+   SECTION FLOAT-IN
+   Only opacity — no translateY to clash
+   with scroll-snap
+────────────────────────────────────────────── */
+section {
+  opacity: 0 !important;
+  transition: opacity 0.9s ease !important;
+}
+
+section.in-view {
+  opacity: 1 !important;
+}
+
+/* Hero always fully visible */
+.hero {
+  opacity: 1 !important;
+}
+
+/* ─────────────────────────────────────────────
+   INTRO SCREEN 1
 ────────────────────────────────────────────── */
 #intro-screen {
   position: fixed !important;
@@ -28,13 +46,11 @@ html, body {
   align-items: center !important;
   justify-content: center !important;
   overflow: hidden !important;
-  /* Visible by default — JS adds fade-out to hide it */
   opacity: 1 !important;
   visibility: visible !important;
   background: radial-gradient(circle at 50% 40%, #1a0f1f 0%, #050505 70%, #000 100%) !important;
 }
 
-/* Fade out state — added by JS */
 #intro-screen.fade-out {
   opacity: 0 !important;
   visibility: hidden !important;
@@ -42,28 +58,39 @@ html, body {
   transition: opacity 1.5s ease, visibility 1.5s ease !important;
 }
 
-/* Book wrapper — scales to fit screen */
+/* ─────────────────────────────────────────────
+   BOOK WRAPPER — full width on all screens
+────────────────────────────────────────────── */
 .book-wrapper {
-  width: min(460px, 84vw) !important;
-  height: min(580px, 78vh) !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  height: 60dvh !important;
   position: relative !important;
   perspective: 2000px !important;
   transform-style: preserve-3d !important;
   margin: auto !important;
 }
 
-/* Covers — full height of wrapper */
 .book-cover {
   height: 100% !important;
   width: 50.5% !important;
 }
 
+.left-cover {
+  border-radius: 18px 0 0 18px !important;
+}
+
+.right-cover {
+  border-radius: 0 18px 18px 0 !important;
+}
+
 /* ─────────────────────────────────────────────
-   INTRO SCREEN 2 — hidden until JS shows it
+   INTRO SCREEN 2
 ────────────────────────────────────────────── */
 #intro-screen2 {
   position: fixed !important;
-  top: 0 !important; left: 0 !important;
+  top: 0 !important;
+  left: 0 !important;
   width: 100% !important;
   height: 100% !important;
   z-index: 9998 !important;
@@ -72,10 +99,9 @@ html, body {
   justify-content: center !important;
   text-align: center !important;
   padding: 24px !important;
-  background: rgba(3, 3, 9, 0.96) !important;
+  background: rgba(3,3,9,0.96) !important;
   backdrop-filter: blur(8px) !important;
   -webkit-backdrop-filter: blur(8px) !important;
-  /* Hidden until .show added */
   opacity: 0 !important;
   visibility: hidden !important;
   pointer-events: none !important;
@@ -95,7 +121,6 @@ html, body {
   transition: opacity 1s ease, visibility 1s ease !important;
 }
 
-/* Content stagger animations */
 .intro-content2 {
   max-width: 660px;
   padding: 20px;
@@ -109,8 +134,8 @@ html, body {
 }
 
 .intro-title2 {
-  font-size: clamp(1.9rem, 7vw, 4.4rem);
-  line-height: 1.1;
+  font-size: clamp(1.9rem, 4vw, 2.6rem) !important;
+  line-height: 1.2;
   margin-bottom: 20px;
   color: #fdf3e4;
   opacity: 0;
@@ -126,7 +151,7 @@ html, body {
   font-size: 1rem;
   line-height: 1.9;
   margin-bottom: 38px;
-  color: rgba(253, 243, 228, 0.65);
+  color: rgba(253,243,228,0.65);
   opacity: 0;
   transform: translateY(14px);
   transition: opacity 1.1s ease 0.55s, transform 1.1s ease 0.55s;
@@ -146,7 +171,7 @@ html, body {
   font-weight: 600;
   cursor: pointer;
   letter-spacing: 0.06em;
-  box-shadow: 0 0 30px rgba(255, 79, 216, 0.45);
+  box-shadow: 0 0 30px rgba(255,79,216,0.45);
   opacity: 0;
   transform: translateY(12px);
   transition: opacity 1s ease 0.8s, transform 1s ease 0.8s, box-shadow 0.4s ease;
@@ -157,11 +182,11 @@ html, body {
 }
 #enter-experience:hover {
   transform: translateY(-4px) scale(1.03) !important;
-  box-shadow: 0 0 60px rgba(255, 79, 216, 0.8) !important;
+  box-shadow: 0 0 60px rgba(255,79,216,0.8) !important;
 }
 
 /* ─────────────────────────────────────────────
-   SITE CONTENT — hidden until intro finishes
+   SITE CONTENT
 ────────────────────────────────────────────── */
 #site-content {
   opacity: 0;
@@ -174,24 +199,23 @@ html, body {
 }
 
 /* ─────────────────────────────────────────────
-   HERO LAYOUT FIX — remove the gap
+   HERO LAYOUT
 ────────────────────────────────────────────── */
 .hero {
   padding: 80px 0 60px !important;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
+  min-height: 100vh !important;
+  display: flex !important;
+  align-items: center !important;
 }
 
 .hero-layout {
   display: grid !important;
   grid-template-columns: 1fr 1fr !important;
   align-items: center !important;
-  gap: 40px !important;         /* was 80px — too wide */
+  gap: 40px !important;
   width: 100% !important;
 }
 
-/* LEFT side — text flush, no extra margin */
 .hero-left {
   display: flex;
   flex-direction: column;
@@ -199,7 +223,6 @@ html, body {
   padding-left: 0 !important;
 }
 
-/* RIGHT side — images stacked, no overflow */
 .hero-right {
   position: relative !important;
   display: flex !important;
@@ -210,7 +233,6 @@ html, body {
   overflow: visible !important;
 }
 
-/* Large frame — contained, not overflowing */
 .large-frame {
   width: 100% !important;
   max-width: 500px !important;
@@ -225,13 +247,12 @@ html, body {
   object-fit: contain !important;
   display: block !important;
   filter:
-    drop-shadow(0 0 28px rgba(247, 217, 139, 0.22))
-    drop-shadow(0 0 65px rgba(200, 184, 255, 0.16))
-    drop-shadow(0 0 110px rgba(255, 180, 200, 0.10)) !important;
+    drop-shadow(0 0 28px rgba(247,217,139,0.22))
+    drop-shadow(0 0 65px rgba(200,184,255,0.16))
+    drop-shadow(0 0 110px rgba(255,180,200,0.10)) !important;
   animation: breatheImage 7s ease-in-out infinite !important;
 }
 
-/* Medium frame — top right corner of the RIGHT column */
 .medium-frame {
   position: absolute !important;
   top: -10px !important;
@@ -247,18 +268,18 @@ html, body {
   width: 100% !important;
   height: auto !important;
   filter:
-    drop-shadow(0 0 12px rgba(247, 217, 139, 0.5))
-    drop-shadow(0 0 28px rgba(255, 160, 220, 0.3)) !important;
+    drop-shadow(0 0 12px rgba(247,217,139,0.5))
+    drop-shadow(0 0 28px rgba(255,160,220,0.3)) !important;
   animation: floatMedium 5s ease-in-out infinite !important;
 }
 
 /* ─────────────────────────────────────────────
-   PARTICLES — warm and visible
+   PARTICLES — visible on all screens
 ────────────────────────────────────────────── */
 #particles-container {
   position: fixed !important;
   inset: 0 !important;
-  z-index: 0 !important;
+  z-index: 1 !important;
   pointer-events: none !important;
 }
 
@@ -268,7 +289,35 @@ html, body {
 }
 
 /* ─────────────────────────────────────────────
-   KEYFRAMES needed here as fallback
+   EMOTION CARDS — always visible borders
+────────────────────────────────────────────── */
+.emotion-card {
+  background: rgba(255,255,255,0.05) !important;
+  border: 1px solid rgba(255,255,255,0.18) !important;
+}
+
+.emotion-card[data-feel="electric"] {
+  border-color: rgba(80,220,255,0.25) !important;
+}
+.emotion-card[data-feel="electric"].selected,
+.emotion-card[data-feel="electric"]:hover {
+  background: rgba(80,220,255,0.10) !important;
+  border-color: rgba(80,220,255,0.50) !important;
+  box-shadow: 0 0 40px rgba(80,220,255,0.20) !important;
+}
+
+.emotion-card[data-feel="dreamy"] {
+  border-color: rgba(255,140,200,0.25) !important;
+}
+.emotion-card[data-feel="dreamy"].selected,
+.emotion-card[data-feel="dreamy"]:hover {
+  background: rgba(255,140,200,0.10) !important;
+  border-color: rgba(255,140,200,0.50) !important;
+  box-shadow: 0 0 40px rgba(255,140,200,0.20) !important;
+}
+
+/* ─────────────────────────────────────────────
+   KEYFRAMES
 ────────────────────────────────────────────── */
 @keyframes breatheImage {
   0%,100% { transform: scale(1); }
@@ -280,7 +329,7 @@ html, body {
 }
 
 /* ─────────────────────────────────────────────
-   MOBILE — single column, no gaps
+   MOBILE
 ────────────────────────────────────────────── */
 @media (max-width: 768px) {
 
@@ -292,10 +341,6 @@ html, body {
 
   .hero-left {
     align-items: center !important;
-  }
-
-  .hero-right {
-    position: relative !important;
   }
 
   .medium-frame {
@@ -310,12 +355,11 @@ html, body {
   }
 
   .book-wrapper {
-    width: 86vw !important;
-    height: 68vh !important;
-    max-height: 500px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 60dvh !important;
   }
 
-  /* iOS Safari viewport fix */
   #intro-screen,
   #intro-screen2 {
     height: -webkit-fill-available !important;
@@ -324,69 +368,8 @@ html, body {
 }
 
 @media (max-width: 400px) {
-  .book-wrapper {
-    width: 90vw !important;
-    height: 62vh !important;
-  }
+  .book-wrapper { height: 58dvh !important; }
   .intro-logo { width: 76px !important; }
   .intro-credit { font-size: 10px !important; letter-spacing: 1.5px !important; }
   #enter-experience { padding: 14px 32px !important; font-size: 0.88rem !important; }
-   
-
-   /* ─────────────────────────────────────────────
-   SECTION FLOAT-IN — content breathes into view
-   No flicker, no visible gap between screens
-────────────────────────────────────────────── */
-   section {
-  opacity: 0 !important;
-  transform: translateY(16px) !important;
-  transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.9s cubic-bezier(0.16, 1, 0.3, 1) !important;
    }
-
-section.in-view {
-  opacity: 1 !important;
-  transform: translateY(0) !important;
-}
-
-/* Hero is always visible — no float-in delay */
-.hero {
-  opacity: 1 !important;
-  transform: none !important;
-}
-
-/* ─────────────────────────────────────────────
-   EMOTION CARDS — always show border/shape
-────────────────────────────────────────────── */
-.emotion-card {
-  background: rgba(255,255,255,0.05) !important;
-  border: 1px solid rgba(255,255,255,0.18) !important;
-}
-
-/* ─────────────────────────────────────────────
-   ELECTRIC — cyan/crackling, distinct from Dreamy
-────────────────────────────────────────────── */
-.emotion-card[data-feel="electric"] {
-  border-color: rgba(80,220,255,0.25) !important;
-}
-.emotion-card[data-feel="electric"].selected,
-.emotion-card[data-feel="electric"]:hover {
-  background: rgba(80,220,255,0.10) !important;
-  border-color: rgba(80,220,255,0.50) !important;
-  box-shadow: 0 0 40px rgba(80,220,255,0.20) !important;
-}
-
-/* ─────────────────────────────────────────────
-   DREAMY — soft pink/rose, distinct from Electric
-────────────────────────────────────────────── */
-.emotion-card[data-feel="dreamy"] {
-  border-color: rgba(255,140,200,0.25) !important;
-}
-.emotion-card[data-feel="dreamy"].selected,
-.emotion-card[data-feel="dreamy"]:hover {
-  background: rgba(255,140,200,0.10) !important;
-  border-color: rgba(255,140,200,0.50) !important;
-  box-shadow: 0 0 40px rgba(255,140,200,0.20) !important;
-}
-     }
-   
