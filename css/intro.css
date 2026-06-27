@@ -156,13 +156,14 @@ background: transparent;
   gap: 12px;
 
   /* Starts tiny — zooms as book opens */
-  opacity: 0;
-  transform: scale(0.03);
   
-transition:
-  opacity  3.5s cubic-bezier(0.16, 1, 0.3, 1) 0.3s,
-  transform 3.5s cubic-bezier(0.16, 1, 0.3, 1) 0.3s;
-   
+
+   /* Emerges WITH the book opening — H4H formula */
+  opacity: 0;
+  transform: scale(0.8);
+  transition:
+    opacity 1.5s ease 1.3s,
+    transform 1.5s ease 1.3s;
 }
 
 #intro-screen.open .book-center {
