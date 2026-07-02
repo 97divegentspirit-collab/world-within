@@ -394,6 +394,10 @@ section.in-view {
   border-color: rgba(247,217,139,0.50) !important;
   box-shadow: 0 0 40px rgba(247,217,139,0.20) !important;
 }
+
+
+
+
 /* Emotion section — don't force full height */
 section:has(.emotion-grid) {
   min-height: auto !important;
@@ -402,8 +406,11 @@ section:has(.emotion-grid) {
 
 /* ─────────────────────────────────────────────
    COMPACT SECTIONS — content fills, no void
+   Applies site-wide: index.html, experience.html,
+   and any future page with a short glass-card
 ────────────────────────────────────────────── */
-.section-compact {
+.section-compact,
+section:has(.scene-card-layout) {
   min-height: auto !important;
   padding: 70px 0 !important;
 }
