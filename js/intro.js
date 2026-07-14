@@ -62,19 +62,24 @@
      No JS needed — CSS shows it closed by default.
      We just wait 1500ms so the person SEES it closed. ── */
 
-  /* ── STAGE 1: Begin opening — slow and majestic ── */
+  
+/* ── STAGE 1: Begin opening ── */
   setTimeout(function () {
     if (screen1) screen1.classList.add('open');
-  }, 1500); /* 1.5s of seeing it closed first */
+  }, 1200); /* 1.2s of seeing it closed first */
 
   /* ── STAGE 2: Book fades — screen2 invitation appears ── */
-  /* Covers take 5.5s to open fully + 1.5s delay = 7s, then logo visible ~2s more */
+  /* Covers take 2.5s to open + 1.3s delay for logo = ~4s, then hold ~1.5s */
   setTimeout(function () {
     if (screen1) screen1.classList.add('fade-out');
     setTimeout(function () {
       if (screen2) screen2.classList.add('show');
     }, 600);
-  }, 7700); /* Total: 10s of book experience before invitation */
+  }, 5500); /* Total: ~5.5s of book experience before invitation */
+
+
+
+   
 
   /* ── STAGE 3: Button is the ONLY gate to the site ── */
   function handleEnter(e) {
