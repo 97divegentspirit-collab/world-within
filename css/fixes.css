@@ -86,6 +86,13 @@ section.in-view {
   border-radius: 0 18px 18px 0 !important;
 }
 
+/* Logo reveals WITH the door opening, not after —
+   starts almost immediately, finishes before covers do */
+.book-center {
+  transition: opacity 1.2s ease, transform 1.2s ease !important;
+  transition-delay: 0.3s !important;
+}
+
 /* ─────────────────────────────────────────────
    INTRO SCREEN 2
 ────────────────────────────────────────────── */
@@ -435,4 +442,5 @@ section:has(.scene-card-layout) {
   min-height: auto !important;
   padding: 70px 0 !important;
    }
+   
    
