@@ -1,14 +1,14 @@
 /* =============================================
    intro.js — World Within
    
-   SEQUENCE:
-   0s    — Page loads, book visible CLOSED
-   1.5s  — Pause so you see the closed book
-   1.5s  — Covers begin slowly swinging open
-   ~7s   — Covers fully open, logo fully visible
-   9s    — Book fades away
-   9.8s  — Invitation screen appears
-   ∞     — Waits for button click. Never auto-fades.
+   SEQUENCE (tightened for continuity):
+   0s     — Page loads, book visible CLOSED
+   1s     — Pause so you see the closed book
+   1s     — Covers begin swinging open (2.2s duration)
+   1.3s   — Logo begins fading in (finishes ~2.5s)
+   3.2s   — Book fades away
+   3.2s   — Invitation screen begins showing (same moment — true crossfade)
+   ∞      — Waits for button click. Never auto-fades.
 ============================================== */
 (function () {
 
@@ -36,10 +36,10 @@
         site.classList.add('visible');
       }
       if (screen1) screen1.style.display = 'none';
-      
 
-    //repairs 
- 
+
+    //repairs
+
       document.body.style.overflow = 'auto';
       document.documentElement.style.overflow = 'auto';
        }, 700);
@@ -52,7 +52,7 @@
       if (site) { site.style.opacity = '1'; site.style.visibility = 'visible'; }
       if (screen1) screen1.style.display = 'none';
       if (screen2) screen2.style.display = 'none';
-      
+
       document.body.style.overflow = 'auto';
       document.documentElement.style.overflow = 'auto';
     }
@@ -60,22 +60,23 @@
 
   /* ── STAGE 0: Book is visible CLOSED on load ──
      No JS needed — CSS shows it closed by default.
-     We just wait 1500ms so the person SEES it closed. ── */
+     We just wait 1000ms so the person SEES it closed. ── */
 
-  
-/* ── STAGE 1: Begin opening ── */
+
+/* ── STAGE 1: Begin opening — covers AND logo move together ── */
   setTimeout(function () {
     if (screen1) screen1.classList.add('open');
-  }, 1200); /* 1.2s of seeing it closed first */
+  }, 1000); /* 1s of seeing it closed first */
 
-  /* ── STAGE 2: Book fades — screen2 invitation appears ── */
-  /* Covers take 2.5s to open + 1.3s delay for logo = ~4s, then hold ~1.5s */
+  /* ── STAGE 2: Book fades — screen2 invitation appears AT THE SAME TIME ──
+     Covers finish opening ~3.2s in, logo finishes ~2.5s in —
+     so for over a second, book and logo are visible together.
+     Screen2 starts its own fade-in the instant screen1 starts
+     fading out, so they crossfade as one motion, not two. ── */
   setTimeout(function () {
     if (screen1) screen1.classList.add('fade-out');
-    setTimeout(function () {
-      if (screen2) screen2.classList.add('show');
-    }, 600);
-  }, 5500); /* Total: ~5.5s of book experience before invitation */
+    if (screen2) screen2.classList.add('show');
+  }, 3200); /* Total: ~3.2s of book experience before crossfade begins */
 
 
 
