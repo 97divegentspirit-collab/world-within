@@ -253,10 +253,11 @@ section.in-view {
   animation: breatheImage 7s ease-in-out infinite !important;
 }
 
+/* Hand logo — LEFT side of hero image */
 .medium-frame {
   position: absolute !important;
   top: -10px !important;
-  right: -10px !important;
+  left: -10px !important;
   width: 80px !important;
   height: auto !important;
   z-index: 5 !important;
@@ -345,7 +346,7 @@ section.in-view {
 
   .medium-frame {
     top: -8px !important;
-    right: 0px !important;
+    left: 0px !important;
     width: 60px !important;
   }
 
@@ -413,4 +414,4 @@ section:has(.emotion-grid) {
 section:has(.scene-card-layout) {
   min-height: auto !important;
   padding: 70px 0 !important;
-}
+   }
