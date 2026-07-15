@@ -74,6 +74,8 @@ section.in-view {
 .book-cover {
   height: 100% !important;
   width: 50.5% !important;
+  backface-visibility: hidden !important;
+  -webkit-backface-visibility: hidden !important;
 }
 
 .left-cover {
@@ -290,42 +292,43 @@ section.in-view {
 }
 
 /* ─────────────────────────────────────────────
-   EMOTION CARDS — always visible borders
+   CARDS — visible dashed border before selection
 ────────────────────────────────────────────── */
 .emotion-card {
   background: rgba(255,255,255,0.05) !important;
-  border: 1px solid rgba(255,255,255,0.18) !important;
+  border: 1px dashed rgba(255,255,255,0.35) !important;
+  box-shadow: 0 0 25px rgba(255,255,255,0.05) !important;
 }
 
 .emotion-card[data-feel="electric"] {
-  border-color: rgba(80,220,255,0.25) !important;
+  border-color: rgba(80,220,255,0.35) !important;
 }
 .emotion-card[data-feel="electric"].selected,
 .emotion-card[data-feel="electric"]:hover {
   background: rgba(80,220,255,0.10) !important;
+  border-style: solid !important;
   border-color: rgba(80,220,255,0.50) !important;
   box-shadow: 0 0 40px rgba(80,220,255,0.20) !important;
 }
 
 .emotion-card[data-feel="dreamy"] {
-  border-color: rgba(255,140,200,0.25) !important;
+  border-color: rgba(255,140,200,0.35) !important;
 }
 .emotion-card[data-feel="dreamy"].selected,
 .emotion-card[data-feel="dreamy"]:hover {
   background: rgba(255,140,200,0.10) !important;
+  border-style: solid !important;
   border-color: rgba(255,140,200,0.50) !important;
   box-shadow: 0 0 40px rgba(255,140,200,0.20) !important;
 }
 
-
-
-
 .glass-card {
-  background: rgba(255,255,255,0.06) !important;
-  border: 1px solid rgba(255,255,255,0.16) !important;
+  background: rgba(255,255,255,0.05) !important;
+  border: 1px dashed rgba(255,255,255,0.35) !important;
   border-radius: 20px !important;
-  box-shadow: 0 0 30px rgba(0,0,0,0.25) !important;
+  box-shadow: 0 0 25px rgba(255,255,255,0.05) !important;
 }
+
 /* ─────────────────────────────────────────────
    KEYFRAMES
 ────────────────────────────────────────────── */
@@ -394,13 +397,21 @@ section.in-view {
   gap: 14px !important;
 }
 
+/* Nav section (Identity Reflection / Journey Engine / Final Connection)
+   uses <a> cards, not <div> cards — force single column so the
+   odd 3rd card doesn't feel orphaned */
+.emotion-grid:has(a.emotion-card) {
+  grid-template-columns: 1fr !important;
+}
+
 /* Sacred card visible border */
 .emotion-card[data-feel="sacred"] {
-  border-color: rgba(247,217,139,0.25) !important;
+  border-color: rgba(247,217,139,0.35) !important;
 }
 .emotion-card[data-feel="sacred"].selected,
 .emotion-card[data-feel="sacred"]:hover {
   background: rgba(247,217,139,0.10) !important;
+  border-style: solid !important;
   border-color: rgba(247,217,139,0.50) !important;
   box-shadow: 0 0 40px rgba(247,217,139,0.20) !important;
 }
@@ -424,3 +435,4 @@ section:has(.scene-card-layout) {
   min-height: auto !important;
   padding: 70px 0 !important;
    }
+   
