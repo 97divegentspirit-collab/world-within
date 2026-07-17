@@ -3,12 +3,12 @@
    
    SEQUENCE (tightened for continuity, with hold):
    0s     — Page loads, book visible CLOSED
-   1s     — Pause so you see the closed book
-   1s     — Covers begin swinging open (2.2s duration)
-   1.3s   — Logo begins fading in (finishes ~2.5s)
-   3.2s   — Door fully open, logo fully visible — HOLD begins
-   5.2s   — Book fades away
-   5.2s   — Invitation screen begins showing (same moment — true crossfade)
+   0.5s   — Pause so you see the closed book
+   0.5s   — Covers begin swinging open (2s duration, eased)
+   0.8s   — Logo begins fading in (finishes ~2s)
+   2.5s   — Door fully open, logo fully visible — HOLD begins
+   4.5s   — Book fades away
+   4.5s   — Invitation screen begins showing (same moment — true crossfade)
    ∞      — Waits for button click. Never auto-fades.
 ============================================== */
 (function () {
@@ -67,7 +67,7 @@
 /* ── STAGE 1: Begin opening — covers AND logo move together ── */
   setTimeout(function () {
     if (screen1) screen1.classList.add('open');
-  }, 1000); /* 1s of seeing it closed first */
+  }, 500); /* 0.5s of seeing it closed first */
 
   /* ── STAGE 2: HOLD — door stays open, logo fully visible ──
      Covers finish opening ~3.2s in, logo finishes ~2.5s in.
@@ -83,7 +83,7 @@
   setTimeout(function () {
     if (screen1) screen1.classList.add('fade-out');
     if (screen2) screen2.classList.add('show');
-  }, 5200); /* 3.2s to reach fully-open-with-logo + 2s hold */
+  }, 4500); /* 2.5s to reach fully-open-with-logo + 2s hold */
 
 
 
@@ -113,3 +113,4 @@
   });
 
 })();
+     
