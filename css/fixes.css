@@ -1,0 +1,542 @@
+/* =============================================
+   fixes.css — World Within
+   Load LAST in <head>
+   Single source of truth for all overrides.
+============================================== */
+
+/* ─────────────────────────────────────────────
+   CRITICAL: Background — no white flash
+────────────────────────────────────────────── */
+html, body {
+  background: #030309 !important;
+  margin: 0;
+  padding: 0;
+}
+
+/* ─────────────────────────────────────────────
+   SECTION FLOAT-IN
+   Only opacity — no translateY to clash
+   with scroll-snap
+────────────────────────────────────────────── */
+section {
+  opacity: 0 !important;
+  transform: translateY(24px) !important;
+  transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1) !important, transform 1s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+section.in-view {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* Individual elements marked .fade-up float in with the
+   same gentle motion, slightly offset from their parent
+   section so they don't all land in the same instant */
+.fade-up {
+  opacity: 0 !important;
+  transform: translateY(28px) !important;
+  transition: opacity 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.1s !important, transform 1.1s cubic-bezier(0.16, 1, 0.3, 1) 0.1s !important;
+}
+
+section.in-view .fade-up,
+.fade-up.in-view {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* Hero always fully visible */
+.hero {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* ─────────────────────────────────────────────
+   INTRO SCREEN 1
+────────────────────────────────────────────── */
+#intro-screen {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  z-index: 9999 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  overflow: hidden !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  background: radial-gradient(circle at 50% 40%, #1a0f1f 0%, #050505 70%, #000 100%) !important;
+}
+
+#intro-screen.fade-out {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  transition: opacity 1.5s ease, visibility 1.5s ease !important;
+}
+
+/* ─────────────────────────────────────────────
+   BOOK WRAPPER — full width on all screens
+────────────────────────────────────────────── */
+.book-wrapper {
+  width: 100% !important;
+  max-width: 100% !important;
+  height: 60dvh !important;
+  position: relative !important;
+  perspective: 2000px !important;
+  transform-style: preserve-3d !important;
+  margin: auto !important;
+}
+
+.book-cover {
+  height: 100% !important;
+  width: 50.5% !important;
+  backface-visibility: hidden !important;
+  -webkit-backface-visibility: hidden !important;
+  transition: transform 2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.left-cover {
+  border-radius: 18px 0 0 18px !important;
+}
+
+.right-cover {
+  border-radius: 0 18px 18px 0 !important;
+}
+
+/* Logo reveals WITH the door opening, not after —
+   starts almost immediately, finishes before covers do */
+.book-center {
+  transition: opacity 1.2s ease, transform 1.2s ease !important;
+  transition-delay: 0.3s !important;
+}
+
+/* Logo sized to breathe inside the open door — not touching the frame edges */
+.intro-logo {
+  width: clamp(200px, 62vw, 340px) !important;
+}
+
+/* Desktop — cap how wide the book can stretch, and let the
+   logo grow within that cap, so it doesn't look small and
+   lost in a much wider open door */
+@media (min-width: 900px) {
+  .book-wrapper {
+    max-width: 640px !important;
+  }
+  .intro-logo {
+    width: clamp(300px, 32vw, 420px) !important;
+  }
+}
+
+/* CRITICAL: covers must stop BEFORE 90deg — past that point,
+   backface-visibility:hidden makes them vanish for the rest
+   of the rotation, so the door can never look "open" with the
+   logo visible at the same time. 75deg keeps both cover panels
+   on their visible front face the whole way, flanking the logo
+   like a real open book instead of disappearing. They now only
+   disappear when the whole screen fades out together with the
+   logo — never before. */
+#intro-screen.open .left-cover  { transform: rotateY(-85deg) !important; }
+#intro-screen.open .right-cover { transform: rotateY(85deg)  !important; }
+
+/* ─────────────────────────────────────────────
+   INTRO SCREEN 2
+────────────────────────────────────────────── */
+#intro-screen2 {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  z-index: 9998 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  padding: 24px !important;
+  background: rgba(3,3,9,0.96) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  transition: opacity 1.8s ease, visibility 1.8s ease !important;
+}
+
+#intro-screen2.show {
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+}
+
+#intro-screen2.fade-out {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  transition: opacity 1s ease, visibility 1s ease !important;
+}
+
+.intro-content2 {
+  max-width: 660px;
+  padding: 20px;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 1.3s ease 0.2s, transform 1.3s ease 0.2s;
+}
+#intro-screen2.show .intro-content2 {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.intro-title2 {
+  font-size: clamp(1.9rem, 4vw, 2.6rem) !important;
+  line-height: 1.2;
+  margin-bottom: 20px;
+  color: #fdf3e4;
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 1.1s ease 0.3s, transform 1.1s ease 0.3s;
+}
+#intro-screen2.show .intro-title2 {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.intro-text2 {
+  font-size: 1rem;
+  line-height: 1.9;
+  margin-bottom: 38px;
+  color: rgba(253,243,228,0.65);
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 1.1s ease 0.55s, transform 1.1s ease 0.55s;
+}
+#intro-screen2.show .intro-text2 {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#enter-experience {
+  padding: 17px 42px;
+  border: none;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #ff4fd8, #7b5cff);
+  color: white;
+  font-size: 0.97rem;
+  font-weight: 600;
+  cursor: pointer;
+  letter-spacing: 0.06em;
+  box-shadow: 0 0 30px rgba(255,79,216,0.45);
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 1s ease 0.8s, transform 1s ease 0.8s, box-shadow 0.4s ease;
+}
+#intro-screen2.show #enter-experience {
+  opacity: 1;
+  transform: translateY(0);
+}
+#enter-experience:hover {
+  transform: translateY(-4px) scale(1.03) !important;
+  box-shadow: 0 0 60px rgba(255,79,216,0.8) !important;
+}
+
+/* ─────────────────────────────────────────────
+   SITE CONTENT
+────────────────────────────────────────────── */
+#site-content {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 1.4s ease, visibility 1.4s ease;
+}
+#site-content.visible {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+/* Hero text — floats in with the reveal, not just fades in place */
+.hero-tag,
+.hero-left h1,
+.hero-description {
+  opacity: 0 !important;
+  transform: translateY(26px) !important;
+  transition: opacity 1s ease, transform 1s ease !important;
+}
+#site-content.visible .hero-tag {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+  transition-delay: 0.1s !important;
+}
+#site-content.visible .hero-left h1 {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+  transition-delay: 0.3s !important;
+}
+#site-content.visible .hero-description {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+  transition-delay: 0.55s !important;
+}
+
+/* ─────────────────────────────────────────────
+   HERO LAYOUT
+────────────────────────────────────────────── */
+.hero {
+  padding: 80px 0 60px !important;
+  min-height: 100vh !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+.hero-layout {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  align-items: center !important;
+  gap: 40px !important;
+  width: 100% !important;
+}
+
+.hero-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 0 !important;
+}
+
+.hero-right {
+  position: relative !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  overflow: visible !important;
+}
+
+.large-frame {
+  width: 100% !important;
+  max-width: 500px !important;
+  position: relative !important;
+  margin: 0 auto !important;
+}
+
+.large-frame img,
+.main-hero-image {
+  width: 100% !important;
+  height: auto !important;
+  object-fit: contain !important;
+  display: block !important;
+  filter:
+    drop-shadow(0 0 28px rgba(247,217,139,0.22))
+    drop-shadow(0 0 65px rgba(200,184,255,0.16))
+    drop-shadow(0 0 110px rgba(255,180,200,0.10)) !important;
+  animation: breatheImage 7s ease-in-out infinite !important;
+}
+
+/* Hand logo — LEFT side of hero image */
+.medium-frame {
+  position: absolute !important;
+  top: -10px !important;
+  left: -10px !important;
+  width: 80px !important;
+  height: auto !important;
+  z-index: 5 !important;
+  opacity: 0.92 !important;
+}
+
+.medium-frame img,
+.floating-symbol {
+  width: 100% !important;
+  height: auto !important;
+  filter:
+    drop-shadow(0 0 12px rgba(247,217,139,0.5))
+    drop-shadow(0 0 28px rgba(255,160,220,0.3)) !important;
+  animation: floatMedium 5s ease-in-out infinite !important;
+}
+
+/* "Seen Through Visuals" label — styled to match the
+   hero-tag pill on the left, so both sides feel unified */
+.hero-right h3 {
+  font-size: 0.72rem !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+  font-weight: 500 !important;
+  font-family: 'Poppins', sans-serif !important;
+  color: rgba(200,184,255,0.85) !important;
+  background: rgba(255,255,255,0.05) !important;
+  border: 1px solid rgba(200,184,255,0.28) !important;
+  padding: 6px 18px !important;
+  border-radius: 999px !important;
+  display: inline-block !important;
+  margin: 0 0 18px 0 !important;
+  text-align: center !important;
+}
+
+/* Desktop hero — stop forcing full-screen height so it
+   sizes to its actual content instead of leaving dead
+   space above/below like the mobile-only tall layout did */
+@media (min-width: 900px) {
+  .hero {
+    min-height: auto !important;
+    padding: 140px 0 100px !important;
+  }
+}
+/* ─────────────────────────────────────────────
+   PARTICLES — visible on all screens
+────────────────────────────────────────────── */
+#particles-container {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 1 !important;
+  pointer-events: none !important;
+}
+
+.particle {
+  mix-blend-mode: screen !important;
+  opacity: 0.65 !important;
+}
+
+/* ─────────────────────────────────────────────
+   CARDS — visible dashed border before selection
+────────────────────────────────────────────── */
+.emotion-card {
+  background: rgba(255,255,255,0.05) !important;
+  border: 1px dashed rgba(255,255,255,0.35) !important;
+  box-shadow: 0 0 25px rgba(255,255,255,0.05) !important;
+}
+
+.emotion-card[data-feel="electric"] {
+  border-color: rgba(80,220,255,0.35) !important;
+}
+.emotion-card[data-feel="electric"].selected,
+.emotion-card[data-feel="electric"]:hover {
+  background: rgba(80,220,255,0.10) !important;
+  border-style: solid !important;
+  border-color: rgba(80,220,255,0.50) !important;
+  box-shadow: 0 0 40px rgba(80,220,255,0.20) !important;
+}
+
+.emotion-card[data-feel="dreamy"] {
+  border-color: rgba(255,140,200,0.35) !important;
+}
+.emotion-card[data-feel="dreamy"].selected,
+.emotion-card[data-feel="dreamy"]:hover {
+  background: rgba(255,140,200,0.10) !important;
+  border-style: solid !important;
+  border-color: rgba(255,140,200,0.50) !important;
+  box-shadow: 0 0 40px rgba(255,140,200,0.20) !important;
+}
+
+.glass-card {
+  background: rgba(255,255,255,0.05) !important;
+  border: 1px dashed rgba(255,255,255,0.35) !important;
+  border-radius: 20px !important;
+  box-shadow: 0 0 25px rgba(255,255,255,0.05) !important;
+}
+
+/* ─────────────────────────────────────────────
+   KEYFRAMES
+────────────────────────────────────────────── */
+@keyframes breatheImage {
+  0%,100% { transform: scale(1); }
+  50%      { transform: scale(1.03); }
+}
+@keyframes floatMedium {
+  0%,100% { transform: translateY(0px); }
+  50%      { transform: translateY(-8px); }
+}
+
+/* ─────────────────────────────────────────────
+   MOBILE
+────────────────────────────────────────────── */
+@media (max-width: 768px) {
+
+  .hero-layout {
+    grid-template-columns: 1fr !important;
+    gap: 30px !important;
+    text-align: center !important;
+  }
+
+  .hero-left {
+    align-items: center !important;
+  }
+
+  .medium-frame {
+    top: -8px !important;
+    left: 0px !important;
+    width: 60px !important;
+  }
+
+  .large-frame {
+    width: 88vw !important;
+    max-width: 360px !important;
+  }
+
+  .book-wrapper {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 60dvh !important;
+  } 
+
+  #intro-screen,
+  #intro-screen2 {
+    height: -webkit-fill-available !important;
+    min-height: -webkit-fill-available !important;
+  }
+}
+
+@media (max-width: 400px) {
+  .book-wrapper { height: 58dvh !important; }
+  .intro-logo { width: 120px !important; }
+  .intro-credit { font-size: 10px !important; letter-spacing: 1.5px !important; }
+  #enter-experience { padding: 14px 32px !important; font-size: 0.88rem !important; }
+}
+
+
+
+/* ─────────────────────────────────────────────
+   EMOTION GRID — 2 columns on mobile
+────────────────────────────────────────────── */
+.emotion-grid {
+  grid-template-columns: 1fr 1fr !important;
+  gap: 14px !important;
+}
+
+/* Nav section (Identity Reflection / Journey Engine / Final Connection)
+   uses <a> cards, not <div> cards — force single column so the
+   odd 3rd card doesn't feel orphaned */
+.emotion-grid:has(a.emotion-card) {
+  grid-template-columns: 1fr !important;
+}
+
+/* Sacred card visible border */
+.emotion-card[data-feel="sacred"] {
+  border-color: rgba(247,217,139,0.35) !important;
+}
+.emotion-card[data-feel="sacred"].selected,
+.emotion-card[data-feel="sacred"]:hover {
+  background: rgba(247,217,139,0.10) !important;
+  border-style: solid !important;
+  border-color: rgba(247,217,139,0.50) !important;
+  box-shadow: 0 0 40px rgba(247,217,139,0.20) !important;
+}
+
+
+
+
+/* Emotion section — don't force full height */
+section:has(.emotion-grid) {
+  min-height: auto !important;
+  padding: 60px 0 !important;
+}
+
+/* ─────────────────────────────────────────────
+   COMPACT SECTIONS — content fills, no void
+   Applies site-wide: index.html, experience.html,
+   and any future page with a short glass-card
+────────────────────────────────────────────── */
+.section-compact,
+section:has(.scene-card-layout) {
+  min-height: auto !important;
+  padding: 70px 0 !important;
+}
