@@ -1,4 +1,3 @@
-console.log("World Within is alive.");
 // main.js
 
 let currentMood = "calm";
@@ -9,29 +8,41 @@ function setEmotion(emotion) {
 }
 
 
-
+//main.js 
 
 document.addEventListener("DOMContentLoaded", async () => {
-  await loadEmotions();
+  // Load emotions data, but don't let a failure here block
+  // anything else on the page — this used to be a single
+  // unguarded `await`, so if this fetch failed (wrong path,
+  // missing file, etc.) it silently stopped every line after
+  // it from ever running, including the scroll-reveal setup
+  // below. That's why sections could stay invisible forever
+  // on pages where this file failed to load.
+  try {
+    await loadEmotions();
+  } catch (err) {
+    console.warn("Could not load emotions.json — continuing without it.", err);
+  }
 
   // DO NOT set mood immediately
   // leave world in void state
 
   startExperience();
 
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) e.target.classList.add('in-view');
-  });
-}, { threshold: 0.2 });
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) e.target.classList.add('in-view');
+    });
+  }, { threshold: 0.2 });
 
-document.querySelectorAll('section').forEach(s => observer.observe(s));
+  document.querySelectorAll('section').forEach(s => observer.observe(s));
 
 });
 
 // Load emotional database
 async function loadEmotions() {
   const res = await fetch("data/emotions.json");
+  if (!res.ok) throw new Error("emotions.json fetch failed: " + res.status);
   emotionsData = await res.json();
   console.log("Emotions loaded:", emotionsData);
 }
