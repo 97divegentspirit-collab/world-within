@@ -1,0 +1,657 @@
+<!-- =========================================
+     experience.html
+     GUIDED EMOTIONAL JOURNEY ENGINE
+     14 scenes with progress indicator
+========================================= -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Journey Experience</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/themes.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  <link rel="stylesheet" href="css/fixes.css" />
+</head>
+
+<body class="theme-calm">
+
+  <div id="particles-container"></div>
+
+  <!-- ===================================
+       PROGRESS INDICATOR
+       14 dots — one per scene
+  ==================================== -->
+  <div class="progress-bar" id="progressBar">
+    <span class="progress-dot" data-scene="1"></span>
+    <span class="progress-dot" data-scene="2"></span>
+    <span class="progress-dot" data-scene="3"></span>
+    <span class="progress-dot" data-scene="4"></span>
+    <span class="progress-dot" data-scene="5"></span>
+    <span class="progress-dot" data-scene="6"></span>
+    <span class="progress-dot" data-scene="7"></span>
+    <span class="progress-dot" data-scene="8"></span>
+    <span class="progress-dot" data-scene="9"></span>
+    <span class="progress-dot" data-scene="10"></span>
+    <span class="progress-dot" data-scene="11"></span>
+    <span class="progress-dot" data-scene="12"></span>
+    <span class="progress-dot" data-scene="13"></span>
+    <span class="progress-dot" data-scene="14"></span>
+  </div>
+
+  <!-- ===================================
+       HERO
+  ==================================== -->
+  <section class="hero" style="min-height: 60vh;">
+    <div class="container">
+      <div class="hero-content fade-up" style="text-align:center;">
+        <p class="supportive-message float-soft">
+          There is nothing to prove here.
+        </p>
+        <h1 class="hero-title breathe">
+          Let us walk through your world together.
+        </h1>
+        <p class="hero-subtitle" style="margin: 0 auto;">
+          Move slowly.
+          Choose what resonates.
+          Express what feels true.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================
+       SCENE 1 — ATMOSPHERE
+      STATUS: FULL — no image needed
+  ==================================== -->
+  <section class="scene" data-scene="1">
+    <div class="container">
+      <div class="glass-card fade-up">
+        <p class="prompt-text">
+          If someone entered your world for the first time...
+          what would they feel first?
+        </p>
+        <div class="emotion-grid">
+          <div class="emotion-card" data-feel="calm" onclick="selectEmotion('calm', this)">
+            <h3>Calm</h3>
+            <p>Spacious stillness, emotional softness, gentle clarity.</p>
+            <span class="selected-badge">✓</span>
+          </div>
+          <div class="emotion-card" data-feel="electric" onclick="selectEmotion('electric', this)">
+            <h3>Electric</h3>
+            <p>Intensity, movement, curiosity and energy.</p>
+            <span class="selected-badge">✓</span>
+          </div>
+          <div class="emotion-card" data-feel="dreamy" onclick="selectEmotion('dreamy', this)">
+            <h3>Dreamy</h3>
+            <p>Floating imagination, wonder, emotional depth.</p>
+            <span class="selected-badge">✓</span>
+          </div>
+          <div class="emotion-card" data-feel="grounded" onclick="selectEmotion('grounded', this)">
+            <h3>Grounded</h3>
+            <p>Stability, warmth, presence and earthiness.</p>
+            <span class="selected-badge">✓</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================
+       SCENE 2 — SYMBOLS
+      STATUS: FULL — no image needed
+  ==================================== -->
+  <section class="scene" data-scene="2">
+    <div class="container">
+      <div class="glass-card fade-up">
+        <p class="prompt-text">
+          Which symbols feel most connected to your inner world?
+        </p>
+        <div class="emotion-grid">
+          <div class="emotion-card" onclick="toggleSymbol('moon', this)">
+            <h3>🌙 Moon</h3>
+            <p>Reflection, mystery, emotional depth.</p>
+            <span class="selected-badge">✓</span>
+          </div>
+          <div class="emotion-card" onclick="toggleSymbol('ocean', this)">
+            <h3>🌊 Ocean</h3>
+            <p>Fluidity, emotion, subconscious movement.</p>
+            <span class="selected-badge">✓</span>
+          </div>
+          <div class="emotion-card" onclick="toggleSymbol('forest', this)">
+            <h3>🌿 Forest</h3>
+            <p>Growth, grounding, quiet life.</p>
+            <span class="selected-badge">✓</span>
+          </div>
+          <div class="emotion-card" onclick="toggleSymbol('neon', this)">
+            <h3>✨ Neon Light</h3>
+            <p>Energy, futuristic emotion, expression.</p>
+            <span class="selected-badge">✓</span>
+          </div>
+          <div class="emotion-card" onclick="toggleSymbol('butterfly', this)">
+            <h3>🦋 Butterfly</h3>
+            <p>Transformation, unfolding identity.</p>
+            <span class="selected-badge">✓</span>
+          </div>
+          <div class="emotion-card" onclick="toggleSymbol('clouds', this)">
+            <h3>☁️ Clouds</h3>
+            <p>Dreaming, softness, drifting thought.</p>
+            <span class="selected-badge">✓</span>
+          </div>
+        </div>
+        <p class="supportive-message float-soft" style="margin-top:20px;">
+          You can choose more than one.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================
+       SCENE 3 — VISUAL UPLOAD
+     STATUS: PLACEHOLDER ADDED — swap image only
+     File: assets/images/experience/scene3-upload.png
+  ==================================== -->
+  <section class="scene" data-scene="3">
+    <div class="container">
+      <div class="glass-card fade-up">
+        <div class="scene-card-layout">
+          <div class="scene-card-text">
+            <p class="prompt-text">
+              Share images, textures, or visual fragments
+              that feel emotionally meaningful to you.
+            </p>
+            <div class="symbol-upload">
+              <input type="file" multiple accept="image/*" onchange="handleFileUpload(this)" />
+              <p class="supportive-message">
+                Upload symbols, sketches, colors,
+                environments or inspirations.
+              </p>
+            </div>
+          </div>
+          <div class="scene-visual">
+            <img src="assets/4.png" alt="" class="scene-visual-img" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================
+       SCENE 4 — PURPOSE
+      STATUS: FULL — no image needed
+  ==================================== -->
+  <section class="scene" data-scene="4">
+    <div class="container">
+      <div class="glass-card fade-up">
+        <p class="prompt-text">What does your world DO for others?</p>
+        <div class="emotion-grid">
+          <div class="emotion-card" onclick="selectPurpose('portfolio', this)">
+            <h3>Portfolio</h3>
+            <p>Show my work and skills</p>
+            <span class="selected-badge">✓</span>
+          </div>
+          <div class="emotion-card" onclick="selectPurpose('business', this)">
+            <h3>Business</h3>
+            <p>Offer a service or product</p>
+            <span class="selected-badge">✓</span>
+          </div>
+          <div class="emotion-card" onclick="selectPurpose('personal', this)">
+            <h3>Personal Brand</h3>
+            <p>Share who I am and what I believe</p>
+            <span class="selected-badge">✓</span>
+          </div>
+          <div class="emotion-card" onclick="selectPurpose('community', this)">
+            <h3>Community</h3>
+            <p>Build a space for others like me</p>
+            <span class="selected-badge">✓</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================
+       SCENE 5 — BRAND NAME
+     STATUS: PLACEHOLDER ADDED — swap image only
+     File: assets/images/experience/scene5-brandname.png
+  ==================================== -->
+  <section class="scene" data-scene="5">
+    <div class="container">
+      <div class="glass-card fade-up">
+        <div class="scene-card-layout">
+          <div class="scene-card-text">
+            <p class="prompt-text">What do you want the world to call you?</p>
+            <input type="text" placeholder="Your name, brand, or project title"
+                   oninput="setData('brandName', this.value)">
+            <p class="supportive-message float-soft" style="margin-top:16px;">
+              This will become your headline.
+            </p>
+          </div>
+          <div class="scene-visual" style="text-align:center;">
+            <img src="assets/7.png" alt="" class="scene-visual-img" loading="lazy">
+            <p class="scene-visual-caption">Seen Through Visuals</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================
+       SCENE 6 — TAGLINE
+     STATUS: PLACEHOLDER ADDED — swap image only
+     File: assets/images/experience/scene6-tagline.png
+  ==================================== -->
+  <section class="scene" data-scene="6">
+    <div class="container">
+      <div class="glass-card fade-up">
+        <div class="scene-card-layout">
+          <div class="scene-card-text">
+            <p class="prompt-text">If your world had one sentence — what would it say?</p>
+            <input type="text" placeholder="Your tagline or mission in one breath..."
+                   oninput="setData('tagline', this.value)">
+          </div>
+          <div class="scene-visual">
+            <img src="assets/images/experience/scene6-tagline.png" alt="" class="scene-visual-img" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================
+       SCENE 7 — OFFERING
+     STATUS: PLACEHOLDER ADDED — swap image only
+     File: assets/images/experience/scene7-offering.png
+  ==================================== -->
+  <section class="scene" data-scene="7">
+    <div class="container">
+      <div class="glass-card fade-up">
+        <div class="scene-card-layout">
+          <div class="scene-card-text">
+            <p class="prompt-text">What do you offer, create, or give?</p>
+            <textarea rows="4" placeholder="Describe what you do in your own words..."
+                      oninput="setData('offering', this.value)"></textarea>
+          </div>
+          <div class="scene-visual">
+            <img src="assets/images/experience/scene7-offering.png" alt="" class="scene-visual-img" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================
+       SCENE 8 — THREE WORDS
+     STATUS: PLACEHOLDER ADDED — swap image only
+     File: assets/images/experience/scene8-threewords.png
+  ==================================== -->
+  <section class="scene" data-scene="8">
+    <div class="container">
+      <div class="glass-card fade-up">
+        <div class="scene-card-layout">
+          <div class="scene-card-text">
+            <p class="prompt-text">Give me 3 words that live inside your world.</p>
+            <input type="text" placeholder="e.g. honest, electric, tender..."
+                   oninput="setData('threeWords', this.value)">
+          </div>
+          <div class="scene-visual">
+            <img src="assets/1.png" alt="" class="scene-visual-img" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================
+       SCENE 9 — AUDIENCE
+     STATUS: PLACEHOLDER ADDED — swap image only
+     File: assets/images/experience/scene9-audience.png
+  ==================================== -->
+  <section class="scene" data-scene="9">
+    <div class="container">
+      <div class="glass-card fade-up">
+        <div class="scene-card-layout">
+          <div class="scene-card-text">
+            <p class="prompt-text">Who is your world meant for?</p>
+            <textarea rows="3" placeholder="Describe who you want to reach..."
+                      oninput="setData('audience', this.value)"></textarea>
+          </div>
+          <div class="scene-visual">
+            <img src="assets/7.png" alt="" class="scene-visual-img" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================
+       SCENE 10 — COLOR INSTINCT
+      STATUS: FULL — no image needed
+      Presets stay for people without a color
+      in mind; hex input added for people who
+      already know exactly what they want —
+      removes back-and-forth guessing entirely.
+  ==================================== -->
+  <section class="scene" data-scene="10">
+    <div class="container">
+      <div class="glass-card fade-up">
+        <p class="prompt-text">When you close your eyes and think of YOUR color — what do you see?</p>
+        <div class="color-picker-grid">
+          <div class="color-swatch" data-color="deep-purple" style="background:#2d0a4e;" onclick="selectColor('deep-purple', this)"></div>
+          <div class="color-swatch" data-color="warm-gold" style="background:#c8860a;" onclick="selectColor('warm-gold', this)"></div>
+          <div class="color-swatch" data-color="rose-pink" style="background:#c0346a;" onclick="selectColor('rose-pink', this)"></div>
+          <div class="color-swatch" data-color="ocean-teal" style="background:#0a7c6e;" onclick="selectColor('ocean-teal', this)"></div>
+          <div class="color-swatch" data-color="electric-blue" style="background:#0a3ec8;" onclick="selectColor('electric-blue', this)"></div>
+          <div class="color-swatch" data-color="forest-green" style="background:#1a4d2e;" onclick="selectColor('forest-green', this)"></div>
+        </div>
+        <div class="color-code-input">
+          <p class="supportive-message" style="margin:20px 0 10px;">
+            Already know the exact color — or colors — you want? Type the hex code(s) below. One color, or several separated by commas (e.g. a rainbow palette). This always wins over the presets above.
+          </p>
+          <div style="display:flex; align-items:center; gap:12px;">
+            <span class="color-code-swatch" id="colorCodePreview"></span>
+            <input type="text" id="colorCodeInput" placeholder="#7A4FBD, #C8860A, #0A7C6E" 
+                   oninput="handleColorCodeInput(this.value)">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================
+       SCENE 11 — SOCIAL LINKS
+     STATUS: PLACEHOLDER ADDED — swap image only
+     File: assets/images/experience/scene11-social.png
+  ==================================== -->
+  <section class="scene" data-scene="11">
+    <div class="container">
+      <div class="glass-card fade-up">
+        <div class="scene-card-layout">
+          <div class="scene-card-text">
+            <p class="prompt-text">Where else does your world live?</p>
+            <input type="text" placeholder="Instagram, TikTok, LinkedIn, YouTube... (optional)"
+                   oninput="setData('socialLinks', this.value)">
+          </div>
+          <div class="scene-visual">
+            <img src="assets/2.png" alt="" class="scene-visual-img" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================
+       SCENE 12 — INNER REFLECTION
+     STATUS: PLACEHOLDER ADDED — swap image only
+     File: assets/images/experience/scene12-reflection.png
+  ==================================== -->
+  <section class="scene" data-scene="12">
+    <div class="container">
+      <div class="glass-card fade-up">
+        <div class="scene-card-layout">
+          <div class="scene-card-text">
+            <p class="prompt-text">
+              If your inner world could speak freely...
+              what would it say?
+            </p>
+            <textarea rows="8" placeholder="Write whatever feels true..."
+                      oninput="setData('freeText', this.value)"></textarea>
+            <p class="supportive-message float-soft">
+              There is no wrong answer.
+            </p>
+          </div>
+          <div class="scene-visual">
+            <img src="assets/images/experience/scene12-reflection.png" alt="" class="scene-visual-img" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================
+       SCENE 13 — INTENSITY SLIDER
+     STATUS: PLACEHOLDER ADDED — swap image only
+     File: assets/images/experience/scene13-intensity.png
+  ==================================== -->
+  <section class="scene" data-scene="13">
+    <div class="container">
+      <div class="glass-card fade-up">
+        <div class="scene-card-layout">
+          <div class="scene-card-text">
+            <p class="prompt-text">
+              How emotionally intense does your world feel?
+            </p>
+            <input type="range" min="1" max="100" value="50"
+                   style="width: 100%; margin-top: 30px;"
+                   oninput="setData('emotionalIntensity', this.value)" />
+            <div style="margin-top: 20px; display:flex; justify-content:space-between;">
+              <p style="margin:0;">Soft Presence</p>
+              <p style="margin:0;">Intense Energy</p>
+            </div>
+          </div>
+          <div class="scene-visual">
+            <img src="assets/images/experience/scene13-intensity.png" alt="" class="scene-visual-img" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================================
+       SCENE 14 — SUMMARY + SUBMIT
+      STATUS: FULL — no image needed
+  ==================================== -->
+  <section class="scene" data-scene="14">
+    <div class="container">
+      <div class="glass-card fade-up" style="text-align: center;">
+        <p class="prompt-text">Your world feels alive.</p>
+        <p style="margin-bottom: 30px;">
+          Through atmosphere, emotion, symbols, memory,
+          rhythm, and expression — your identity begins
+          to unfold naturally.
+        </p>
+        <div style="max-width: 420px; margin: 0 auto 30px; text-align: left;">
+          <p class="supportive-message" style="margin-bottom: 10px; text-align: center;">
+            Is there a date this needs to be ready by?
+          </p>
+          <input type="text" placeholder="Optional — helps me prioritize fairly"
+                 style="text-align: center;"
+                 oninput="setData('neededBy', this.value)">
+        </div>
+        <button onclick="submitProfile()" class="cta-button glow-pulse">
+          Continue Forward
+        </button>
+      </div>
+    </div>
+  </section>
+
+ 
+<!-- ===================================
+       TRANSITION TO CONTACT
+      STATUS: PLACEHOLDER ADDED — swap image only
+      File: assets/images/experience/transition-contact.png
+  ==================================== -->
+  <section>
+    <div class="container">
+      <div class="glass-card fade-up" style="text-align: center;">
+        <div class="scene-card-layout">
+          <div class="scene-card-text">
+            <p class="prompt-text">Thank you for sharing your world.</p>
+            <p style="margin-bottom: 30px;">
+              Continue into the final connection space.
+            </p>
+            <a href="contact.html" class="cta-button">Final Connection</a>
+          </div>
+          <div class="scene-visual">
+            <img src="assets/images/experience/transition-contact.png" alt="" class="scene-visual-img" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+     
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <p class="supportive-message float-soft">
+        Your uniqueness deserves space to exist.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Color picker grid + hex input styling -->
+  <style>
+    .color-picker-grid {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 24px;
+    }
+    .color-swatch {
+      width: 60px; height: 60px;
+      border-radius: 50%;
+      cursor: pointer;
+      border: 2px solid rgba(255,255,255,0.2);
+      transition: all 0.4s ease;
+      position: relative;
+    }
+    .color-swatch:hover {
+      transform: scale(1.15);
+      border-color: rgba(255,255,255,0.5);
+    }
+    .color-swatch.selected {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 4px rgba(247,217,139,0.25), 0 0 24px rgba(247,217,139,0.4);
+      transform: scale(1.12);
+    }
+    .color-code-input input {
+      max-width: 220px;
+      font-family: 'Poppins', sans-serif;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .color-code-swatch {
+      display: inline-block;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 2px solid rgba(255,255,255,0.25);
+      background: rgba(255,255,255,0.05);
+      flex-shrink: 0;
+      transition: background 0.3s ease, border-color 0.3s ease;
+    }
+
+    /* Guarantee no gaps regardless of each PNG's exact source
+       dimensions — since these are composited by hand, sizes
+       will vary. object-fit:cover fills the frame fully and
+       crops gracefully rather than leaving empty space. */
+    .scene-visual-img {
+      width: 100%;
+      height: auto;
+      border-radius: 20px;
+      display: block;
+    }
+
+    /* Caption under a scene image — real text, not baked into
+       the AI-generated art, so it's always crisp and accurate.
+       Matches the pill-tag treatment used on index.html. */
+    .scene-visual-caption {
+      text-align: center;
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 500;
+      font-family: 'Poppins', sans-serif;
+      color: rgba(200,184,255,0.85);
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(200,184,255,0.28);
+      padding: 6px 18px;
+      border-radius: 999px;
+      display: inline-block;
+      margin: 14px auto 0;
+      width: fit-content;
+    }
+  </style>
+
+  <!-- JS -->
+  <script src="js/main.js"></script>
+  <script src="js/animations.js"></script>
+  <script src="js/interactions.js"></script>
+  <script src="js/form-handler.js"></script>
+  <script src="js/particles.js"></script>
+  <script src="js/experience-progress.js"></script>
+  <script type="module" src="js/firebase-init.js"></script>
+
+  <!-- Hex color code input logic — lives here since it's
+       specific to this one scene, not a site-wide behavior -->
+  <script>
+    function handleColorCodeInput(rawValue) {
+      const preview = document.getElementById('colorCodePreview');
+      const codes = rawValue.split(',')
+        .map(c => c.trim())
+        .filter(c => /^#([0-9A-Fa-f]{3}){1,2}$/.test(c));
+
+      if (codes.length > 0) {
+        preview.style.background = codes.length === 1
+          ? codes[0]
+          : `linear-gradient(135deg, ${codes.join(', ')})`;
+        preview.style.borderColor = codes[0];
+        setData('colorCodeCustom', codes.join(', '));
+
+        // Typed hex code(s) are the person's exact intent —
+        // overrides any preset swatch selection
+        document.querySelectorAll('.color-swatch.selected')
+          .forEach(el => el.classList.remove('selected'));
+      } else {
+        preview.style.background = 'rgba(255,255,255,0.05)';
+        preview.style.borderColor = 'rgba(255,255,255,0.25)';
+      }
+    }
+  </script>
+
+<!-- ===== FLOATING DOOR NAV ===== -->
+<div id="world-door-nav">
+  <button id="world-door-toggle" aria-label="Open navigation" aria-expanded="false">
+    <img src="assets/images/123_045549.png" alt="" class="world-door-icon">
+  </button>
+
+  <nav id="world-door-panel" aria-hidden="true">
+    <a href="index.html" class="world-door-link">
+      <span class="world-door-link-title">Home</span>
+      <span class="world-door-link-sub">Return to the beginning</span>
+    </a>
+    <a href="about.html" class="world-door-link">
+      <span class="world-door-link-title">Identity Reflection</span>
+      <span class="world-door-link-sub">The philosophy behind it</span>
+    </a>
+    <a href="experience.html" class="world-door-link">
+      <span class="world-door-link-title">The Journey</span>
+      <span class="world-door-link-sub">The guided experience</span>
+    </a>
+    <a href="showcase.html" class="world-door-link world-door-link-featured">
+      <span class="world-door-link-title">Showcase</span>
+      <span class="world-door-link-sub">Worlds already brought to life</span>
+    </a>
+    <a href="contact.html" class="world-door-link">
+      <span class="world-door-link-title">Final Connection</span>
+      <span class="world-door-link-sub">Stay connected</span>
+    </a>
+  </nav>
+</div>
+
+<script defer src="js/door-nav.js"></script>
+     
+     
+</body>
+     </html>
