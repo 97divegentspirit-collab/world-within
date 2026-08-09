@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>World Within</title>
+
+  <!--
+    CRITICAL — paints BEFORE any CSS file loads.
+    This prevents the black/white flash on mobile.
+  -->
+  <style>
+    html, body { margin:0; padding:0; background:#030309; overflow:hidden; }
+    
+
+    #intro-screen {
+  position:fixed; top:0; left:0; width:100%; height:100%;
+  z-index:9999; display:flex; align-items:center; justify-content:center;
+  background: radial-gradient(circle at 50% 40%, #1a0f1f 0%, #050505 70%, #000 100%);
+}
+#intro-screen .book-wrapper {
+  width:100% !important;
+  max-width:100% !important;
+  height: 50dvh !important;
+  align-self: center;
+  
+}
+    #site-content { opacity:0; visibility:hidden; }
+  </style>
+
+  <!-- Fonts — display=swap means they don't block render -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <!-- CSS — intro.css loads early so book renders fast -->
+  <link rel="stylesheet" href="css/style.css" />
+  
+  <link rel="stylesheet" href="css/intro.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/themes.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  <link rel="stylesheet" href="css/fixes.css?v=2" />
+</head>
+
+
+<body>
+
+<!-- ============================================
+     INTRO 1 — THE BOOK
+============================================= -->
+<div id="intro-screen">
+
+  <div class="book-wrapper">
+    <div class="book-glow"></div>
+    <div class="book-cover left-cover"></div>
+    <div class="book-cover right-cover"></div>
+    <div class="book-center">
+      <img src="assets/images/123_045549.png" alt="World Within" class="intro-logo">
+      <p class="intro-credit">Created by Mazien</p>
+      <p class="intro-welcome">Welcome, Beautiful Soul</p>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- ============================================
+     INTRO 2 — THE INVITATION
+============================================= -->
+<div id="intro-screen2">
+
+  <div class="intro-content2">
+    <h1 class="intro-title2">
+      What if the world<br>
+  you've always felt inside…<br><br>
+  could finally be seen?
+    </h1>
+    <p class="intro-text2">
+      Some worlds are soft.<br>
+      Some are electric.<br>
+      Some are still waiting to be understood.
+    </p>
+    <button id="enter-experience">Enter Experience</button>
+  </div>
+
+</div>
+
+
+<!-- ============================================
+     MAIN SITE — revealed by intro.js
+============================================= -->
+<div id="site-content">
+
+  <div id="particles-container"></div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-layout">
+
+        <div class="hero-left fade-up">
+          <span class="hero-tag">Pure Love Experience</span>
+          <h1>Every person carries<br><span>a world</span></h1>
+          <p class="hero-description">
+            Let's bring yours to life.<br>
+            You are loved here.<br><br>
+            This is more than a questionnaire.<br>
+            It's a gentle journey of self-expression,<br>
+            story, and identity.<br><br>
+            A space where you are seen,<br>
+            valued, and celebrated.
+          </p>
+        </div>
+
+        <div class="hero-right">
+             <h3>Seen Through Visuals </h3>
+          
+          <div class="medium-frame visual-frame">
+            <img src="assets/images/nobackground.png" alt="Symbol" class="floating-symbol">
+          </div>
+          <div class="large-frame visual-frame">
+            <img src="assets/images/Mainland.png" alt="Neurodivergent Mind" class="main-hero-image float-soft">
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+
+<!-- SECTION 2
+       STATUS: NEEDS IMAGE -->
+  <section>
+    <div class="container">
+      <div class="glass-card fade-up">
+        <div class="scene-card-layout">
+          <div class="scene-card-text">
+            <p class="prompt-text">Instead of pressure, there is exploration.</p>
+            <p>
+              Instead of interrogation, there is emotional discovery.<br><br>
+              You are not being measured here.<br>
+              You are being understood.
+            </p>
+          </div>
+          <div class="scene-visual">
+            <img src="assets/12.png" alt="" class="scene-visual-img">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+
+  <!-- ATMOSPHERE SELECTOR -->
+  <section class="section-compact">
+    <div class="container">
+      <h2 class="fade-up" style="margin-bottom:14px; text-align:center; font-style:italic;">
+        What kind of world lives within you?
+  
+      </h2>
+      <p style="text-align:center; margin-bottom:40px; opacity:0.52; font-size:0.88rem; letter-spacing:0.08em;">
+        Choose the one that feels most like home right now.
+      </p>
+      <div class="emotion-grid">
+        <div class="emotion-card glass-card float-soft" data-feel="calm" onclick="selectEmotion('calm', this)">
+          <h3>Calm</h3>
+          <p>Gentle stillness, spacious thoughts, soft emotional breathing.</p>
+          <span class="selected-badge">✓</span>
+        </div>
+        <div class="emotion-card glass-card float-soft" data-feel="electric" onclick="selectEmotion('electric', this)">
+          <h3>Electric</h3>
+          <p>Neon pulses, intensity, movement, energetic curiosity.</p>
+          <span class="selected-badge">✓</span>
+        </div>
+        <div class="emotion-card glass-card float-soft" data-feel="dreamy" onclick="selectEmotion('dreamy', this)">
+          <h3>Dreamy</h3>
+          <p>Floating imagination, softness, emotional depth and wonder.</p>
+          <span class="selected-badge">✓</span>
+        </div>
+        <div class="emotion-card glass-card float-soft" data-feel="sacred" onclick="selectEmotion('sacred', this)">
+          <h3>Sacred</h3>
+          <p>Silence, warmth, gold light, spiritual presence and reflection.</p>
+          <span class="selected-badge">✓</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- ENCOURAGEMENT
+       STATUS: NEEDS IMAGE -->
+  <section>
+    <div class="container">
+      <div class="glass-card fade-up">
+        <div class="scene-card-layout">
+          <div class="scene-card-text">
+            <p class="prompt-text">There is no wrong way to express yourself.</p>
+            <p>
+              Your uniqueness matters.<br>
+              Your inner world deserves to be seen.<br><br>
+              Take your time.
+            </p>
+          </div>
+          <div class="scene-visual">
+            <img src="assets/13.png" alt="" class="scene-visual-img">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+
+  <!-- NAVIGATION -->
+  <section>
+    <div class="container">
+      <h2 class="fade-up" style="text-align:center; margin-bottom:14px;">Where would you like to go?</h2>
+      <p style="text-align:center; margin-bottom:40px; opacity:0.48; font-size:0.88rem;">Every door leads somewhere meaningful.</p>
+      <div class="emotion-grid">
+        <a href="about.html" class="emotion-card glass-card" style="text-decoration:none; color:white;">
+          <h3>Identity Reflection</h3>
+          <p>Explore philosophy, emotional identity, and the heart behind the experience.</p>
+        </a>
+        <a href="experience.html" class="emotion-card glass-card" style="text-decoration:none; color:white;">
+          <h3>The Journey Engine</h3>
+          <p>Step into the guided emotional experience and begin expressing your world.</p>
+        </a>
+        <a href="contact.html" class="emotion-card glass-card" style="text-decoration:none; color:white;">
+          <h3>Final Connection</h3>
+          <p>Reach out, submit your reflections, and continue the conversation.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <p class="supportive-message">Your story matters.</p>
+      <p style="margin-top:12px; font-size:0.75rem; opacity:0.28; letter-spacing:0.14em;">
+        World Within &nbsp;·&nbsp; Created with love by Mazien
+      </p>
+    </div>
+  </footer>
+
+</div><!-- /site-content -->
+
+
+<!-- JS — defer so HTML paints first -->
+<script src="js/animations.js" defer></script>
+<script src="js/interactions.js" defer></script>
+<script src="js/form-handler.js" defer></script>
+<script src="js/particles.js" defer></script>
+<script src="js/experience-progress.js" defer></script>
+<script src="js/intro.js"></script><!-- NOT deferred — must run immediately -->
+<script src="js/main.js" defer></script>
+
+
+
+<!-- ===== FLOATING DOOR NAV ===== -->
+<div id="world-door-nav">
+  <button id="world-door-toggle" aria-label="Open navigation" aria-expanded="false">
+    <img src="assets/images/123_045549.png" alt="" class="world-door-icon">
+  </button>
+
+  <nav id="world-door-panel" aria-hidden="true">
+    <a href="index.html" class="world-door-link">
+      <span class="world-door-link-title">Home</span>
+      <span class="world-door-link-sub">Return to the beginning</span>
+    </a>
+    <a href="about.html" class="world-door-link">
+      <span class="world-door-link-title">Identity Reflection</span>
+      <span class="world-door-link-sub">The philosophy behind it</span>
+    </a>
+    <a href="experience.html" class="world-door-link">
+      <span class="world-door-link-title">The Journey</span>
+      <span class="world-door-link-sub">The guided experience</span>
+    </a>
+    <a href="showcase.html" class="world-door-link world-door-link-featured">
+      <span class="world-door-link-title">Showcase</span>
+      <span class="world-door-link-sub">Worlds already brought to life</span>
+    </a>
+    <a href="contact.html" class="world-door-link">
+      <span class="world-door-link-title">Final Connection</span>
+      <span class="world-door-link-sub">Stay connected</span>
+    </a>
+  </nav>
+</div>
+
+<script defer src="js/door-nav.js"></script>
+  
+</body>
+</html>
