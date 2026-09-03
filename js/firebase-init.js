@@ -1,5 +1,7 @@
+//firebase-init.js
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-app.js";
 import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-firestore.js";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-storage.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAhTPuc6ete9BoJCOdAf8FDIsZAf-GbFGg",
@@ -12,6 +14,22 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+const storage = getStorage(app);
+
+// ---- Uploads Scene 3 images to Storage, returns their URLs ----
+// Called by form-handler.js right before the profile is saved.
+window.uploadJourneyImages = async function (files) {
+  var urls = [];
+  for (var i = 0; i < files.length; i++) {
+    var file = files[i];
+    var path = 'journey-uploads/' + Date.now() + '-' + file.name;
+    var storageRef = ref(storage, path);
+    await uploadBytes(storageRef, file);
+    var url = await getDownloadURL(storageRef);
+    urls.push(url);
+  }
+  return urls;
+};
 
 // ---- Saves experience.html answers ----
 window.saveProfileToDatabase = async function (data) {
@@ -54,7 +72,7 @@ window.submitContactForm = async function (event, formEl) {
     });
     if (statusEl) { statusEl.textContent = "Thank you. Your reflection has been received."; statusEl.className = "form-status success"; }
     formEl.reset();
-     if (reflectionEl) reflectionEl.value = '';
+    if (reflectionEl) reflectionEl.value = '';
   } catch (e) {
     console.error("Error sending message:", e);
     if (statusEl) { statusEl.textContent = "Something went wrong. Please try again."; statusEl.className = "form-status error"; }
