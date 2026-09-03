@@ -54,6 +54,7 @@ window.submitContactForm = async function (event, formEl) {
     });
     if (statusEl) { statusEl.textContent = "Thank you. Your reflection has been received."; statusEl.className = "form-status success"; }
     formEl.reset();
+     if (reflectionEl) reflectionEl.value = '';
   } catch (e) {
     console.error("Error sending message:", e);
     if (statusEl) { statusEl.textContent = "Something went wrong. Please try again."; statusEl.className = "form-status error"; }
