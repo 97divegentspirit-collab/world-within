@@ -102,6 +102,9 @@ function resetJourneyUI() {
     preview.style.borderColor = 'rgba(255,255,255,0.25)';
   }
 
+  var otherInput = document.getElementById('discoverySourceOtherInput');
+  if (otherInput) otherInput.style.display = 'none';
+
   userProfile = { symbols: [] };
   pendingImageFiles = [];
 }
