@@ -6,8 +6,8 @@
 // had to change.
 
 // ---- Fill these in from your Cloudinary dashboard ----
-var CLOUDINARY_CLOUD_NAME = 'YOUR_CLOUD_NAME';
-var CLOUDINARY_UPLOAD_PRESET = 'YOUR_UPLOAD_PRESET';
+var CLOUDINARY_CLOUD_NAME = 'psih1ygf';
+var CLOUDINARY_UPLOAD_PRESET = 'world_within_uploads';
 
 window.uploadJourneyImages = async function (files) {
   var urls = [];
