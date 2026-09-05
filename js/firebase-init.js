@@ -28,6 +28,7 @@ window.saveProfileToDatabase = async function (data) {
     console.log("Profile saved.");
   } catch (e) {
     console.error("Error saving profile:", e);
+    throw e;
   }
 };
 
