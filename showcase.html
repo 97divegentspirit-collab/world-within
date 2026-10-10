@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Other Worlds — Showcase | World Within</title>
+  <meta name="description" content="Worlds already brought to life for others: real people, real visions, and a framed collection of writing. Step through a door and see what is possible for yours.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="theme-color" content="#0b0b0c">
+  <meta property="og:title" content="Other Worlds, Already Open — World Within">
+  <meta property="og:description" content="Real people, real visions, brought to life. Step through one and see what is possible for yours.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://97divegentspirit-collab.github.io/world-within/showcase.html">
+  <meta property="og:url" content="https://97divegentspirit-collab.github.io/world-within/showcase.html">
+  <!-- To add: og:image with the full address of the same 1200x630 banner used on experience.html, e.g. https://97divegentspirit-collab.github.io/world-within/assets/images/YOUR-BANNER.jpg -->
+  <!-- Also add the same title and description tags to index, about, experience and contact -->
+  <meta name="google-site-verification" content="PASTE-CODE-FROM-SEARCH-CONSOLE-IF-USING-HTML-TAG-METHOD" />
+
+  <style>
+    /* Writing card: royal gallery frame (used only by the blog card) */
+    .royal-frame-card{grid-column:1 / -1;text-align:center;}
+    .royal-frame{
+      position:relative;
+      max-width:980px;
+      margin:28px auto 0;
+      padding:16px;
+      border-radius:26px;
+      background:linear-gradient(135deg,#f7e7ae 0%,#c9972f 22%,#7a5516 48%,#e8c869 72%,#9c7020 100%);
+      background-size:220% 220%;
+      animation:royalShine 10s ease-in-out infinite;
+      box-shadow:0 0 0 1px rgba(255,230,160,.35),0 25px 70px rgba(0,0,0,.6),0 0 60px rgba(201,151,47,.28);
+    }
+    @keyframes royalShine{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+    .royal-frame::before{
+      content:'';position:absolute;inset:7px;border-radius:20px;
+      border:1px solid rgba(255,244,200,.55);pointer-events:none;
+    }
+    .royal-mat{
+      border-radius:16px;padding:12px;background:#0d0a07;
+      box-shadow:inset 0 0 0 2px rgba(201,151,47,.5),inset 0 0 30px rgba(0,0,0,.8);
+    }
+    .royal-mat iframe{
+      display:block;width:100%;height:min(72vh,720px);min-height:480px;
+      border:0;border-radius:10px;background:#111;
+    }
+    .royal-corner{
+      position:absolute;z-index:2;width:44px;height:44px;border-radius:50%;
+      display:flex;align-items:center;justify-content:center;
+      font-size:1.3rem;color:#2a1c06;
+      background:radial-gradient(circle,#fbeeb6,#c9972f);
+      box-shadow:0 2px 8px rgba(0,0,0,.5);
+    }
+    .royal-corner.tl{top:-14px;left:-14px}
+    .royal-corner.tr{top:-14px;right:-14px}
+    .royal-corner.bl{bottom:-14px;left:-14px}
+    .royal-corner.br{bottom:-14px;right:-14px}
+    .royal-plaque{
+      display:inline-block;margin-top:24px;padding:12px 28px;border-radius:100px;
+      border:1px solid rgba(201,151,47,.55);background:rgba(20,14,6,.6);
+      font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.2rem;
+      letter-spacing:.04em;color:#f2dc96;
+    }
+    .royal-links{margin-top:20px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+    @media(max-width:640px){
+      .royal-frame{padding:11px;border-radius:20px;}
+      .royal-mat{padding:8px;}
+      .royal-corner{width:34px;height:34px;font-size:1rem;}
+      .royal-mat iframe{min-height:440px;}
+    }
+    @media(prefers-reduced-motion:reduce){.royal-frame{animation:none;}}
+  </style>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/themes.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  <link rel="stylesheet" href="css/showcase.css" />
+  <link rel="stylesheet" href="css/fixes.css" />
+</head>
+
+<body class="theme-electric">
+
+  <div id="particles-container"></div>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content fade-up" style="text-align:center;">
+        <p class="supportive-message float-soft">Every world began as someone's first step.</p>
+        <h1 class="hero-title breathe">Other Worlds, Already Open</h1>
+        <p class="hero-subtitle">
+          These are doors already opened for others —<br>
+          real people, real visions, brought to life.<br><br>
+          Step through one. See what's possible for yours.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       SHOWCASE GRID — ALL cards live in ONE grid,
+       inside ONE section. Never split into separate
+       sections — that's what causes the empty gaps.
+
+       TO ADD A NEW SHOWCASE:
+       1. Copy one whole "CARD" block below
+       2. Replace every "h4h" / "bbb" with your new id
+          (e.g. "acme") — must match in 3 places:
+          onclick, the overlay id, and closeDoor
+       3. Update the logo path, name, tagline
+       4. Paste it right before the closing </div>
+          of .showcase-grid — that's it, card done.
+       5. Then go to the OVERLAYS section further
+          down and do the same 3-step copy there.
+  ============================================== -->
+  <section>
+    <div class="container">
+      <div class="showcase-grid">
+
+        <!-- CARD: H4H -->
+        <div class="showcase-door glass-card fade-up" onclick="openDoor('h4h')">
+          <img src="assets/images/showcase/h4h logo rebrand 3D_033306.png" alt="H4H logo" class="showcase-logo">
+          <h3>H4H</h3>
+          <p class="showcase-tagline">Harmony 4 Health 4 Africa — pioneered by Mr. Joe Fyi</p>
+          <span class="showcase-open-btn">Open this door</span>
+        </div>
+
+        <!-- CARD: Bite by Bytes -->
+        <div class="showcase-door glass-card fade-up" onclick="openDoor('bbb')">
+          <img src="assets/images/showcase/b-logo.png" alt="Bite by Bytes logo" class="showcase-logo">
+          <h3>Bite by Bytes</h3>
+          <p class="showcase-tagline">Bites by Bytes Economy — pioneered by Mr. Mazien</p>
+          <span class="showcase-open-btn">Open this door</span>
+        </div>
+
+        <!-- CARD: The Writing — blog shown in a royal portrait frame -->
+        <div class="glass-card fade-up royal-frame-card">
+          <p class="supportive-message float-soft">The Way I See It</p>
+          <h3>Writings from the World Within</h3>
+          <p class="showcase-tagline">Thoughts, observations and different ways of understanding the world, hung like a portrait for you to step into.</p>
+
+          <div class="royal-frame">
+            <span class="royal-corner tl">❖</span>
+            <span class="royal-corner tr">❖</span>
+            <span class="royal-corner bl">❖</span>
+            <span class="royal-corner br">❖</span>
+            <div class="royal-mat">
+              <iframe src="https://awokenamitheuniverse.blogspot.com/" title="Universe Awoken — blog writings" loading="lazy"></iframe>
+            </div>
+          </div>
+
+          <div class="royal-plaque">Universe Awoken · The Writings</div>
+          <div class="royal-links">
+            <a href="https://awokenamitheuniverse.blogspot.com/" target="_blank" rel="noopener" class="cta-button">Read the full blog ↗</a>
+            <a href="https://medium.com/@avatar.alabi1" target="_blank" rel="noopener" class="cta-button">Also on Medium ↗</a>
+          </div>
+        </div>
+
+        <!-- Next new showcase card goes here -->
+
+        <!-- CARD: See More Personalized Sites — other full website
+             builds, structured like H4H/Bite by Bytes, but not
+             rooted in the trans/neurodivergent community focus.
+             href is a placeholder until that page is built. -->
+        <a href="https://seenthroughvisuals97creatives-oss.github.io/seenthroughvisuals.97/" class="showcase-door glass-card fade-up" style="text-decoration:none; color:inherit;">
+          <img src="assets/images/best.png" alt="" class="showcase-logo">
+          <h3>See More Personalized Sites</h3>
+          <p class="showcase-tagline">Other full worlds, built for others — outside this community's focus.</p>
+          <span class="showcase-open-btn">Open this door</span>
+        </a>
+
+        <!-- CARD: See the Visual Gallery — standalone graphic
+             design pieces (logos, flyers, illustrations), not
+             full websites. href is a placeholder until built. -->
+        <a href="https://seenthroughvisuals97creatives-oss.github.io/97-art-Galaxy/97-art-galaxy.html" class="showcase-door glass-card fade-up" style="text-decoration:none; color:inherit;">
+          <img src="assets/images/123_045549.png" alt="" class="showcase-logo">
+          <h3>See the Visual Gallery</h3>
+          <p class="showcase-tagline">Visuals brought to life for others — no pressure, just possibility.</p>
+          <span class="showcase-open-btn">Open this door</span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT CTA -->
+  <section class="section-compact">
+    <div class="container">
+      <div class="glass-card fade-up" style="text-align:center;">
+        <p class="prompt-text">Imagine what your world could look like.</p>
+        <p style="margin-bottom:30px;">If something here moved you, let's talk.</p>
+        <a href="contact.html" class="cta-button glow-pulse">Start the Conversation</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p class="supportive-message float-soft">Every story deserves a world of its own.</p>
+    </div>
+  </footer>
+
+  <!-- =============================================
+       DOOR DETAIL OVERLAYS
+       One per showcase entry. Order doesn't matter
+       since only one shows at a time via JS.
+  ============================================== -->
+
+  <!-- OVERLAY: H4H -->
+  <div class="door-overlay" id="overlay-h4h">
+    <div class="door-overlay-content glass-card">
+      <button class="door-close" onclick="closeDoor('h4h')" aria-label="Close">×</button>
+      <img src="assets/images/showcase/h4h logo rebrand 3D_033306.png" alt="H4H logo" class="door-overlay-logo">
+      <h2>H4H — Harmony 4 Health 4 Africa</h2>
+      <p class="door-overlay-tagline">Pioneered by Mr. Joe Fyi</p>
+      <div class="door-overlay-story">
+        <p>[Story: what inspired Mr. Joe Fyi to start H4H, who it's for, what it means to him]</p>
+      </div>
+      <p class="door-overlay-desc">
+        H4H offers Harmony for Health began from a simple vision:
+        to empower individuals with knowledge, connect them to
+        healthcare resources, and strengthen communities through
+        shared wellbeing.
+      </p>
+      <div class="door-overlay-social"><!-- [Add social links here] --></div>
+      <a href="https://harmony4healthh4hafrica-stack.github.io/harmony4health_africa/" class="cta-button glow-pulse">Visit H4H</a>
+    </div>
+  </div>
+
+  <!-- OVERLAY: Bite by Bytes -->
+  <div class="door-overlay" id="overlay-bbb">
+    <div class="door-overlay-content glass-card">
+      <button class="door-close" onclick="closeDoor('bbb')" aria-label="Close">×</button>
+      <img src="assets/images/showcase/b-logo.png" alt="Bite by Bytes logo" class="door-overlay-logo">
+      <h2>Bite By Bytes Economy — Start small, Grow Big</h2>
+      <p class="door-overlay-tagline">Pioneered by Mr. Mazien E. Alabi</p>
+      <div class="door-overlay-story">
+        <p>
+           It began at a compound gate in Lagos, watching a boy work hard every single
+          day — sweeping, carrying, running errands — and still have nothing to show
+          for it. Not from laziness. From living inside a system that was never built
+          to catch small effort and turn it into something visible. Bite by Bytes was
+          built to be that system.
+        </p>
+      </div>
+      <p class="door-overlay-desc">
+        BBB offers Bite by Bytes began from a simple vision:
+     
+        A growth ecosystem, not a gig app. Young people complete real micro-tasks —
+        voice recordings, image labeling, caption writing, local research — and every
+        contribution builds a visible reputation, a skill record, and real earnings
+        over time. Minors are protected by a transparent public agreement covering
+        hours, pay, and privacy, published openly before anyone joins. Small effort,
+        every day, until one day it becomes visible.
+    </p>
+      <div class="door-overlay-social"><!-- [Add social links here] --></div>
+      <a href="https://mazienx.github.io/D7xMight/Bite%20by%20Bytes/bitebybytes.html" class="cta-button glow-pulse">Visit Bite by Bytes</a>
+    </div>
+  </div>
+
+  <!-- Next new showcase overlay goes here -->
+
+  <!-- ===== FLOATING DOOR NAV ===== -->
+  <div id="world-door-nav">
+<button id="world-door-toggle" aria-label="Open navigation" aria-expanded="false"
+        style="width: 65px; height: 60px; min-width: 60px; min-height: 60px;">
+  <img src="assets/images/123_045549.png" alt="" class="world-door-icon"
+       style="width: 100%; height: 100%;">
+    </button>
+
+    <nav id="world-door-panel" aria-hidden="true">
+      <a href="index.html" class="world-door-link">
+        <span class="world-door-link-title">Home</span>
+        <span class="world-door-link-sub">Return to the beginning</span>
+      </a>
+      <a href="about.html" class="world-door-link">
+        <span class="world-door-link-title">Identity Reflection</span>
+        <span class="world-door-link-sub">The philosophy behind it</span>
+      </a>
+      <a href="experience.html" class="world-door-link">
+        <span class="world-door-link-title">The Journey</span>
+        <span class="world-door-link-sub">The guided experience</span>
+      </a>
+      <a href="showcase.html" class="world-door-link world-door-link-featured">
+        <span class="world-door-link-title">Showcase</span>
+        <span class="world-door-link-sub">Worlds already brought to life</span>
+      </a>
+      <a href="contact.html" class="world-door-link">
+        <span class="world-door-link-title">Final Connection</span>
+        <span class="world-door-link-sub">Stay connected</span>
+      </a>
+    </nav>
+  </div>
+
+  <script defer src="js/door-nav.js"></script>
+  <script defer src="js/showcase.js"></script>
+  <script src="js/main.js" defer></script>
+  <script src="js/animations.js" defer></script>
+  <script src="js/interactions.js" defer></script>
+  <script src="js/particles.js" defer></script>
+
+</body>
+</html>
