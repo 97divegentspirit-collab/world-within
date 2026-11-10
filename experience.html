@@ -29,6 +29,78 @@
   <link rel="stylesheet" href="css/responsive.css" />
   
      <link rel="stylesheet" href="css/fixes.css?v=2" />
+ <style>
+    /* ---------------------------------------------------------------
+       WORLD MARQUEE — the slim, always-moving announcement bar that
+       sits beside (to the left of) the floating door nav button, on
+       every page. This does NOT touch door-nav.js or fixes.css: the
+       nav button is simply placed inside this new #world-tray
+       wrapper, which takes over its fixed bottom-right position.
+       Nothing about how the nav itself opens or closes changes.
+    ----------------------------------------------------------------- */
+    #world-tray{
+      position:fixed !important;
+      left:12px; right:0; bottom:18px;
+      z-index:40;
+      display:flex;
+      align-items:flex-end;   /* bottom-aligns the marquee with the nav button, not centered on its height */
+      gap:0;                  /* no seam between the bar and the nav button -- they read as one shape */
+    }
+    #world-door-nav{
+      position:static !important;
+      flex:0 0 auto;
+      margin-left:-16px;      /* tucks the button in front of the bar's rounded end so they fuse */
+      z-index:2;
+    }
+
+    #world-marquee{
+      position:relative;
+      flex:1 1 auto;
+      min-width:0;             /* lets flexbox actually shrink/grow it to fill the row, not just the content */
+      height:38px;              /* a modest bump up from the first pass, still well under the nav button's own height */
+      margin-bottom:8px;        /* sits toward the bottom of the nav, not vertically centered beside it */
+      margin-right:-16px;       /* the bar's end slides behind the nav circle instead of stopping beside it */
+      overflow:hidden;
+      border-radius:19px;
+      background:#08080B;
+      border:2px solid #d4af37;  /* the same gold used on the nav's own ring, thick enough to read as a deliberate frame */
+      display:flex;
+      align-items:center;
+      z-index:1;
+      /* the moving text softly fades out before it reaches the nav circle, instead of
+         being hard-clipped there -- this is what makes it feel like it has "no end". */
+      mask-image: linear-gradient(to right, black 0%, black 76%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to right, black 0%, black 76%, transparent 100%);
+    }
+    #world-marquee-track{
+      display:flex;
+      gap:40px;
+      white-space:nowrap;
+      padding-left:16px;
+      will-change:transform;
+    }
+    .world-marquee-item{
+      display:inline-flex; align-items:center; gap:6px;
+      color:#f2dc96;
+      font-size:0.8rem;
+      letter-spacing:0.01em;
+      text-decoration:none;
+      cursor:pointer;
+    }
+    .world-marquee-item:hover,
+    .world-marquee-item:focus-visible{ color:#fff; }
+    .world-marquee-item .wm-dot{ color:#d4af37; }
+
+    @media (max-width:640px){
+      #world-tray{ left:8px; bottom:14px; }
+      #world-marquee{ height:34px; }
+      .world-marquee-item{ font-size:0.72rem; }
+    }
+    @media (prefers-reduced-motion:reduce){
+      #world-marquee-track{ transform:none !important; }
+    }
+ </style>
+     
 </head>
 
 <body class="theme-calm">
@@ -770,7 +842,19 @@
       }
     }
   </script>
+  <!-- Next new showcase overlay goes here -->
 
+  <!-- ===== ANNOUNCEMENT MARQUEE + FLOATING DOOR NAV =====
+       #world-tray is the new fixed-position wrapper. It holds the
+       slim scrolling marquee on the left and the existing floating
+       door button on the right, both anchored to the bottom, like
+       two items sitting on the same shelf. The door button's own
+       open/close behaviour (door-nav.js) is untouched — only its
+       on-screen position now comes from this wrapper. -->
+  <div id="world-tray">
+    <div id="world-marquee" role="region" aria-label="Site announcements">
+      <div id="world-marquee-track"></div>
+    </div>
 <!-- ===== FLOATING DOOR NAV ===== -->
 <div id="world-door-nav">
   <button id="world-door-toggle" aria-label="Open navigation" aria-expanded="false"
@@ -804,7 +888,71 @@
 </div>
 
 <script defer src="js/door-nav.js"></script>
-     
+ <script>
+  /* =========================================================
+     WORLD MARQUEE — the announcement bar beside the floating nav.
+
+     TO ADD / EDIT AN ANNOUNCEMENT:
+       1. Copy one { text: ..., href: ... } line below.
+       2. Change the text and the link.
+       3. Save — that's it, nothing else needs to change.
+
+     TO PUT THIS ON ANOTHER PAGE (index.html, about.html,
+     experience.html, contact.html): copy this whole block —
+     the <style> block in <head>, the #world-tray markup that
+     replaced #world-door-nav, and this <script> — into the exact
+     same spots on that page. It's the same three pieces every
+     time, so copy-paste is literally how you install it.
+  ========================================================= */
+  var WORLD_ANNOUNCEMENTS = [
+    { text: 'NEW: A free online well-being session — Gift of Remembrance', href: 'https://seenthroughvisuals97creatives-oss.github.io/gift-of-remembrance/' },
+    { text: 'Discover Bite by Bytes', href: 'https://mazienx.github.io/D7xMight/Bite%20by%20Bytes/bitebybytes.html' },
+    { text: 'Explore a living chemistry classroom — Learning with Mr. SOA', href: 'https://seenthroughvisuals97creatives-oss.github.io/learning-with-Mr.SOA/mr-soa-chemistry-classroom.html' },
+    { text: 'New creative expressions are entering the Showcase', href: 'showcase.html' },
+    { text: 'See the Visual Gallery', href: 'https://seenthroughvisuals97creatives-oss.github.io/97-art-Galaxy/97-art-galaxy.html' }
+  ];
+
+  (function(){
+    var track = document.getElementById('world-marquee-track');
+    var wrap = document.getElementById('world-marquee');
+    if (!track || !wrap || !WORLD_ANNOUNCEMENTS.length) return;
+
+    function buildItems(){
+      WORLD_ANNOUNCEMENTS.forEach(function(a){
+        var el = document.createElement('a');
+        el.className = 'world-marquee-item';
+        el.href = a.href;
+        if (/^https?:\/\//.test(a.href)) { el.target = '_blank'; el.rel = 'noopener'; }
+        el.innerHTML = '<span class="wm-dot">●</span><span>' + a.text + '</span>';
+        track.appendChild(el);
+      });
+    }
+    buildItems();              // first pass, to measure the real width of one full lap
+    var singleWidth = track.scrollWidth;
+    buildItems();               // second pass: a seamless duplicate to loop against
+
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var offset = 0;
+    var speed = 0.5;            // px per frame — readable, but the bar is now full-width so it needs a touch more pace
+    var paused = false;
+
+    function tick(){
+      if (!reduceMotion && !paused && singleWidth > 0) {
+        offset -= speed;
+        if (-offset >= singleWidth) offset += singleWidth;
+        track.style.transform = 'translateX(' + offset + 'px)';
+      }
+      requestAnimationFrame(tick);
+    }
+    if (!reduceMotion) requestAnimationFrame(tick);
+
+    // Pausing on hover/focus is what makes a moving ticker actually readable.
+    wrap.addEventListener('mouseenter', function(){ paused = true; });
+    wrap.addEventListener('mouseleave', function(){ paused = false; });
+    wrap.addEventListener('focusin', function(){ paused = true; });
+    wrap.addEventListener('focusout', function(){ paused = false; });
+  })();
+     </script>    
      
 </body>
      </html>
