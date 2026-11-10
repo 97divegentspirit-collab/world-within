@@ -268,7 +268,7 @@
        open/close behaviour (door-nav.js) is untouched — only its
        on-screen position now comes from this wrapper. -->
   <div id="world-tray">
-    <div id="world-marquee" role="region" aria-label="Site announcements">
+    <div id="world-marquee" role="region" aria-label="Site announcements"> </div>
       <div id="world-marquee-track"></div>
     </div>
 <!-- ===== FLOATING DOOR NAV ===== -->
@@ -303,6 +303,9 @@
     </a>
   </nav>
 </div>
+    
+    <script defer src="js/door-nav.js"></script>
+    
 /* =========================================================
      WORLD MARQUEE — the announcement bar beside the floating nav.
 
@@ -318,6 +321,7 @@
      same spots on that page. It's the same three pieces every
      time, so copy-paste is literally how you install it.
   ========================================================= */
+       
   var WORLD_ANNOUNCEMENTS = [
     { text: 'NEW: A free online well-being session — Gift of Remembrance', href: 'https://seenthroughvisuals97creatives-oss.github.io/gift-of-remembrance/' },
     { text: 'Discover Bite by Bytes', href: 'https://mazienx.github.io/D7xMight/Bite%20by%20Bytes/bitebybytes.html' },
@@ -367,7 +371,7 @@
     wrap.addEventListener('focusout', function(){ paused = false; });
   })();
      </script>
-<script defer src="js/door-nav.js"></script>
+
   
 </body>
 </html>
