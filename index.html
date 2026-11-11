@@ -422,7 +422,7 @@
 
     function buildItems(){
       WORLD_ANNOUNCEMENTS.forEach(function(a){
-        var el = document.createElement('a');
+      var el = document.createElement(a.href ? 'a' : 'span');
         el.className = 'world-marquee-item';
         el.href = a.href;
         if (/^https?:\/\//.test(a.href)) { el.target = '_blank'; el.rel = 'noopener'; }
